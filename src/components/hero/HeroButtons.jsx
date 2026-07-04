@@ -26,40 +26,75 @@ export default function HeroButtons() {
   };
   // JSX
   return (
-    <div className="mt-10 flex flex-row gap-8 items-center justify-center lg:justify-end w-full">
-      {/* Secondary CTA */}
-      <Link
-        to="/services"
-        className="hidden  lg:flex group relative text-sm sm:text-base md:text-lg font-semibold text-slate-500 hover:text-slate-800 transition-colors duration-300"
+    <div
+      className="relative w-[180px] h-[150px] flex flex-row items-center
+       justify-end gap-2 "
+    >
+      <div
+        className="mt-10 flex flex-row gap-2
+       items-center lg:justify-end"
       >
-        مشاهده خدمات
-        <span className="absolute bottom-[-4px] right-0 w-0 h-[1px] bg-slate-400 group-hover:w-full transition-all duration-300" />
-      </Link>
+        {/* main -Btn -tooth */}
 
-      {/* BTN */}
-      <div className="relative w-[150px] h-[150px] flex items-center justify-center  bottom-1/6 right-12">
-        {!isFloating && (
-          <Link to="/appointment" className="absolute inset-0 z-10">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="relative w-full h-full flex items-center justify-center cursor-pointer group "
-            >
-              <motion.img
-                layoutId="dental-shared-tooth"
-                src={toothBtn}
-                alt="Dental CTA"
-                className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-                transition={{ type: "spring", stiffness: 150, damping: 22 }}
-              />
+        <div className="hidden lg:flex relative w-[200px] h-[180px] items-center justify-center">
+          {!isFloating && (
+            <Link to="/appointment" className="absolute inset-0 z-10">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative w-full h-full flex items-center justify-center cursor-pointer group"
+              >
+                <motion.img
+                  layoutId="dental-shared-tooth"
+                  src={toothBtn}
+                  alt="Dental CTA"
+                  className="absolute inset-0 w-full h-full 
+                  object-contain pointer-events-none scale-100
+                  group-hover:scale-135 transition-transform duration-300"
+                  transition={{ type: "spring", stiffness: 150, damping: 22 }}
+                />
 
-              <span className="relative z-10 text-slate-800 font-black text-sm md:text-base select-none pb-2 tracking-wide">
-                رزرو نوبت
-              </span>
-            </motion.div>
-          </Link>
-        )}
+                <span
+                  className="relative z-10 text-slate-800 font-black text-base md:text-xs
+                 select-none pr-1 tracking-wide"
+                >
+                  رزرو نوبت
+                </span>
+              </motion.div>
+            </Link>
+          )}
+        </div>
+        {/* btn2 */}
+        <Link
+          to="/services"
+          className="
+    relative flex w-[120px] h-[50px] mx-14 mt-[210px] lg:mt-0
+    justify-center items-center group
+    
+    /* افکت شیشه‌ای (Glassmorphism) */
+    bg-white/10 backdrop-blur-md 
+    border border-white/20 
+    rounded-lg shadow-lg
+    
+    /* هاور: شیشه پررنگ‌تر و شفاف‌تر می‌شود + سایه نئونی ملایم */
+    hover:bg-white/25 hover:border-white/60
+    hover:shadow-sky-500/10 hover:-translate-y-0.5
+    
+    transition-all duration-300 ease-out
+  "
+        >
+          <span
+            className="
+      text-sm sm:text-base font-bold 
+      text-slate-800 group-hover:text-sky-600 
+      transition-colors duration-300 select-none
+    "
+          >
+            خدمات ما
+          </span>
+        </Link>
       </div>
+
       {/* FLOATING TOOTH */}
       <AnimatePresence>
         {isFloating && (

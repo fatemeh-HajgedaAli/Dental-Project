@@ -5,13 +5,13 @@ export default function HeroContent() {
   return (
     <div className="w-full flex flex-col items-center lg:items-end gap-6 lg:gap-8">
       {/* Title */}
-      <div className="w-full text-center lg:text-right sm:items-start">
+      <div className="w-full text-center lg:text-left sm:items-start -mt-[15rem] lg:mt-10">
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1]
-           tracking-tight text-slate-900 mr-[80px]"
+          className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1]
+           tracking-tight text-slate-900 "
         >
           لبخندی زیبا،{" "}
           <span
