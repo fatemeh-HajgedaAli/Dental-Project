@@ -11,7 +11,7 @@ export default function DesktopMenu() {
     <ul
       className="
         hidden md:flex
-        gap-4 lg:gap-8
+        gap-4 lg:gap-2
         items-center
       "
     >
@@ -21,13 +21,10 @@ export default function DesktopMenu() {
             to={to}
             className="
               relative flex justify-center items-center gap-2
-
               py-2
-              px-2 lg:px-3
-
+              px-2 lg:px-2
               text-sky-700
               text-sm lg:text-base
-
               whitespace-nowrap
             "
             initial="rest"

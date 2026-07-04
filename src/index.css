@@ -1,43 +1,58 @@
+/* ۱. دستور امپورت تیلوند فقط و فقط یک‌بار باید در بالاترین خط فایل باشد */
 @import "tailwindcss";
+
+/* ۲. اصلاح فونت‌ها: فرمت فایل‌های شما ttf است ولی نوشتی format("woff2")! این خطای لود فونت می‌دهد */
 @font-face {
   font-family: "Vazirmatn";
-  src: url("./assets/fonts/ttf/Vazirmatn-Light.ttf") format("woff2");
+  src: url("./assets/fonts/ttf/Vazirmatn-Light.ttf") format("truetype");
   font-weight: 300;
+  font-style: normal;
 }
 
 @font-face {
   font-family: "Vazirmatn";
-  src: url("./assets/fonts/ttf/Vazirmatn-Medium.ttf") format("woff2");
+  src: url("./assets/fonts/ttf/Vazirmatn-Medium.ttf") format("truetype");
   font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
   font-family: "Vazirmatn";
-  src: url("./assets/fonts/ttf/Vazirmatn-Bold.ttf") format("woff2");
+  src: url("./assets/fonts/ttf/Vazirmatn-Bold.ttf") format("truetype");
   font-weight: 700;
+  font-style: normal;
 }
+
+/* ۳. تنظیمات قالب (Theme) */
 @theme {
-  --default-font-family: "Vazirmatn", sans-serif;
+  /* تنظیم فونت پیش‌فرض پروژه روی وزیرمتن */
+  --font-sans: "Vazirmatn", sans-serif;
+
+  /* تعریف انیمیشن شیمر */
+  --animate-shimmer: shimmer 1.5s infinite;
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
 }
+
+/* ۴. اسکرول‌بارها و استایل‌های عمومی */
+body {
+  overflow-x: hidden;
+  font-family: var(--font-sans); /* اعمال فونت روی کل بدنه سایت */
+}
+
 @utility hide-scrollbar {
   &::-webkit-scrollbar {
     display: none;
   }
-
   scrollbar-width: none;
-}
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
+  -ms-overflow-style: none; 
 }
 
-.hide-scrollbar {
-  scrollbar-width: none;
-}
-body {
-  overflow-x: hidden;
-}
-
-/* Chrome / Edge / Safari */
+/* اسکرول‌بار سفارشی */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
@@ -54,7 +69,3 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #9ca3af;
 }
-/* find style bugs */
-/* * {
-  outline: 1px solid red;
-} */

@@ -1,38 +1,41 @@
-// main-Hero
 import HeroBackground from "../components/hero/HeroBackground";
 import HeroContent from "../components/hero/HeroContent";
+import HeroButtons from "../components/hero/HeroButtons";
 import Navbar from "./NavBar";
-// start
+
 export default function Hero() {
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden bg-blue-100">
+    <section
+      id="home"
+      className="relative overflow-hidden min-h-screen bg-[oklch(0.87_0.05_243.25)]"
+    >
+      {/* Background */}
+      <HeroBackground />
+
       {/* Navbar */}
       <div className="absolute top-0 left-0 w-full z-30">
         <Navbar />
       </div>
 
-      {/* MAIN SPLIT LAYOUT */}
+      {/* Content */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-10">
+        <div
+          className="grid grid-cols-1 lg:grid-cols-2 min-h-screen
+         items-center"
+        >
+          {/* Left spacer (design balance) */}
+          <div className="hidden lg:block" />
 
-      <div className="relative z-10 flex flex-col md:flex-row h-full w-full">
-        {/* RIGHT - BACKGROUND */}
-        <div className="w-full md:w-1/2 relative">
-          <HeroBackground />
+          {/* Right content */}
+          <div
+            className="flex flex-col items-center
+           lg:items-end text-center lg:text-right"
+          >
+            {" "}
+            <HeroContent /> <HeroButtons />
+          </div>
         </div>
-        {/* LEFT - CONTENT */}
-        <div className="w-full md:w-1/2 flex items-center justify-center px-8">
-          <HeroContent />
-        </div>
-
-        {/* Dark Overlay */}
-        {/* <div className="absolute inset-0 bg-black/20" /> */}
-        {/*  Gradient Overlay */}
-        {/* <div
-          className="absolute inset-0 bg-gradient-to-l from-black/10
-         via-transparent to-black/5"
-        />  */}
-        
       </div>
     </section>
   );
 }
-// finish
