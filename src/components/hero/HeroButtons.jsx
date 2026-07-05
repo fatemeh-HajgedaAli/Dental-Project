@@ -72,9 +72,9 @@ export default function HeroButtons() {
     justify-center items-center group
     
     /* افکت شیشه‌ای (Glassmorphism) */
-    bg-white/10 backdrop-blur-md 
-    border border-white/20 
-    rounded-lg shadow-lg
+    bg-white/20 backdrop-blur-sm 
+    border border-white/30 
+    rounded-lg shadow-xl
     
     /* هاور: شیشه پررنگ‌تر و شفاف‌تر می‌شود + سایه نئونی ملایم */
     hover:bg-white/25 hover:border-white/60

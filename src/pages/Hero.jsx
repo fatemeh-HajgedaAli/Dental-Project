@@ -28,11 +28,12 @@ export default function Hero() {
 
           {/* Right content */}
           <div
-            className="flex flex-col items-center
-           lg:items-end text-center lg:text-right"
+            className="flex flex-col items-center text-center lg:gap-2 gap-[16rem]
+           lg:items-end lg:text-right"
           >
             {" "}
-            <HeroContent /> <HeroButtons />
+            <HeroContent />
+            <HeroButtons />
           </div>
         </div>
       </div>

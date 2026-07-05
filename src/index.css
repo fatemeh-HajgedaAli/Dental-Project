@@ -69,3 +69,7 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #9ca3af;
 }
+/* check responsive */
+*{
+  border:solid 1px red;
+}
