@@ -56,7 +56,7 @@ export default function DentalCarousel() {
             </h3>
           </div>
         </div>
-{/* orbit */}
+        {/* orbit */}
         <div
           className="absolute border-2 border-dashed border-sky-200/80 rounded-[50%] pointer-events-none z-10"
           style={{

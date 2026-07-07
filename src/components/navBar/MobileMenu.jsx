@@ -7,7 +7,7 @@ export default function MobileMenu() {
   return (
     <div className="fixed right-4 top-1/2 -translate-y-1/2 md:hidden z-50">
       <div
-        className="rounded-full bg-white/90 backdrop-blur-xl shadow-xl p-1 
+        className="rounded-full bg-white/90 backdrop-blur-xl shadow-xl p-1  opacity-80
       flex flex-col gap-6 items-center"
       >
         {/* image */}

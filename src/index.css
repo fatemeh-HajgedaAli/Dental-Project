@@ -49,7 +49,7 @@ body {
     display: none;
   }
   scrollbar-width: none;
-  -ms-overflow-style: none; 
+  -ms-overflow-style: none;
 }
 
 /* اسکرول‌بار سفارشی */
@@ -69,3 +69,30 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #9ca3af;
 }
+
+/* AboutCircle-CssStyle */
+/* قاچ چپ پایین */
+.clip-slice-left {
+  clip-path: polygon(50% 50%, 0% 50%, 0% 100%, 34% 100%);
+}
+
+/* قاچ وسط پایین */
+.clip-slice-center {
+  clip-path: polygon(50% 50%, 34% 100%, 66% 100%);
+}
+
+/* قاچ راست پایین */
+.clip-slice-right {
+  clip-path: polygon(50% 50%, 66% 100%, 100% 100%, 100% 50%);
+}
+
+/* فید کردن نرم انتهای عکس پزشکان برای مچ شدن با خط دایره */
+.mask-bottom-fade {
+  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+}
+
+/* responsive */
+/* * {
+  border:1px solid red;
+} */
