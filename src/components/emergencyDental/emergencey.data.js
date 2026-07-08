@@ -1,11 +1,14 @@
 //   data-icons
-import { FiAlertCircle, FiZap, FiActivity, FiClock, FiX } from "react-icons/fi";
-
+import { FiX } from "react-icons/fi";
+import { SlCalender } from "react-icons/sl";
+import { GiFirstAidKit } from "react-icons/gi";
+import { PiFirstAid } from "react-icons/pi";
+import { MdOutlineWbTwilight } from "react-icons/md";
 //  data
 export const iconData = [
   {
     id: "emergency",
-    icon: FiAlertCircle,
+    icon: MdOutlineWbTwilight,
     title: "پشتیبانی ۲۴/۷",
     position: "left-3 top-[38%] md:left-14 lg:left-24",
     color:
@@ -18,7 +21,7 @@ export const iconData = [
 
   {
     id: "relief",
-    icon: FiZap,
+    icon: PiFirstAid,
     title: "تسکین سریع",
     position: "left-5 top-[15%] md:left-28 lg:left-44",
     color:
@@ -31,7 +34,7 @@ export const iconData = [
 
   {
     id: "expert",
-    icon: FiActivity,
+    icon: GiFirstAidKit,
     title: "درمان تخصصی",
     position: "right-5 top-[15%] md:right-28 lg:right-44",
     color:
@@ -44,11 +47,11 @@ export const iconData = [
 
   {
     id: "sameday",
-    icon: FiClock,
+    icon: SlCalender,
     title: "درمان همان روز",
     position: "right-3 top-[38%] md:right-14 lg:right-24",
     color:
-      "group-hover:bg-blue-400/20 group-hover:border-blue-300 group-hover:shadow-xl group-hover:shadow-blue-400/30",
+      "group-hover:bg-sky-100/20 group-hover:border-sky-100 group-hover:shadow-xl group-hover:shadow-sky-100/30",
     iconColor: "group-hover:text-blue-300",
     modalTitle: "⏱ خدمات اورژانسی",
     content:

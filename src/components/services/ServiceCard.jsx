@@ -1,53 +1,33 @@
 import { motion } from "framer-motion";
 
-export default function ServiceCard({ service, x, y, scale, opacity, zIndex }) {
-  const Icon = service.icon;
+export default function ServiceCard({ service, index, x, y }) {
+  const number = String(index + 1).padStart(2, "0");
 
   return (
     <motion.div
-      className="
-      absolute
-      w-[290px]
-      bg-white
-      rounded-2xl
-      border
-      border-sky-200
-      shadow-xl
-      p-3
-      flex
-      gap-3
-      items-center
-      cursor-pointer
-      hover:border-sky-500
-      
-      "
-      style={{
-        x,
-        y,
-        scale,
-        opacity,
-        zIndex,
-      }}
-      whileHover={{
-        scale: scale * 1.05,
-        opacity: 1,
-        zIndex: 50,
-      }}
+      initial={{ opacity: 0, scale: 0.7 }}
+      animate={{ opacity: 1, scale: 1, x, y }}
+      whileHover={{ scale: 1.08, y: y - 8 }}
+      transition={{ type: "spring", stiffness: 140, damping: 16 }}
+      className="absolute right-1/2 top-1/2 translate-x-1/2
+       -translate-y-1/2 flex flex-row items-center gap-2 
+       sm:gap-3 md:gap-5 cursor-pointer group select-none"
     >
-      <div className="w-20 h-20 rounded-full  overflow-hidden border border-sky-400 flex-shrink-0">
-        <img
-          src={service.image}
-          alt={service.title}
-          className="w-full h-full object-cover"
-        />
+      {/* ⚪ CIRCLE NUMBER (سمت راستِ متن) */}
+      <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-white via-sky-50 to-cyan-100 border border-sky-200 shadow-[0_15px_40px_rgba(14,165,233,.18)] flex items-center justify-center shrink-0 group-hover:border-sky-500 transition-colors duration-300">
+        {/* Inner Ring */}
+        <div className="absolute inset-1.5 sm:inset-2 rounded-full border border-dashed border-sky-300/70" />
+        {/* Number */}
+        <span className="relative z-10 font-black text-base sm:text-lg md:text-2xl text-sky-700">
+          {number}
+        </span>{" "}
       </div>
-
-      <div className="text-right flex-1 min-w-0">
-        <div className="flex items-center gap-2 mb-2">
-          <Icon size={16} className="text-sky-600" />
-          <h3 className="font-bold text-sm truncate">{service.title}</h3>
-        </div>
-        <p className="text-xs text-gray-500 leading-6 line-clamp-2">
+      {/* 📝 TEXT (سمت چپِ دایره شماره‌دار) */}
+      <div className="text-right max-w-[100px] sm:max-w-[140px] md:max-w-[220px]">
+        <h3 className="font-black text-[11px] sm:text-xs md:text-lg text-gray-700 group-hover:text-sky-600 transition-colors">
+          {service.title}
+        </h3>
+        <p className="hidden md:block mt-1 text-xs text-gray-400 leading-5 line-clamp-2">
           {service.description}
         </p>
       </div>

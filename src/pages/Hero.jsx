@@ -1,18 +1,18 @@
 import HeroBackground from "../components/hero/HeroBackground";
 import HeroContent from "../components/hero/HeroContent";
-import HeroButtons from "../components/hero/HeroButtons";
+// import HeroButtons from "../components/hero/HeroButtons";
 import Navbar from "./NavBar";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden min-h-screen bg-[oklch(0.87_0.05_243.25)]"
+      className="relative min-h-screen bg-[oklch(0.87_0.05_243.25)]"
     >
-      {/* Background */}
-      <HeroBackground />
+      <div className="absolute inset-0 overflow-hidden">
+        <HeroBackground />
+      </div>
 
-      {/* Navbar */}
       <div className="absolute top-0 left-0 w-full z-30">
         <Navbar />
       </div>
@@ -32,7 +32,7 @@ export default function Hero() {
            lg:items-end text-center lg:text-right"
           >
             {" "}
-            <HeroContent /> <HeroButtons />
+            <HeroContent />
           </div>
         </div>
       </div>

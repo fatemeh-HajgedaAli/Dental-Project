@@ -1,44 +1,28 @@
 import EmergencyBackground from "../components/emergencyDental/EmergencyBackground";
 import EmergencyHeader from "../components/emergencyDental/EmergencyHeader";
-import EmergensiIcons from "../components/emergencyDental/EmergensiIcons";
+import EmergencySection from "../components/emergencyDental/EmergencySection";
+
+
 
 export default function EmergencyDental() {
   return (
     <section
       className="
-      relative
-      min-h-screen
-      overflow-hidden
-      bg-gradient-to-b
-      from-sky-50
-      via-white
-      to-sky-100
-      "
-    >
-      {/* Background + Patient */}
+relative
+min-h-screen
+overflow-hidden
+bg-blue-900
+">
       <EmergencyBackground />
 
-      {/* Hero Content */}
-      <div
-        className="
-        relative
-        z-30
-        pt-10
-        "
-      >
+      <div className="relative z-20">
         <EmergencyHeader />
       </div>
 
-      {/* Floating Features */}
-      <div
-        className="
-        absolute
-        inset-0
-        z-40
-        "
-      >
-        <EmergensiIcons />
+      <div className="absolute inset-0 z-30 ">
+        <EmergencySection />
       </div>
+
     </section>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import PatientImage from "../../assets/images/emergencyDental/emergencyBg.png";
+import PatientImage from "../../assets/images/emergencyDental/bgPng.png";
 
 export default function EmergencyBackground() {
   return (
