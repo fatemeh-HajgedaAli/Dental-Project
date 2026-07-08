@@ -5,8 +5,8 @@ import { FaTooth } from "react-icons/fa";
 export default function EmergencyHeader() {
   return (
     <div
-      className="relative mt-[10px] text-center 
-    max-w-5xl mx-auto px-4"
+      className="relative mt-[15px] text-center 
+    max-w-5xl mx-auto px-4 "
       dir="ltr"
     >
       {/* Badge */}

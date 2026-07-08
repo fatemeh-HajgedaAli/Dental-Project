@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import TeethLogo from "../../assets/images/logos/LogoPng.png";
 
 const MotionNavLink = motion(NavLink);
-
+// start
 export default function DesktopMenu() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -28,7 +28,6 @@ export default function DesktopMenu() {
     <div className="hidden md:block">
       <AnimatePresence mode="wait">
         {!isScrolled ? (
-          /* حالت عادی خطی بالای صفحه */
           <motion.ul
             key="desktop-linear"
             initial={{ opacity: 0, y: -10 }}
@@ -59,13 +58,11 @@ export default function DesktopMenu() {
             ))}
           </motion.ul>
         ) : (
-          /* حالت تبدیل شده به حالت دایره‌ای در اسکرول */
           <motion.div
             key="desktop-floating"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            // اولویت بالا همراه با کنترل دقیق رویداد ماوس
             className="fixed top-6 right-8 z-[999999] flex flex-col items-center pointer-events-auto"
           >
             <button

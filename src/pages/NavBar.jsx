@@ -1,10 +1,10 @@
 // main-Navbar
-
 import TeethLogo from "../assets/images/logos/LogoPng.png";
 import DesktopMenu from "../components/navBar/DesktopMenu";
 import MobileMenu from "../components/navBar/MobileMenu";
-
+// start
 export default function Navbar() {
+  // jsx
   return (
     <>
       <div className="relative z-50  mx-6 mt-4 ">
@@ -40,3 +40,4 @@ export default function Navbar() {
     </>
   );
 }
+// finish

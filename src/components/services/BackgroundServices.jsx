@@ -5,7 +5,7 @@ export default function BackgroundServices({ children }) {
   // jsx
   return (
     <div className="relative w-full min-h-screen bg-slate-50 
-    overflow-hidden py-16 flex flex-col items-center justify-center">
+    overflow-hidden py-16 flex flex-col items-center justify-center ">
       {/* mainBg) */}
       <div className="absolute inset-2 z-0 flex items-center 
       justify-start pointer-events-none select-none">
@@ -14,7 +14,7 @@ export default function BackgroundServices({ children }) {
           alt="Dental Implant Background"
           className="
             w-full max-w-[500px] sm:max-w-[650px] md:max-w-[800px]
-             lg:max-w-[600px]
+             lg:max-w-[660px]
             h-auto object-contain
             opacity-10  /* برای اینکه کارت‌ها و متون خوانا باشند، شفافیت را روی ۱۰٪ گذاشتیم */
             filter grayscale-[30%] /* کمی فیلتر خاکستری برای هماهنگی بیشتر با تم دیزاین */

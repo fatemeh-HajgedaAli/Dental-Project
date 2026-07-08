@@ -1,4 +1,5 @@
 import HeroBackground from "../components/hero/HeroBackground";
+import HeroButtons from "../components/hero/HeroButtons";
 import HeroContent from "../components/hero/HeroContent";
 // import HeroButtons from "../components/hero/HeroButtons";
 import Navbar from "./NavBar";
@@ -28,12 +29,14 @@ export default function Hero() {
 
           {/* Right content */}
           <div
-            className="flex flex-col items-center
-           lg:items-end text-center lg:text-right"
+            className="flex items-center text-center lg:text-right translate-y-20"
           >
             {" "}
             <HeroContent />
           </div>
+          {/* <div className="-translate-x-45">
+            <HeroButtons />
+          </div> */}
         </div>
       </div>
     </section>

@@ -18,6 +18,7 @@ export default function EmergencyBackground() {
         from-blue-900 
         via-slate-950 
         to-blue-950
+        translate-y-4
       "
     >
       {/* =========================================================
