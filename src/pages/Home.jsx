@@ -3,19 +3,28 @@ import React from "react";
 // component-parts
 import Hero from "./Hero";
 import Services from "./Services";
+import AboutUs from "./AboutUs";
+import EmergencyDental from "./EmergencyDental";
+import Contact from "../components/contactSection/BookingTarget";
 // start
 export default function Home() {
   return (
     <>
       {/* Hero */}
-      <div className="mb-1">
+      <div>
         <Hero />
       </div>
-      {/* services */}
-      <div className="">
+
+      {/* services  */}
+      <div>
         <Services />
       </div>
-      {/* About Us  */}
+
+      {/* EmergencyDental */}
+      <div>
+        <EmergencyDental />
+      </div>
+    
     </>
   );
 }

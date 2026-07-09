@@ -49,7 +49,7 @@ body {
     display: none;
   }
   scrollbar-width: none;
-  -ms-overflow-style: none; 
+  -ms-overflow-style: none;
 }
 
 /* اسکرول‌بار سفارشی */
@@ -70,6 +70,6 @@ body {
   background: #9ca3af;
 }
 /* check responsive */
-*{
-  border:solid 1px red;
-}
+/* * {
+  border: solid 1px red;
+} */

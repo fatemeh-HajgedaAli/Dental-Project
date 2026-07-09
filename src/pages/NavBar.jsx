@@ -1,13 +1,13 @@
 // main-Navbar
-
 import TeethLogo from "../assets/images/logos/LogoPng.png";
 import DesktopMenu from "../components/navBar/DesktopMenu";
 import MobileMenu from "../components/navBar/MobileMenu";
-
+// start
 export default function Navbar() {
+  // jsx
   return (
     <>
-      <div className="relative w-[1200px]  z-50 mx-auto mt-4 ">
+      <div className="relative z-50  mx-6 mt-4 ">
         {/* MAIN NAV */}
         <nav
           className="
@@ -17,10 +17,7 @@ export default function Navbar() {
             bg-white/60
             backdrop-blur-s
             border border-white/40
-            
-            h-20
-          
-          "
+            h-20"
         >
           <DesktopMenu />
 
@@ -37,12 +34,10 @@ export default function Navbar() {
             <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" />
           </svg>
         </div>
-
-        {/* spacer */}
-        <div className="h-[28px]" />
       </div>
 
       <MobileMenu />
     </>
   );
 }
+// finish

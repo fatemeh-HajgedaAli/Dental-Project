@@ -1,18 +1,20 @@
 import HeroBackground from "../components/hero/HeroBackground";
-import HeroContent from "../components/hero/HeroContent";
+import ToothDraggable from "../components/hero/heroButton/ToothDraggable";
 import HeroButtons from "../components/hero/HeroButtons";
+import HeroContent from "../components/hero/HeroContent";
+// import HeroButtons from "../components/hero/HeroButtons";
 import Navbar from "./NavBar";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden min-h-screen bg-[oklch(0.87_0.05_243.25)]"
+      className="relative min-h-screen bg-[oklch(0.89_0.05_243.25)]"
     >
-      {/* Background */}
-      <HeroBackground />
+      <div className="absolute inset-0 overflow-hidden">
+        <HeroBackground />
+      </div>
 
-      {/* Navbar */}
       <div className="absolute top-0 left-0 w-full z-30">
         <Navbar />
       </div>
@@ -27,12 +29,10 @@ export default function Hero() {
           <div className="hidden lg:block" />
 
           {/* Right content */}
-          <div
-            className="flex flex-col items-center text-center lg:gap-2 gap-[16rem]
-           lg:items-end lg:text-right"
-          >
-            {" "}
+          <div className="flex lg:mt-20">
             <HeroContent />
+          </div>
+          <div className="flexitems-start lg:mr-20">
             <HeroButtons />
           </div>
         </div>

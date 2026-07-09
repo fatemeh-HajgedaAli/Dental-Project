@@ -1,109 +1,225 @@
 import { useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
 import { servicesData } from "./services.data";
-import teeth from "../../assets/images/services/teethPng-services.png";
+import teeth from "../../assets/images/services/pngTeeth.png";
 
 export default function DentalCarousel() {
-  const [rotation, setRotation] = useState(0);
-  const [hover, setHover] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [width, setWidth] = useState(1024);
 
-  // بررسی سایز صفحه برای تنظیم ابعاد مدار
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+    const resize = () => {
+      setWidth(window.innerWidth);
     };
-    handleResize(); // اجرای اولیه
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    resize();
+
+    window.addEventListener("resize", resize);
+
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
   }, []);
 
-  useEffect(() => {
-    if (hover) return;
+  const items = servicesData.slice(0, 5);
 
-    const timer = setInterval(() => {
-      setRotation((p) => p - 0.3); // سرعت چرخش ملایم‌تر
-    }, 30);
-
-    return () => clearInterval(timer);
-  }, [hover]);
-
-  const total = servicesData.length;
-
-  // تنظیم داینامیک ابعاد مدار بر اساس موبایل یا دسکتاپ
-  const radiusX = isMobile ? 140 : 350; // شعاع افقی در موبایل کمتر شده
-  const radiusY = isMobile ? 70 : 130; // شعاع عمودی در موبایل کمتر شده
+  const radius =
+    width < 480 ? 100 : width < 640 ? 130 : width < 1024 ? 220 : 300;
 
   return (
-    <div
-      className="w-full flex justify-center items-center min-h-[400px] md:min-h-[500px] bg-white relative select-none overflow-hidden"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      onTouchStart={() => setHover(true)} // پشتیبانی از لمس در موبایل
-      onTouchEnd={() => setHover(false)}
-    >
-      {/* 3D container */}
+    <section dir="rtl">
       <div
-        className="relative w-full max-w-[340px] md:max-w-[800px] h-[400px] md:h-[500px] flex items-center justify-center"
-        style={{ perspective: 1200 }}
+        className="
+max-w-[1250px]
+mx-auto
+grid
+grid-cols-1
+lg:grid-cols-12
+items-center
+gap-6
+"
       >
-        {/* ۱. teeth center (Center Hub) */}
-        <div className="absolute z-40 w-24 h-24 md:w-40 md:h-40 bg-sky-100 rounded-full border-4 border-sky-700 flex flex-col items-center justify-center p-2 md:p-4 text-center">
-          <div className="flex items-center justify-center">
+        {/* TEXT */}
+
+        <div
+          className="
+lg:col-span-4
+text-center
+lg:text-right
+"
+        >
+          <div
+            className="
+inline-flex
+items-center
+gap-3
+rounded-full
+border
+border-sky-200
+bg-white/80
+backdrop-blur-xl
+px-5
+py-2
+shadow-lg
+"
+          >
+            <span
+              className="
+w-2.5
+h-2.5
+rounded-full
+bg-sky-500
+animate-pulse
+"
+            />
+
+            <span
+              className="
+text-xs
+md:text-sm
+font-bold
+tracking-widest
+text-sky-700
+"
+            >
+              Our Services
+            </span>
+          </div>
+
+          <h1
+            className="
+mt-6
+text-5xl
+md:text-7xl
+font-black
+leading-none
+bg-gradient-to-l
+from-sky-500
+via-cyan-400
+to-sky-800
+bg-clip-text
+text-transparent
+"
+          >
+            دندانپزشکی
+          </h1>
+
+          <h2
+            className="
+mt-3
+text-xl
+md:text-3xl
+font-black
+text-sky-900
+"
+          >
+            دیجیتال و تخصصی
+          </h2>
+
+          <p
+            className="
+mt-5
+text-sm
+md:text-base
+text-gray-400
+leading-7
+"
+          >
+            ارائه خدمات تخصصی دندانپزشکی با جدیدترین تکنولوژی روز دنیا، برای
+            لبخندی سالم‌تر و زیباتر.
+          </p>
+        </div>
+
+        {/* ORBIT */}
+
+        <div
+          className="
+lg:col-span-8
+relative
+h-[420px]
+md:h-[600px]
+flex
+items-center
+justify-center
+overflow-hidden
+"
+        >
+          {/* rings */}
+
+          <div
+            className="
+absolute
+rounded-full
+border-2
+border-dashed
+border-sky-300/60
+"
+            style={{
+              width: radius * 2.5,
+              height: radius * 2.5,
+            }}
+          />
+
+          <div
+            className="
+absolute
+rounded-full
+border
+border-dashed
+border-sky-200
+"
+            style={{
+              width: radius * 1.7,
+              height: radius * 1.7,
+            }}
+          />
+
+          {/* center tooth */}
+
+          <div
+            className="
+absolute
+z-20
+flex
+items-center
+justify-center
+"
+          >
             <img
               src={teeth}
               alt="teeth"
-              className="w-28 h-20 md:w-60 md:h-40 object-contain mb-4 md:mb-10"
+              className="
+w-40
+sm:w-56
+md:w-[420px]
+object-contain
+drop-shadow-2xl
+"
             />
           </div>
 
-          <div className="relative z-10 flex flex-col items-center justify-center backdrop-blur-[1px] w-full h-full rounded-full p-1 bottom-6 md:bottom-15">
-            <span className="text-[7px] md:text-[10px] font-bold text-sky-700 uppercase tracking-widest drop-shadow-sm">
-              Dental Care
-            </span>
-            <h3 className="text-[10px] md:text-xs font-black text-gray-900 mt-0.5 drop-shadow-sm">
-              خدمات تخصصی
-            </h3>
-          </div>
+          {/* cards */}
+
+          {items.map((service, index) => {
+            const angle = 130 + index * (100 / (items.length - 1));
+
+            const rad = (angle * Math.PI) / 180;
+
+            const x = Math.cos(rad) * radius;
+
+            const y = Math.sin(rad) * radius;
+
+            return (
+              <ServiceCard
+                key={service.id}
+                service={service}
+                index={index}
+                x={-x}
+                y={y}
+              />
+            );
+          })}
         </div>
-
-        {/* orbit */}
-        <div
-          className="absolute border-2 border-dashed border-sky-200/80 rounded-[50%] pointer-events-none z-10"
-          style={{
-            width: radiusX * 2,
-            height: radiusY * 2,
-          }}
-        />
-
-        {/* ۳. رندر داینامیک کارت‌ها */}
-        {servicesData.map((service, index) => {
-          const angle = ((360 / total) * index + rotation) * (Math.PI / 180);
-
-          // محاسبه موقعیت دقیق بر اساس مرکز کانتینر
-          const x = Math.cos(angle) * radiusX;
-          const y = Math.sin(angle) * radiusY;
-
-          const sin = Math.sin(angle);
-
-          // محاسبات دقیق پرسپکتیو
-          const scale = 0.8 + (sin + 1) * 0.12;
-          const opacity = 0.45 + (sin + 1) * 0.27;
-          const zIndex = Math.round((sin + 1) * 20);
-
-          return (
-            <ServiceCard
-              key={service.id || index}
-              service={service}
-              x={x}
-              y={y}
-              scale={scale}
-              opacity={opacity}
-              zIndex={zIndex}
-            />
-          );
-        })}
       </div>
-    </div>
+    </section>
   );
 }
