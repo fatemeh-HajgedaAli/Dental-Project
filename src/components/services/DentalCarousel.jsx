@@ -1,223 +1,71 @@
-import { useEffect, useState } from "react";
-import ServiceCard from "./ServiceCard";
-import { servicesData } from "./services.data";
-import teeth from "../../assets/images/services/pngTeeth.png";
+import DentalCarouselDesktop from "./DentalCarouselDesktop";
+import DentalCarouselMobile from "./DentalCarouselMobile";
 
 export default function DentalCarousel() {
-  const [width, setWidth] = useState(1024);
-
-  useEffect(() => {
-    const resize = () => {
-      setWidth(window.innerWidth);
-    };
-
-    resize();
-
-    window.addEventListener("resize", resize);
-
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-
-  const items = servicesData.slice(0, 5);
-
-  const radius =
-    width < 480 ? 100 : width < 640 ? 130 : width < 1024 ? 220 : 300;
-
   return (
-    <section dir="rtl">
-      <div
-        className="
-max-w-[1250px]
-mx-auto
-grid
-grid-cols-1
-lg:grid-cols-12
-items-center
-gap-6
-"
-      >
-        {/* TEXT */}
+    <section
+      dir="rtl"
+      className="relative w-full overflow-hidden py-12 lg:py-16 bg-transparent"
+    >
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+        {/* ==================== 1. TEXT SECTION (Shared for Mobile & Desktop) ==================== */}
+        {/* در دسکتاپ بخشی از گرید می‌شود و در موبایل به صورت مستقل در بالا قرار می‌گیرد */}
+        <div className="grid grid-cols-12 items-center gap-6 lg:gap-10">
+          <div className="col-span-12 md:col-span-5 lg:col-span-4 text-center md:text-right">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-3 rounded-full border border-sky-200/70 bg-white/70 backdrop-blur-xl px-5 py-2 shadow-lg">
+              <span className="text-xs font-black tracking-[0.25em] text-sky-700">
+                DIGITAL DENTISTRY
+              </span>
+              <span className="w-2.5 h-2.5 rounded-full bg-sky-500 animate-pulse" />
+            </div>
 
-        <div
-          className="
-lg:col-span-4
-text-center
-lg:text-right
-"
-        >
-          <div
-            className="
-inline-flex
-items-center
-gap-3
-rounded-full
-border
-border-sky-200
-bg-white/80
-backdrop-blur-xl
-px-5
-py-2
-shadow-lg
-"
-          >
-            <span
-              className="
-w-2.5
-h-2.5
-rounded-full
-bg-sky-500
-animate-pulse
-"
-            />
+            {/* Title */}
+            <h1 className="mt-6 text-5xl lg:text-6xl xl:text-7xl font-black leading-none bg-gradient-to-l from-sky-600 via-cyan-400 to-blue-900 bg-clip-text text-transparent">
+              دندانپزشکی
+            </h1>
 
-            <span
-              className="
-text-xs
-md:text-sm
-font-bold
-tracking-widest
-text-sky-700
-"
-            >
-              Our Services
-            </span>
+            {/* Subtitle */}
+            <h2 className="mt-4 text-2xl lg:text-4xl font-black text-sky-950">
+              دیجیتال و تخصصی
+            </h2>
+
+            {/* Description */}
+            <p className="mt-5 text-sm lg:text-base leading-7 lg:leading-8 text-slate-500 max-w-md mx-auto md:mx-0">
+              ارائه خدمات تخصصی دندانپزشکی با جدیدترین تکنولوژی روز دنیا، ترکیبی
+              از دانش، تجربه و تجهیزات پیشرفته برای ساختن لبخندی سالم‌تر و
+              زیباتر.
+            </p>
+
+            {/* Stats */}
+            <div className="mt-8 flex justify-center md:justify-start gap-4">
+              <div className="rounded-2xl bg-white/70 backdrop-blur-xl border border-sky-100 px-5 py-3 shadow-md">
+                <strong className="block text-xl font-black text-sky-600">
+                  +۱۰
+                </strong>
+                <span className="text-xs text-gray-500">سال تجربه</span>
+              </div>
+
+              <div className="rounded-2xl bg-white/70 backdrop-blur-xl border border-sky-100 px-5 py-3 shadow-md">
+                <strong className="block text-xl font-black text-sky-600">
+                  +۵۰۰۰
+                </strong>
+                <span className="text-xs text-gray-500">لبخند زیبا</span>
+              </div>
+            </div>
           </div>
 
-          <h1
-            className="
-mt-6
-text-5xl
-md:text-7xl
-font-black
-leading-none
-bg-gradient-to-l
-from-sky-500
-via-cyan-400
-to-sky-800
-bg-clip-text
-text-transparent
-"
-          >
-            دندانپزشکی
-          </h1>
-
-          <h2
-            className="
-mt-3
-text-xl
-md:text-3xl
-font-black
-text-sky-900
-"
-          >
-            دیجیتال و تخصصی
-          </h2>
-
-          <p
-            className="
-mt-5
-text-sm
-md:text-base
-text-gray-400
-leading-7
-"
-          >
-            ارائه خدمات تخصصی دندانپزشکی با جدیدترین تکنولوژی روز دنیا، برای
-            لبخندی سالم‌تر و زیباتر.
-          </p>
+          {/* ==================== 2. DESKTOP ORBIT ==================== */}
+          {/* این بخش فقط در دسکتاپ و تبلت در کنار متن رندر می‌شود */}
+          <div className="hidden md:block md:col-span-7 lg:col-span-8 ">
+            <DentalCarouselDesktop />
+          </div>
         </div>
 
-        {/* ORBIT */}
-
-        <div
-          className="
-lg:col-span-8
-relative
-h-[420px]
-md:h-[600px]
-flex
-items-center
-justify-center
-overflow-hidden
-"
-        >
-          {/* rings */}
-
-          <div
-            className="
-absolute
-rounded-full
-border-2
-border-dashed
-border-sky-300/60
-"
-            style={{
-              width: radius * 2.5,
-              height: radius * 2.5,
-            }}
-          />
-
-          <div
-            className="
-absolute
-rounded-full
-border
-border-dashed
-border-sky-200
-"
-            style={{
-              width: radius * 1.7,
-              height: radius * 1.7,
-            }}
-          />
-
-          {/* center tooth */}
-
-          <div
-            className="
-absolute
-z-20
-flex
-items-center
-justify-center
-"
-          >
-            <img
-              src={teeth}
-              alt="teeth"
-              className="
-w-40
-sm:w-56
-md:w-[420px]
-object-contain
-drop-shadow-2xl
-"
-            />
-          </div>
-
-          {/* cards */}
-
-          {items.map((service, index) => {
-            const angle = 130 + index * (100 / (items.length - 1));
-
-            const rad = (angle * Math.PI) / 180;
-
-            const x = Math.cos(rad) * radius;
-
-            const y = Math.sin(rad) * radius;
-
-            return (
-              <ServiceCard
-                key={service.id}
-                service={service}
-                index={index}
-                x={-x}
-                y={y}
-              />
-            );
-          })}
+        {/* ==================== 3. MOBILE ORBIT ==================== */}
+        {/* این بخش فقط در موبایل، پایین متن‌ها رندر می‌شود */}
+        <div className="md:hidden mt-8">
+          <DentalCarouselMobile />
         </div>
       </div>
     </section>

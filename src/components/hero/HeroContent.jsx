@@ -3,28 +3,61 @@ import { motion } from "framer-motion";
 
 export default function HeroContent() {
   return (
-    <div className="w-full flex flex-col items-start  lg:items-end  lg:gap-8">
+    <div
+      className="w-full flex flex-col items-start  lg:items-end  lg:gap-8 
+    -mt-45 lg:mt-16"
+    >
       {/* Title */}
-      <div className="w-full text-center lg:text-left  -mt-[50px] lg:mt-10  ">
+      <div className="w-full text-center lg:text-left lg:mt-10 select-none">
         <motion.h1
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-7xl md:text-5xl lg:text-6xl font-bold leading-[0.5] lg:leading-[1.1]
-            text-slate-900 py-[5px] "
-          className="text-6xl md:text-5xl lg:text-6xl font-bold leading-[1.1]
-           tracking-tight text-slate-900 -translate-y-45 lg:translate-y-1"
+          initial={{
+            opacity: 0,
+            y: 25,
+            filter: "blur(8px)",
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+          }}
+          transition={{
+            duration: 0.9,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          className="text-5xl   md:text-6xl   lg:text-7xl   font-semibold  
+           leading-1/2   lg:leading-[1.15]   tracking-[-0.04em]   text-slate-950 "
         >
           لبخندی زیبا،
+          <br />
           <span
-            className="bg-gradient-to-r from-sky-700 via-cyan-500 
-            to-emerald-300  text-4xl
-            bg-clip-text text-transparent font-bold
-            drop-shadow-[0_2px_10px_rgba(14,165,233,0.15)] 
-            inline-block"
-            className="bg-gradient-to-r from-sky-700 via-blue-900 to-blue-500 
-            bg-clip-text text-transparent font-black  text-5xl
-            drop-shadow-[0_2px_10px_rgba(14,165,233,0.15)] inline-block"
+            className="
+  relative
+  inline-block
+  mt-3
+  font-black
+  tracking-[-0.02em]
+  bg-gradient-to-br
+  from-sky-800
+  via-sky-500
+  to-blue-500
+  bg-clip-text
+  text-transparent
+  [WebkitTextStroke:5px_rgba(14,165,233,0.35)]
+  drop-shadow-[10px_10px_30px_rgba(14,165,233,.35)]
+  before:absolute
+  before:inset-0
+  before:-z-10
+  before:bg-gradient-to-r
+  before:from-cyan-300/40
+  before:via-sky-900/30
+  before:to-blue-900/40
+  before:blur-2xl
+  after:absolute
+  after:inset-0
+  after:bg-white/10
+  after:blur-xl
+  after:-z-10
+"
           >
             آغاز یک زندگی بهتر
           </span>
@@ -43,7 +76,7 @@ export default function HeroContent() {
           border-r-4 border-cyan-400/40 pr-4 mr-[80px] "
         >
           «تجربه‌ای نو از دندانپزشکی مدرن؛
-          <span className="text-blue-600">
+          <span className="text-blue-600 font-light">
             ترکیب تکنولوژی روز دنیا، تخصص حرفه‌ای و محیطی آرام برای لبخندی سالم
             و ماندگار»
           </span>

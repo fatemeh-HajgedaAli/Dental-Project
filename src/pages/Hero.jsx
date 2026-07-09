@@ -29,7 +29,7 @@ export default function Hero() {
           <div className="hidden lg:block" />
 
           {/* Right content */}
-          <div className="flex lg:mt-20">
+          <div className="flex">
             <HeroContent />
           </div>
           <div className="flexitems-start lg:mr-20">

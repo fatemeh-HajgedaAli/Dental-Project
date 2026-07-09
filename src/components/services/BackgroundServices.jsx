@@ -5,7 +5,7 @@ export default function BackgroundServices({ children }) {
   // jsx
   return (
     <div className="relative w-full min-h-screen bg-slate-50 
-    overflow-hidden py-16 flex flex-col items-center justify-center ">
+    overflow-hidden  flex flex-col items-center justify-center ">
       {/* mainBg) */}
       <div className="absolute inset-2 z-0 flex items-center 
       justify-start pointer-events-none select-none">
