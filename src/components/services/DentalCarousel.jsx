@@ -36,23 +36,6 @@ export default function DentalCarousel() {
               از دانش، تجربه و تجهیزات پیشرفته برای ساختن لبخندی سالم‌تر و
               زیباتر.
             </p>
-
-            {/* Stats */}
-            <div className="mt-8 flex justify-center md:justify-start gap-4">
-              <div className="rounded-2xl bg-white/70 backdrop-blur-xl border border-sky-100 px-5 py-3 shadow-md">
-                <strong className="block text-xl font-black text-sky-600">
-                  +۱۰
-                </strong>
-                <span className="text-xs text-gray-500">سال تجربه</span>
-              </div>
-
-              <div className="rounded-2xl bg-white/70 backdrop-blur-xl border border-sky-100 px-5 py-3 shadow-md">
-                <strong className="block text-xl font-black text-sky-600">
-                  +۵۰۰۰
-                </strong>
-                <span className="text-xs text-gray-500">لبخند زیبا</span>
-              </div>
-            </div>
           </div>
 
           {/* ==================== 2. DESKTOP ORBIT ==================== */}
