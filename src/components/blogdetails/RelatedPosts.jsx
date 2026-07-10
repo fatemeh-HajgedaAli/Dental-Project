@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { POSTS } from "../../data/blog.data";
+import { POSTS } from "./blog.data";
 
 export default function RelatedPosts({ currentId }) {
   const relatedPosts = POSTS.filter((item) => item.id !== currentId).slice(

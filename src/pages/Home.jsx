@@ -26,16 +26,19 @@ export default function Home() {
       <div>
         <EmergencyDental />
       </div>
-    {/* About-Us */}
-    <div className="">
-      <AboutUs/>
-    </div>
-    {/* ehy-choose-us */}
-    <div className="">
-      <WhyChooseUs/>
-    </div>
-    {/* Dental Tips */}
-    <DentalTips/>
+      {/* Dental Tips */}
+      <div className="">
+        {" "}
+        <DentalTips />
+      </div>
+      {/* About-Us */}
+      <div className="">
+        <AboutUs />
+      </div>
+      {/* ehy-choose-us */}
+      <div className="">
+        <WhyChooseUs />
+      </div>
     </>
   );
 }

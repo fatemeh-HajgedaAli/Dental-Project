@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import { POSTS } from "../data/blog.data";
+import { POSTS } from "../components/blogdetails/blog.data";
 
-import BackButton from "../components/blog/BackButton";
-import BlogHero from "../components/blog/BlogHero";
-import BlogMeta from "../components/blog/BlogMeta";
-import BlogContent from "../components/blog/BlogContent";
-import RelatedPosts from "../components/blog/RelatedPosts";
+import BackButton from "../components/blogdetails/BackButton";
+import BlogHero from "../components/blogdetails/BlogHero";
+import BlogMeta from "../components/blogdetails/BlogMeta";
+import BlogContent from "../components/blogdetails/BlogContent";
+import RelatedPosts from "../components/blogdetails/RelatedPosts";
 
 export default function BlogDetail() {
   const { slug } = useParams();
