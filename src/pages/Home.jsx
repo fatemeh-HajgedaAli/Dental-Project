@@ -6,6 +6,8 @@ import Services from "./Services";
 import AboutUs from "./AboutUs";
 import EmergencyDental from "./EmergencyDental";
 import Contact from "../components/contactSection/BookingTarget";
+import WhyChooseUs from "./WhyChooseUs";
+import DentalTips from "./DentalTips";
 // start
 export default function Home() {
   return (
@@ -24,7 +26,16 @@ export default function Home() {
       <div>
         <EmergencyDental />
       </div>
-    
+    {/* About-Us */}
+    <div className="">
+      <AboutUs/>
+    </div>
+    {/* ehy-choose-us */}
+    <div className="">
+      <WhyChooseUs/>
+    </div>
+    {/* Dental Tips */}
+    <DentalTips/>
     </>
   );
 }

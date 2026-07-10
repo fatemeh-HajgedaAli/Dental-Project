@@ -1,84 +1,37 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import TeethPng from "../assets/images/aboutUs/teeth-png.png"; // تصویر جدید با پس‌زمینه مشکی
+import AboutBackground from "../components/aboutus/AboutBackground";
+import AboutUsContent from "../components/aboutus/AboutUsContent";
+import AboutImplant from "../components/aboutus/aboutusParts/AboutImplant";
 
-export default function AboutUsMouth() {
-  const containerRef = useRef(null);
-
-  // ۱. مانیتور کردن اسکرول برای بازه زمانی مشخص
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  // ۲. کنترل جابه‌جایی فک‌ها (دقیقاً بر اساس ابعاد واقعی لب در تصویر)
-  const topJawY = useTransform(scrollYProgress, [0, 0.8], ["0%", "-48%"]);
-  const bottomJawY = useTransform(scrollYProgress, [0, 0.8], ["0%", "48%"]);
-
-  // ۳. انیمیشن محو و پاپ‌آپ شدن متن از تاریکی دهان
-  const textScale = useTransform(scrollYProgress, [0.25, 0.75], [0.7, 1]);
-  const textOpacity = useTransform(scrollYProgress, [0.3, 0.65], [0, 1]);
-
+export default function AboutUs() {
   return (
-    <div ref={containerRef} className="relative h-[220vh] bg-slate-950">
-      {/* باکس مانیتور و چسبان در مرکز دید کاربر */}
-      <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center overflow-hidden">
-        {/* ==========================================
-            ۱. فک و لب بالا (نیمه بالایی تصویر)
-           ========================================== */}
-        <motion.div
-          style={{ y: topJawY }}
-          className="absolute top-0 z-20 flex h-1/2 w-full items-end justify-center overflow-hidden"
-        >
-          {/* کانتینر تصویر با ابعاد کاملاً هماهنگ و واکنش‌گرا */}
-          <div className="w-[320px] sm:w-[480px] md:w-[640px] lg:w-[720px] h-screen flex items-end justify-center">
-            <img
-              src={TeethPng}
-              alt="Top Teeth"
-              /* mix-blend-screen باعث می‌شود مشکیِ دور عکس کاملاً در پس‌زمینه محو و ناپدید شود */
-              className="w-full h-full object-contain object-center translate-y-1/2 scale-100 mix-blend-screen"
-            />
-          </div>
-        </motion.div>
+    <section className="relative w-full overflow-hidden bg-transparent py-20 lg:py-28">
+      {/* ۱. لود کردن بک‌گراند نئونی و افکت نویز */}
+      <AboutBackground />
 
-        {/* ==========================================
-            ۲. متن خلاقانه درباره ما (عمق دهان)
-           ========================================== */}
-        <motion.div
-          style={{ scale: textScale, opacity: textOpacity }}
-          className="absolute z-10 px-6 text-center max-w-2xl select-none"
-          dir="rtl"
-        >
-          <span className="text-xs font-bold tracking-widest text-sky-500 bg-sky-500/10 px-3 py-1 rounded-full uppercase mb-3 inline-block">
-            بیشتر بدانید
-          </span>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-5 drop-shadow-[0_4px_16px_rgba(0,0,0,1)]">
-            درباره کلینیک ما
-          </h2>
-          <p className="text-base md:text-lg text-slate-300 leading-8 font-medium drop-shadow-[0_4px_10px_rgba(0,0,0,1)]">
-            ما در کلینیک دندانپزشکی اورژانسی، با بهره‌گیری از مجرب‌ترین متخصصان
-            و پیشرفته‌ترین تجهیزات، در ۲۴ ساعت شبانه‌روز و ۷ روز هفته آمادهٔ
-            تسکین سریع درد و درمان تخصصی لبخند شما هستیم.
-          </p>
-        </motion.div>
+      {/* ۲. کانتینر اصلی مهارکننده لایه‌ها */}
+      <div
+        className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 grid grid-cols-12 gap-8 lg:gap-4 items-center"
+        dir="rtl"
+      >
+        {/* بخش متنی معرفی (۵ ستون در دسکتاپ) */}
+        <div className="col-span-12 lg:col-span-5 w-full z-20">
+          <AboutUsContent />
+        </div>
 
-        {/* ==========================================
-            ۳. فک و لب پایین (نیمه پایینی تصویر)
-           ========================================== */}
-        <motion.div
-          style={{ y: bottomJawY }}
-          className="absolute bottom-0 z-20 flex h-1/2 w-full items-start justify-center overflow-hidden"
-        >
-          {/* کانتینر تصویر معکوس برای فک پایین */}
-          <div className="w-[320px] sm:w-[480px] md:w-[640px] lg:w-[720px] h-screen flex items-start justify-center">
-            <img
-              src={TeethPng}
-              alt="Bottom Teeth"
-              className="w-full h-full object-contain object-center -translate-y-1/2 scale-100 mix-blend-screen"
-            />
+        {/* ⚡ خط جداکننده لیزری و مدرن وسط دو بخش */}
+        <div className="hidden lg:flex col-span-1 h-[450px] items-center justify-center relative z-20">
+          <div className="w-[1px] h-3/4 bg-gradient-to-b from-transparent via-sky-200 to-transparent relative">
+            {/* نقطه پالس درخشان */}
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-sky-500 rounded-full shadow-[0_0_12px_#0ea5e9] animate-ping" />
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-sky-500 rounded-full" />
           </div>
-        </motion.div>
+        </div>
+
+        {/* بخش دندان و ایمپلنت متحرک (۶ ستون در دسکتاپ) */}
+        <div className="col-span-12 lg:col-span-6 w-full flex justify-center items-center z-10">
+          <AboutImplant />
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
