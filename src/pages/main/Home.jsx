@@ -1,11 +1,12 @@
 // Home-Page
 // component-parts
-import Hero from "./Hero";
-import Services from "./Services";
-import EmergencyDental from "./EmergencyDental";
-import WhyChooseUs from "./WhyChooseUs";
-import DentalTips from "./DentalTips";
-import DigitalImplant from "./DigitalImplant";
+import Hero from "../Hero";
+import Services from "../Services";
+import AboutUs from "../AboutUs";
+import EmergencyDental from "../EmergencyDental";
+import Contact from "../../components/contactSection/BookingTarget";
+import WhyChooseUs from "../WhyChooseUs";
+import DentalTips from "../DentalTips";
 // start
 export default function Home() {
   return (
