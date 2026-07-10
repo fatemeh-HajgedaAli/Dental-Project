@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 
-export default function AboutUsContent() {
+export default function ImplantContent() {
   return (
     <div dir="rtl" className="flex flex-col gap-8 w-full">
       {/* اضافه کردن پوسته شیشه‌ای ملایم برای ادغام شدن با مرز فک زیرین */}
       <div className="text-right space-y-5 max-w-xl mx-auto lg:mx-0 w-full bg-white/30 lg:bg-white/10 lg:backdrop-blur-[2px] p-2 lg:p-6 rounded-3xl border border-transparent lg:border-white/20 transition-all">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 rounded-full border border-sky-200/60 bg-white/90 backdrop-blur-md px-4 py-1 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
           <span className="text-[11px] font-black tracking-wider text-sky-800">
             DIGITAL IMPLANT
           </span>
+          <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
         </div>
 
         {/* Title */}

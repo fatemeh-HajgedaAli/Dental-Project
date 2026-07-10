@@ -15,7 +15,6 @@ export default function HeroButtons() {
 
   return (
     <>
-      {/* دکمه‌های اصلی داخل هیرو بدون تداخل */}
       <div className="absolute grid grid-cols-1 lg:grid-cols-2 gap-4 mr-16">
         {/* دکمه ثابت هیرو */}
         <ToothDraggable isFloating={false} />
@@ -30,7 +29,6 @@ export default function HeroButtons() {
         </DentalButton>
       </div>
 
-      {/* تزریق مستقیم دکمه شناور به بدنه اصلی سایت برای رفع باگ عدم نمایش */}
       {typeof window !== "undefined" &&
         createPortal(
           <AnimatePresence>
