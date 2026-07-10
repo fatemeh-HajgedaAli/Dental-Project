@@ -3,7 +3,7 @@ import React from "react";
 // component-parts
 import Hero from "./Hero";
 import Services from "./Services";
-import AboutUs from "./AboutUs";
+import DigitalImplant from "./DigitalImplant";
 import EmergencyDental from "./EmergencyDental";
 import Contact from "../components/contactSection/BookingTarget";
 import WhyChooseUs from "./WhyChooseUs";
@@ -26,16 +26,16 @@ export default function Home() {
       <div>
         <EmergencyDental />
       </div>
-    {/* About-Us */}
-    <div className="">
-      <AboutUs/>
-    </div>
-    {/* ehy-choose-us */}
-    <div className="">
-      <WhyChooseUs/>
-    </div>
-    {/* Dental Tips */}
-    <DentalTips/>
+      {/* digitalImplant */}
+      <div className="">
+        <DigitalImplant />
+      </div>
+      {/* ehy-choose-us */}
+      <div className="">
+        <WhyChooseUs />
+      </div>
+      {/* Dental Tips */}
+      <DentalTips />
     </>
   );
 }

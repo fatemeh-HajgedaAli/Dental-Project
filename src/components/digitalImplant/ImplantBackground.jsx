@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AboutBackground() {
+export default function ImplantBackground() {
   return (
     <>
       {/* Main Background */}

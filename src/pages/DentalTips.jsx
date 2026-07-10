@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import Reveal from "./Reveal";
-import { POSTS } from "../data/blog.data";
+import { POSTS } from "../components/blogdetails/blog.data";
 
 export default function DentalTips() {
   return (

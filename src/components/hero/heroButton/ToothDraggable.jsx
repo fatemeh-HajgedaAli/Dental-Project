@@ -17,7 +17,6 @@ export default function ToothDraggable({ isFloating }) {
 
   function handleDragEnd(event, info) {
     setIsActive(false);
-
     if (info.offset.x > 80) {
       navigate("/contact");
     }
@@ -61,31 +60,30 @@ export default function ToothDraggable({ isFloating }) {
         }
       }}
       className={`
-  flex
-  items-center
-  justify-center
-  gap-3
-  overflow-hidden
-  h-14
-  px-1
-  w-[190px]
-  rounded-full
-  border border-white/20
-  backdrop-blur-sm
-  ring-1 ring-white/10
-  shadow-[0_12px_40px_rgba(14,165,233,.18)]
-  transition-all
-  duration-500
-  select-none
-  cursor-grab
-  active:cursor-grabbing
+        items-center
+        justify-center
+        gap-3
+        overflow-hidden
+        h-14
+        px-1
+        w-[190px]
+        rounded-full
+        border border-white/20
+        backdrop-blur-sm
+        ring-1 ring-white/10
+        shadow-[0_12px_40px_rgba(14,165,233,.18)]
+        transition-all
+        duration-500
+        select-none
+        cursor-grab
+        active:cursor-grabbing
 
-  ${
-    isFloating
-      ? "!fixed bottom-10 rounded-full left-2 flex-row-reverse bg-slate-900/90 !z-[999999]"
-      : "relative w-20 lg:w-[190px] z-10"
-  }
-`}
+        ${
+          isFloating
+            ? "!fixed !flex bottom-10 rounded-full left-4 flex-row-reverse bg-slate-900/90 !z-[999999]"
+            : "hidden lg:flex relative w-20 lg:w-[190px] z-10"
+        }
+      `}
     >
       {/* Glow */}
       <div
