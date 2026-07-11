@@ -2,11 +2,11 @@
 // component-parts
 import Hero from "../Hero";
 import Services from "../Services";
-import AboutUs from "../AboutUs";
 import EmergencyDental from "../EmergencyDental";
 import Contact from "../../components/contactSection/BookingTarget";
 import WhyChooseUs from "../WhyChooseUs";
 import DentalTips from "../DentalTips";
+import DigitalImplant from "../DigitalImplant";
 // start
 export default function Home() {
   return (
@@ -33,7 +33,7 @@ export default function Home() {
         <WhyChooseUs />
       </div>
       <div className="">
-        <DigitalImplant />
+        <DigitalImplant/>
       </div>
     </>
   );
