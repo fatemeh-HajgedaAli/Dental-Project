@@ -13,16 +13,11 @@ export default function App() {
 
       <Route path="/services" element={<Services />} />
 
-      {/* Blog Detail Page */}
       <Route path="/blog/:slug" element={<BlogDetail />} />
+
       <Route path="/#tips" element={<DentalTips />} />
-      {/* appoinment */}
-      <Route
-        path="/appointment"
-        element={
-          <AppointmentPage form={form} sendEmail={sendEmail} status={status} />
-        }
-      />
+
+      <Route path="/appointment" element={<AppointmentPage />} />
     </Routes>
   );
 }

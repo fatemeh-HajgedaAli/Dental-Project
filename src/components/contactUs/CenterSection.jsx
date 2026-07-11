@@ -1,8 +1,10 @@
 import React from "react";
 import { ArrowLeft, CalendarDays } from "lucide-react";
+import { Link } from "react-router-dom";
 import arcImg from "../../assets/images/contactUs/backgroundTwo.jpg";
-
+// start
 export default function CenterSection({ onOpenModal }) {
+  // jsx
   return (
     <section className="relative w-full px-5 md:px-12 py-12 md:py-20">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
@@ -39,13 +41,40 @@ export default function CenterSection({ onOpenModal }) {
               گرفت.
             </p>
 
-            <button
-              onClick={onOpenModal}
-              className="mt-8 group inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-bold px-7 py-4 rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-1"
+            <Link
+              to="/appointment"
+              className="
+    mt-8
+    group
+    inline-flex
+    items-center
+    gap-3
+    bg-gradient-to-r
+    from-blue-600
+    to-cyan-500
+    hover:from-blue-700
+    hover:to-cyan-600
+    text-white
+    font-bold
+    px-7
+    py-4
+    rounded-2xl
+    shadow-xl
+    transition-all
+    duration-300
+    hover:-translate-y-1
+  "
             >
               رزرو نوبت
-              <ArrowLeft className="w-5 h-5 transition group-hover:-translate-x-1" />
-            </button>
+              <ArrowLeft
+                className="
+    w-5
+    h-5
+    transition
+    group-hover:-translate-x-1
+    "
+              />
+            </Link>
           </div>
         </div>
       </div>

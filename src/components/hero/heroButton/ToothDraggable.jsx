@@ -18,7 +18,7 @@ export default function ToothDraggable({ isFloating }) {
   function handleDragEnd(event, info) {
     setIsActive(false);
     if (info.offset.x > 80) {
-      navigate("/contact");
+      navigate("/appointment");
     }
   }
 
@@ -56,7 +56,7 @@ export default function ToothDraggable({ isFloating }) {
       }}
       onClick={() => {
         if (Math.abs(x.get()) < 5) {
-          navigate("/contact");
+          navigate("/appointment");
         }
       }}
       className={`

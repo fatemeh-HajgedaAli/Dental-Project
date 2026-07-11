@@ -1,47 +1,73 @@
-// Home-Page
+// Home.jsx
+
+import { useEffect, useRef, useState } from "react";
+
 // component-parts
 import Hero from "../Hero";
 import Services from "../Services";
 import EmergencyDental from "../EmergencyDental";
-import Contact from "../../components/contactUs/AppointmentForm";
 import WhyChooseUs from "../WhyChooseUs";
 import DentalTips from "../DentalTips";
 import DigitalImplant from "../DigitalImplant";
 import FAQ from "../FAQ";
 import ContactUs from "../ContactUs";
-// start
+
+import FloatingAppointmentButton from "../FloatingAppointmentButton";
+
 export default function Home() {
+  const contactRef = useRef(null);
+
+  const [showFloating, setShowFloating] = useState(true);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowFloating(!entry.isIntersecting);
+
+        console.log("CONTACT:", entry.isIntersecting);
+      },
+      {
+        threshold: 0,
+        rootMargin: "-200px 0px -200px 0px",
+      },
+    );
+
+    const section = contactRef.current;
+
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
   return (
     <>
+      <FloatingAppointmentButton visible={showFloating} />
       {/* Hero */}
-      <div>
-        <Hero />
-      </div>
-      {/* services  */}
-      <div>
-        <Services />
-      </div>
-      {/* EmergencyDental */}
-      <div>
-        <EmergencyDental />
-      </div>
+      <Hero />
+
+      {/* Services */}
+      <Services />
+
+      {/* Emergency */}
+      <EmergencyDental />
+
       {/* Dental Tips */}
-      <div className="">
-        {" "}
-        <DentalTips />
-      </div>
-      {/* ehy-choose-us */}
-      <div className="">
-        <WhyChooseUs />
-      </div>
-      {/* digital implant */}
-      <div className="">
-        <DigitalImplant />
-      </div>
+      <DentalTips />
+
+      {/* Why choose */}
+      <WhyChooseUs />
+
+      {/* Digital Implant */}
+      <DigitalImplant />
+
       {/* FAQ */}
       <FAQ />
-      {/* contact-us */}
-      <div className="">
+
+      {/* Contact */}
+      <div ref={contactRef} className="relative">
         <ContactUs />
       </div>
     </>

@@ -24,6 +24,6 @@ export const navLinks = [
   {
     title: "تماس",
     icon: BsTelephone,
-    to: "/contact",
+    to: "/appointment",
   },
 ];
