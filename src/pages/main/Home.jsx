@@ -3,11 +3,12 @@
 import Hero from "../Hero";
 import Services from "../Services";
 import EmergencyDental from "../EmergencyDental";
-import Contact from "../../components/contactSection/BookingTarget";
+import Contact from "../../components/contactUs/AppointmentForm";
 import WhyChooseUs from "../WhyChooseUs";
 import DentalTips from "../DentalTips";
 import DigitalImplant from "../DigitalImplant";
 import FAQ from "../FAQ";
+import ContactUs from "../ContactUs";
 // start
 export default function Home() {
   return (
@@ -39,6 +40,10 @@ export default function Home() {
       </div>
       {/* FAQ */}
       <FAQ />
+      {/* contact-us */}
+      <div className="">
+        <ContactUs />
+      </div>
     </>
   );
 }
