@@ -105,8 +105,8 @@ export default function WhyStats({ stats = [] }) {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-100px" }}
-      className="grid grid-cols-3  gap-8
-       w-full max-w-5xl mx-auto px-4  "
+      className="grid grid-cols-3 gap-2 
+       w-full lg:max-w-xl mx-auto my-4 "
     >
       {stats.map((item, index) => (
         <motion.div
@@ -130,12 +130,14 @@ export default function WhyStats({ stats = [] }) {
             group
             relative
             w-30 h-30
-            lg:w-44 lg:h-44
-            -top-6
+            lg:w-40 lg:h-30
+            lg:-top-8
             overflow-hidden
-            rounded-full
+            rounded-xl
             border border-white/15
             pu-4
+            py-4
+            lg:py-0
             items-center
             text-center
             shadow-[0_25px_70px_rgba(0,0,0,.35)]
@@ -181,7 +183,7 @@ export default function WhyStats({ stats = [] }) {
             className="
               relative
               z-10
-              text-2xl
+              text-xl
               pt-2
               lg:pt-8
               font-black
@@ -199,14 +201,17 @@ export default function WhyStats({ stats = [] }) {
           </motion.h3>
 
           {/* Divider */}
-          <div className="mx-auto mt-5 mb-4 h-px w-16 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+          <div
+            className="mx-auto mt-2 mb-2 h-px w-20 
+          bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent"
+          />
 
           {/* Title */}
           <p
             className="
               relative
               z-10
-              text-sm
+              text-xs
               font-medium
               leading-7
               tracking-wide

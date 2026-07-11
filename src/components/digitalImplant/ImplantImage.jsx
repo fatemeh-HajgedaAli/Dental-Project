@@ -13,7 +13,7 @@ export default function ImplantImage() {
   });
 
   // حرکت دندان تکی از ارتفاع بالا (پشت متن‌ها) تا سر جای خودش
-  const implantY = useTransform(scrollYProgress, [0, 1], [-750, -20]);
+  const implantY = useTransform(scrollYProgress, [0, 1], [-850, -10]);
   const implantOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const implantScale = useTransform(scrollYProgress, [0, 1], [0.92, 1]);
 
@@ -26,7 +26,7 @@ export default function ImplantImage() {
         items-center
         justify-center
         w-full
-        h-[430px]
+        h-[630px]
         md:h-[650px]
         overflow-hidden
       "
