@@ -1,25 +1,69 @@
 import React from "react";
-import doctorImg from "../../assets/images/contactUs/doctor.jpg";
+import doctorImg from "../../assets/images/contactUs/DoctorOne.png";
 
 export default function ContactBackground({ children }) {
   return (
-    <div className="relative w-full h-[400px] bg-slate-200 overflow-hidden flex items-center justify-center">
-      {/* تصویر پزشک با لایه ترکیب رنگ */}
+    <section
+      className="
+      relative
+      overflow-hidden
+      w-full
+      min-h-[420px]
+      md:min-h-[520px]
+      lg:min-h-[850px]
+      flex
+      items-center
+      justify-center
+      bg-[#f7f9fc]
+    "
+    >
+      {/* Background */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-60 mix-blend-multiply transition-all duration-500"
-        style={{ backgroundImage: `url(${doctorImg})` }}
+        className="
+          absolute
+          inset-0
+          bg-cover
+          bg-center
+          md:bg-top
+          lg:bg-center
+          scale-105
+          transition-all
+          duration-700
+        "
+        style={{
+          backgroundImage: `url(${doctorImg})`,
+        }}
       />
 
-      {/* گرادیان شیشه‌ای ملایم */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 via-slate-900/5 to-white" />
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-slate-900/35" />
 
-      {/* متن فانتزی بزرگ پشت دایره */}
-      <div className="absolute top-8 text-6xl md:text-8xl font-black text-slate-400/20 tracking-wider select-none pointer-events-none">
-        FREE CHECK UP
-      </div>
+      {/* White Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white" />
 
-      {/* دایره مرکزی در این قسمت قرار می‌گیرد */}
-      {children}
-    </div>
+      {/* Left Glow */}
+      <div className="absolute -left-40 top-20 w-[450px] h-[450px] rounded-full bg-blue-500/20 blur-[160px]" />
+
+      {/* Right Glow */}
+      <div className="absolute -right-32 bottom-10 w-[380px] h-[380px] rounded-full bg-cyan-300/20 blur-[150px]" />
+
+      {/* Top Light */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[180px] bg-white/20 blur-[90px]" />
+
+      {/* Grid */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `
+          linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)
+        `,
+          backgroundSize: "45px 45px",
+        }}
+      />
+
+      {/* Bottom Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-t from-white via-white/5 to-transparent" />
+    </section>
   );
 }

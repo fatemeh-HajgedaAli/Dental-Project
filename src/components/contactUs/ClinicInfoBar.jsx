@@ -3,7 +3,7 @@ import { Phone, MapPin, Clock } from "lucide-react";
 
 export default function ClinicInfoBar() {
   return (
-    <div className="bg-slate-800 text-slate-200 p-6 md:px-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center md:text-right border-t border-slate-700 mt-6">
+    <div className="bg-slate-800  bg-gradient-to-b  from-blue-900  via-slate-950  to-blue-950 translate-y-4 p-6 md:px-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center md:text-right border-t border-slate-700 mt-6">
       {/* نشانی */}
       <div className="flex items-start gap-3 justify-center md:justify-start">
         <MapPin className="w-5 h-5 text-amber-400 shrink-0 mt-1" />
