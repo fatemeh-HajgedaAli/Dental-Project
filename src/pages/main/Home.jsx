@@ -7,6 +7,7 @@ import Contact from "../../components/contactSection/BookingTarget";
 import WhyChooseUs from "../WhyChooseUs";
 import DentalTips from "../DentalTips";
 import DigitalImplant from "../DigitalImplant";
+import FAQ from "../FAQ";
 // start
 export default function Home() {
   return (
@@ -32,9 +33,12 @@ export default function Home() {
       <div className="">
         <WhyChooseUs />
       </div>
+      {/* digital implant */}
       <div className="">
-        <DigitalImplant/>
+        <DigitalImplant />
       </div>
+      {/* FAQ */}
+      <FAQ />
     </>
   );
 }
