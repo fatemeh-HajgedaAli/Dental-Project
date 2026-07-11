@@ -7,16 +7,15 @@ import toothBtn from "../assets/images/dental/toothBtn.png";
 export default function FloatingAppointmentButton({ visible }) {
   const navigate = useNavigate();
 
-  const [startWobble, setStartWobble] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence>
       {visible && (
-        <motion.button
-          onClick={() => navigate("/appointment")}
+        <motion.div
           initial={{
             opacity: 0,
-            scale: 0.6,
+            scale: 0.8,
             y: 40,
           }}
           animate={{
@@ -26,90 +25,102 @@ export default function FloatingAppointmentButton({ visible }) {
           }}
           exit={{
             opacity: 0,
-            scale: 0.6,
+            scale: 0.8,
             y: 40,
           }}
-          whileHover={{
-            scale: 1.08,
-          }}
-          whileTap={{
-            scale: 0.94,
-          }}
           className="
-            fixed
-            bottom-6
-            right-6
-            z-[99999]
-
-            w-28
-            h-28
-
+          fixed
+          bottom-6
+          right-6
+          z-[99999]
+          "
+        >
+          <motion.button
+            onClick={() => {
+              if (open) {
+                navigate("/appointment");
+              } else {
+                setOpen(true);
+              }
+            }}
+            animate={{
+              width: open ? 190 : 75,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+            }}
+            whileHover={{
+              scale: 1.05,
+            }}
+            whileTap={{
+              scale: 0.95,
+            }}
+            className="
+            h-16
             rounded-full
 
             bg-white/80
-            backdrop-blur-2xl
+            backdrop-blur-xl
 
             border
             border-sky-200
 
-            shadow-[0_25px_60px_rgba(14,165,233,.22)]
+            shadow-[0_20px_50px_rgba(14,165,233,.25)]
 
             flex
             items-center
             justify-center
+            gap-3
 
             overflow-hidden
             "
-        >
-          <div
-            className="
-              absolute
-              inset-0
-              rounded-full
-              bg-gradient-to-br
-              from-sky-200/40
-              to-cyan-300/10
-              "
-          />
-
-          <motion.img
-            src={toothBtn}
-            alt=""
-            className="
-              absolute
-              w-full
-              h-full
-              object-contain
-              scale-110
-              "
-            onLayoutAnimationComplete={() => setStartWobble(true)}
-            animate={
-              startWobble
-                ? {
-                    rotate: [0, 5, -5, 0],
-                    y: [0, -4, 0],
-                  }
-                : {}
-            }
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-
-          <span
-            className="
-              relative
-              z-10
-              text-sm
-              font-black
-              text-slate-800
-              "
           >
-            رزرو نوبت
-          </span>
-        </motion.button>
+            <motion.img
+              src={toothBtn}
+              alt=""
+              className="
+              w-12
+              h-12
+              object-contain
+              "
+              animate={{
+                rotate: open ? 360 : 0,
+              }}
+              transition={{
+                duration: 0.6,
+              }}
+            />
+
+            <AnimatePresence>
+              {open && (
+                <motion.span
+                  initial={{
+                    opacity: 0,
+                    x: 20,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    x: 20,
+                  }}
+                  className="
+                  text-sm
+                  font-black
+                  text-slate-800
+                  whitespace-nowrap
+                  "
+                >
+                  رزرو نوبت
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </motion.button>
+        </motion.div>
       )}
     </AnimatePresence>
   );

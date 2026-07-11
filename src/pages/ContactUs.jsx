@@ -11,7 +11,7 @@ export default function ContactUs({ form, sendEmail, status }) {
 
   return (
     <div
-      className="w-full min-h-screen  bg-gradient-to-b  from-blue-900  via-slate-950  to-blue-950 translate-y-4 p-4 md:p-8 flex items-center justify-center font-sans"
+      className="w-full min-h-screen  p-4 md:p-8 flex items-center justify-center font-sans"
       dir="rtl"
     >
       <div className="w-full max-w-10xl bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col justify-between min-h-[600px] relative">

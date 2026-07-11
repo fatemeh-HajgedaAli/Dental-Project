@@ -11,7 +11,7 @@ export default function FAQItem({ question, answer, isOpen, onToggle }) {
       transition={{ duration: 0.25 }}
       className={`
         relative overflow-hidden rounded-3xl border
-        transition-all duration-300 
+        transition-all duration-300  
         ${
           isOpen
             ? "border-cyan-700/30 bg-slate-900/100 shadow-[0_0_40px_rgba(34,211,238,.15)]"

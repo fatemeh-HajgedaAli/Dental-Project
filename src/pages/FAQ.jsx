@@ -9,9 +9,9 @@ export default function FAQ() {
   const handleToggle = (id) => {
     setOpenId((prev) => (prev === id ? null : id));
   };
-// JSX
+  // JSX
   return (
-    <section className="max-w-3xl mx-auto py-12 px-4">
+    <section className="max-w-3xl mx-auto py-12 px-4  bg-gradient-to-b  from-blue-900  via-slate-950  to-blue-950 translate-y-4">
       <h2 className="text-3xl font-bold text-center mb-8">سوالات متداول</h2>
 
       <div className="space-y-4">

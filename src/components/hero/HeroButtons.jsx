@@ -29,13 +29,6 @@ export default function HeroButtons() {
         </DentalButton>
       </div>
 
-      {typeof window !== "undefined" &&
-        createPortal(
-          <AnimatePresence>
-            {showFloating && <ToothDraggable isFloating={true} />}
-          </AnimatePresence>,
-          document.body,
-        )}
     </>
   );
 }
