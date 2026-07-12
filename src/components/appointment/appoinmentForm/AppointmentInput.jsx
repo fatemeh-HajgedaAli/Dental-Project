@@ -1,4 +1,3 @@
-import React from "react";
 import { inputStyle } from "./appointmentstyle";
 
 export default function AppointmentInput({
