@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 import AppointmentForm from "../components/appointment/AppointmentForm";
@@ -6,40 +6,32 @@ import AppointmentForm from "../components/appointment/AppointmentForm";
 export default function AppointmentPage() {
   const form = useRef();
 
-  const [status, setStatus] = useState("");
-
-  const sendEmail = (e) => {
-    emailjs
-      .sendForm("service_99h29dc", "template_4njs3uh", form.current, {
+  const sendEmail = async () => {
+    await emailjs.sendForm(
+      "service_99h29dc",
+      "template_4njs3uh",
+      form.current,
+      {
         publicKey: "niek4yXrjZOVSz3HS",
-      })
-
-      .then(() => {
-        setStatus("درخواست شما با موفقیت ارسال شد");
-
-        form.current.reset();
-      })
-
-      .catch(() => {
-        setStatus("خطا در ارسال اطلاعات");
-      });
+      },
+    );
   };
 
   return (
     <main
       className="
-min-h-screen
-flex
-items-center
-justify-center
-bg-gradient-to-br
-from-cyan-50
-via-white
-to-blue-50
-px-4
-"
+      min-h-screen
+      flex
+      items-center
+      justify-center
+      bg-gradient-to-br
+      from-cyan-50
+      via-white
+      to-blue-50
+      px-4
+      "
     >
-      <AppointmentForm form={form} sendEmail={sendEmail} status={status} />
+      <AppointmentForm form={form} sendEmail={sendEmail} />
     </main>
   );
 }

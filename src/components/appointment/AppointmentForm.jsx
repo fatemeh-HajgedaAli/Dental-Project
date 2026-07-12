@@ -32,7 +32,7 @@ export default function AppointmentForm({ form, sendEmail }) {
 
     if (!Object.keys(validation).length) {
       try {
-        await sendEmail(e);
+        await sendEmail();
 
         toast.success("نوبت شما ثبت شد 🦷 به زودی با شما تماس می‌گیریم", {
           duration: 4000,
