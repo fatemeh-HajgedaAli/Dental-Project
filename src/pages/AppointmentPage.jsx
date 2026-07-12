@@ -10,7 +10,7 @@ export default function AppointmentPage() {
 
   const sendEmail = (e) => {
     emailjs
-      .sendForm("YOUR_SERVICE_ID", "template_4njs3uh", form.current, {
+      .sendForm("service_99h29dc", "template_4njs3uh", form.current, {
         publicKey: "niek4yXrjZOVSz3HS",
       })
 
