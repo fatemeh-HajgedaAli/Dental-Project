@@ -46,30 +46,43 @@ export default function Home() {
     <>
       <FloatingAppointmentButton visible={showFloating} />
       {/* Hero */}
-      <Hero />
+      <element id="hero">
+        {" "}
+        <Hero />
+      </element>
 
       {/* Services */}
-      <Services />
+      <element id="services">
+        {" "}
+        <Services />
+      </element>
 
       {/* Emergency */}
       <EmergencyDental />
 
       {/* Dental Tips */}
-      <DentalTips />
+      <element id="tips">
+        <DentalTips />
+      </element>
 
       {/* Why choose */}
-      <WhyChooseUs />
+      <element id="about">
+        <WhyChooseUs />
+      </element>
 
       {/* Digital Implant */}
       <DigitalImplant />
 
       {/* FAQ */}
-      <FAQ />
+      <element id="faq">
+        {" "}
+        <FAQ />
+      </element>
 
       {/* Contact */}
-      <div ref={contactRef} className="relative">
+      <element ref={contactRef} className="relative" id="contact">
         <ContactUs />
-      </div>
+      </element>
     </>
   );
 }
