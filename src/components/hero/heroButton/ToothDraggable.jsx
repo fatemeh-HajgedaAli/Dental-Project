@@ -1,139 +1,222 @@
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import {
+  motion,
+  animate,
+  useMotionValue,
+  useTransform,
+  useMotionTemplate,
+} from "framer-motion";
+import { useNavigate } from "react-router-dom";
+
 import toothBtn from "../../../assets/images/dental/toothBtn.png";
+import { IoMdArrowDropright } from "react-icons/io";
 
 export default function ToothDraggable({ isFloating }) {
   const navigate = useNavigate();
+
   const x = useMotionValue(0);
+
   const [isActive, setIsActive] = useState(false);
+
+  const rotate = useTransform(x, [0, 150], [0, 360]);
+
+  const iconScale = useTransform(x, [0, 150], [1, 1.15]);
+
+  const textOpacity = useTransform(x, [0, 90], [1, 0]);
+
+  const textX = useTransform(x, [0, 90], [0, -20]);
+
+  const blurValue = useTransform(x, [0, 100], [0, 5]);
+
+  const textBlur = useMotionTemplate`
+    blur(${blurValue}px)
+  `;
+
+  const hintOpacity = useTransform(x, [0, 60, 120], [0.6, 1, 0]);
 
   useEffect(() => {
     x.set(0);
   }, [isFloating, x]);
 
-  const textOpacity = useTransform(x, [0, 80], [1, 0]);
-  const textX = useTransform(x, [0, 80], [0, 15]);
-
-  function handleDragEnd(event, info) {
+  const handleDragEnd = async (_, info) => {
     setIsActive(false);
-    if (info.offset.x > 80) {
-      navigate("/appointment");
-    }
-  }
 
-  const floatingAnimation = {
-    initial: { opacity: 0, scale: 0.85, y: 40 },
-    animate: { opacity: 1, scale: 1, y: 0 },
-    exit: { opacity: 0, scale: 0.85, y: 40 },
-    transition: {
-      type: "spring",
-      stiffness: 320,
-      damping: 24,
-    },
+    if (info.offset.x > 100) {
+      await animate(x, 150, {
+        duration: 0.15,
+      });
+
+      navigate("/appointment");
+    } else {
+      animate(x, 0, {
+        type: "spring",
+        stiffness: 450,
+        damping: 30,
+      });
+    }
   };
 
   return (
     <motion.div
-      {...(isFloating ? floatingAnimation : {})}
-      drag="x"
-      dragConstraints={{ left: 0, right: 160 }}
-      dragElastic={0.15}
-      style={{ x }}
-      onDragStart={() => setIsActive(true)}
-      onDragEnd={handleDragEnd}
-      onHoverStart={() => setIsActive(true)}
-      onHoverEnd={() => setIsActive(false)}
-      onTapStart={() => setIsActive(true)}
-      onTap={() => setIsActive(false)}
-      onTapCancel={() => setIsActive(false)}
+      initial={
+        isFloating
+          ? {
+              opacity: 0,
+              scale: 0.85,
+              y: 40,
+            }
+          : false
+      }
+      animate={
+        isFloating
+          ? {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+            }
+          : false
+      }
       whileHover={{
-        scale: 1.03,
-        y: isFloating ? 0 : -4,
-      }}
-      whileTap={{
-        scale: 0.96,
-      }}
-      onClick={() => {
-        if (Math.abs(x.get()) < 5) {
-          navigate("/appointment");
-        }
+        scale: 1.04,
       }}
       className={`
-        items-center
-        justify-center
-        gap-3
-        overflow-hidden
-        h-14
-        px-1
-        w-[190px]
-        rounded-full
-        border border-white/20
-        backdrop-blur-sm
-        ring-1 ring-white/10
-        shadow-[0_12px_40px_rgba(14,165,233,.18)]
-        transition-all
-        duration-500
-        select-none
-        cursor-grab
-        active:cursor-grabbing
+relative
+overflow-hidden
+h-14
+w-[235px]
+rounded-full
+flex
+items-center
+border
+border-white/20
+backdrop-blur-xl
+shadow-xl
 
-        ${
-          isFloating
-            ? "!fixed !flex bottom-10 rounded-full left-4 flex-row-reverse bg-slate-900/90 !z-[999999]"
-            : "hidden lg:flex relative w-20 lg:w-[190px] z-10"
-        }
-      `}
+${isFloating ? "fixed bottom-10 left-4 z-[999999]" : "hidden lg:flex"}
+
+bg-gradient-to-r
+from-blue-900
+via-sky-650
+to-blue-900
+`}
     >
-      {/* Glow */}
-      <div
-        className={`absolute inset-0 rounded-full transition-opacity duration-500
-        bg-gradient-to-r from-white/0 via-white/25 to-white/0
-        ${isActive ? "opacity-100" : "opacity-0"}`}
+      {/* shine */}
+
+      <motion.div
+        animate={{
+          x: ["-120%", "120%"],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 3,
+          ease: "linear",
+        }}
+        className="
+absolute
+inset-0
+bg-gradient-to-r
+from-transparent
+via-white/10
+to-transparent
+skew-x-12
+"
       />
 
-      {/* Moving Aurora */}
-      <div
-        className={`absolute inset-0 -skew-x-12
-        bg-gradient-to-r
-        from-transparent
-        via-sky-300/30
-        to-transparent
-        transition-transform duration-1000
-        ${isActive ? "translate-x-full" : "-translate-x-full"}`}
-      />
+      {/* arrows */}
 
-      {/* Soft radial glow */}
-      <div className="absolute inset-0 rounded-full bg-sky-400/5 blur-sm items-center" />
-      <div className="relative z-10 flex items-center justify-center">
-        <img
+      <motion.div
+        style={{
+          opacity: hintOpacity,
+        }}
+        className="
+absolute
+left-12
+flex
+
+"
+      >
+        {[1, 2, 3].map((i) => (
+          <IoMdArrowDropright
+            key={i}
+            className="
+text-sky-200
+animate-pulse
+"
+          />
+        ))}
+      </motion.div>
+
+      {/* text */}
+
+      <motion.span
+        style={{
+          opacity: textOpacity,
+          x: textX,
+          filter: textBlur,
+        }}
+        className="
+absolute
+right-5
+text-white
+font-semibold
+text-sm
+"
+      >
+        بکشید برای رزرو نوبت
+      </motion.span>
+
+      {/* draggable */}
+
+      <motion.div
+        drag="x"
+        dragConstraints={{
+          left: 0,
+          right: 150,
+        }}
+        dragElastic={0.08}
+        style={{
+          x,
+        }}
+        onDragStart={() => setIsActive(true)}
+        onDragEnd={handleDragEnd}
+        className="
+absolute
+left-1
+top-1
+bottom-1
+aspect-square
+rounded-full
+bg-white
+flex
+items-center
+justify-center
+cursor-grab
+z-20
+shadow-lg
+"
+      >
+        <motion.img
           src={toothBtn}
-          alt="Tooth"
+          alt="tooth"
           draggable={false}
-          className={`w-8 h-10 object-contain transition-all duration-500
-          drop-shadow-[0_0_12px_rgba(255,255,255,.4)]
-          ${isActive ? "rotate-12 scale-110" : ""}`}
-        />
-      </div>
-      <div className="relative z-10 flex items-center gap-2">
-        <motion.span
           style={{
-            opacity: textOpacity,
-            x: textX,
+            rotate,
+            scale: iconScale,
           }}
-          className={`font-semibold tracking-wide text-center pr-10 transition-all duration-300
-          ${isActive ? "text-sky-100" : "text-white/80"}`}
-        >
-          رزرو نوبت
-        </motion.span>
-
-        <div
-          className={`absolute right-4 text-xs font-bold text-sky-200 pt-2 pointer-events-none transition-all duration-300
-          ${isActive ? "opacity-80 translate-x-1" : "opacity-0"}`}
-        >
-          ▶▶
-        </div>
-      </div>
+          animate={{
+            y: [0, -3, 0],
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: 2,
+          }}
+          className="
+w-7
+h-7
+object-contain
+"
+        />
+      </motion.div>
     </motion.div>
   );
 }

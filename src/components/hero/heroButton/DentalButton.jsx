@@ -110,38 +110,7 @@ export default function DentalButton({
           "
         />
 
-        {/* Icon */}
-        {/* <motion.div
-          whileHover={{
-            rotate: primary ? 15 : 0,
-            scale: 1.15,
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 400,
-          }}
-          className={`
-            relative
-            z-10
-
-            flex
-            items-center
-            justify-center
-
-            w-10
-            h-10
-
-            rounded-full
-
-            ${primary ? "bg-white/15 backdrop-blur-xl" : "bg-sky-100"}
-          `}
-        >
-          {primary ? (
-            <FaTooth className="text-white text-lg drop-shadow" />
-          ) : (
-            <HiArrowLeft className="text-sky-600 text-xl group-hover:-translate-x-1 transition-transform" />
-          )}
-        </motion.div> */}
+       
 
         {/* Text */}
         <span
