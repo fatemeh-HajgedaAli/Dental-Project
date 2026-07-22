@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function WhyBadge({ icon: Icon, title }) {
   return (
-    <div className="flex justify-center w-full mb-2">
+    <div className="flex justify-center w-full">
       {/* Shiny Sweep */}
 
       {/* Soft Glow */}
