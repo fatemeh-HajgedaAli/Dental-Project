@@ -1,55 +1,25 @@
 export default function BlogContent({ post }) {
+  if (!post) return null;
+
   return (
-    <div>
-      {/* Excerpt */}
+    <article className="w-full">
+      {/* چکیده مقاله (Excerpt) */}
+      {post.excerpt && (
+        <p className="mt-8 text-lg leading-relaxed text-slate-300 font-medium">
+          {post.excerpt}
+        </p>
+      )}
 
-      <p
-        className="
-        mt-8
-
-        text-lg
-
-        leading-9
-
-        text-slate-300
-        "
-      >
-        {post.excerpt}
-      </p>
-
-      {/* Divider */}
-
+      {/*  (Divider) */}
       <div
-        className="
-        my-10
-
-        h-px
-
-        bg-gradient-to-r
-
-        from-transparent
-
-        via-cyan-400/30
-
-        to-transparent
-        "
+        className="my-10 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"
+        role="separator"
       />
 
-      {/* Article Content */}
-
-      <div
-        className="
-        whitespace-pre-line
-
-        text-base
-
-        leading-10
-
-        text-slate-300
-        "
-      >
+      {/*  (Article Content) */}
+      <div className="whitespace-pre-line text-base leading-loose text-slate-300 space-y-4">
         {post.content}
       </div>
-    </div>
+    </article>
   );
 }

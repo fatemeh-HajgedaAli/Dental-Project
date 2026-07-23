@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   motion,
   animate,
@@ -7,24 +7,26 @@ import {
   useMotionTemplate,
 } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-
-import toothBtn from "../../../assets/images/dental/toothBtn.png";
 import { IoMdArrowDropright } from "react-icons/io";
 
-export default function ToothDraggable({ isFloating }) {
+import toothBtn from "../../../assets/images/dental/toothBtn.png";
+
+export default function ToothDraggable({ isFloating = false }) {
   const navigate = useNavigate();
 
   const x = useMotionValue(0);
 
-  const [isActive, setIsActive] = useState(false);
+  /* =========================
+     Animated Values
+  ========================= */
 
   const rotate = useTransform(x, [0, 150], [0, 360]);
 
-  const iconScale = useTransform(x, [0, 150], [1, 1.15]);
+  const iconScale = useTransform(x, [0, 150], [1, 1.2]);
 
-  const textOpacity = useTransform(x, [0, 90], [1, 0]);
+  const textOpacity = useTransform(x, [0, 80], [1, 0]);
 
-  const textX = useTransform(x, [0, 90], [0, -20]);
+  const textX = useTransform(x, [0, 80], [0, -20]);
 
   const blurValue = useTransform(x, [0, 100], [0, 5]);
 
@@ -32,28 +34,36 @@ export default function ToothDraggable({ isFloating }) {
     blur(${blurValue}px)
   `;
 
-  const hintOpacity = useTransform(x, [0, 60, 120], [0.6, 1, 0]);
+  const hintOpacity = useTransform(x, [0, 60, 120], [0.4, 1, 0]);
+
+  /* =========================
+     Reset Drag Position
+  ========================= */
 
   useEffect(() => {
     x.set(0);
   }, [isFloating, x]);
 
-  const handleDragEnd = async (_, info) => {
-    setIsActive(false);
+  /* =========================
+     Drag End
+  ========================= */
 
+  const handleDragEnd = async (_, info) => {
     if (info.offset.x > 100) {
       await animate(x, 150, {
-        duration: 0.15,
+        duration: 0.18,
+        ease: "easeOut",
       });
 
       navigate("/appointment");
-    } else {
-      animate(x, 0, {
-        type: "spring",
-        stiffness: 450,
-        damping: 30,
-      });
+      return;
     }
+
+    animate(x, 0, {
+      type: "spring",
+      stiffness: 500,
+      damping: 30,
+    });
   };
 
   return (
@@ -62,91 +72,131 @@ export default function ToothDraggable({ isFloating }) {
         isFloating
           ? {
               opacity: 0,
-              scale: 0.85,
-              y: 40,
+              scale: 0.8,
+              y: 30,
             }
-          : false
-      }
-      animate={
-        isFloating
-          ? {
+          : {
               opacity: 1,
               scale: 1,
               y: 0,
             }
-          : false
       }
-      whileHover={{
-        scale: 1.04,
+      animate={{
+        opacity: 1,
+        scale: 1,
+        y: 0,
+      }}
+      exit={
+        isFloating
+          ? {
+              opacity: 0,
+              scale: 0.8,
+              y: 30,
+            }
+          : undefined
+      }
+      transition={{
+        type: "spring",
+        stiffness: 280,
+        damping: 24,
       }}
       className={`
-relative
-overflow-hidden
-h-14
-w-[235px]
-rounded-full
-flex
-items-center
-border
-border-white/20
-backdrop-blur-xl
-shadow-xl
+        group
+        relative
+        flex
+        h-14
+        w-[250px]
+        items-center
+        overflow-hidden
+        rounded-full
+        border
+        border-white/20
+        bg-gradient-to-r
+        from-slate-950
+        via-blue-950
+        to-sky-900
+        shadow-[0_15px_45px_rgba(2,132,199,0.28)]
+        backdrop-blur-2xl
 
-${isFloating ? "fixed bottom-10 left-4 z-[999999]" : "hidden lg:flex"}
-
-bg-gradient-to-r
-from-blue-900
-via-sky-650
-to-blue-900
-`}
+        ${
+          isFloating
+            ? "fixed bottom-6 left-5 z-[9999] sm:bottom-8 sm:left-8"
+            : "hidden lg:flex"
+        }
+      `}
     >
-      {/* shine */}
+      {/* =========================
+          Animated Shine
+      ========================= */}
 
       <motion.div
         animate={{
-          x: ["-120%", "120%"],
+          x: ["-150%", "150%"],
         }}
         transition={{
           repeat: Infinity,
-          duration: 3,
+          duration: 3.5,
           ease: "linear",
         }}
         className="
-absolute
-inset-0
-bg-gradient-to-r
-from-transparent
-via-white/10
-to-transparent
-skew-x-12
-"
+          pointer-events-none
+          absolute
+          inset-y-0
+          left-0
+          w-1/3
+          -skew-x-12
+          bg-gradient-to-r
+          from-transparent
+          via-white/10
+          to-transparent
+        "
       />
 
-      {/* arrows */}
+      {/* =========================
+          Soft Glow
+      ========================= */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -inset-10
+          bg-sky-400/10
+          blur-3xl
+        "
+      />
+
+      {/* =========================
+          Drag Hint
+      ========================= */}
 
       <motion.div
         style={{
           opacity: hintOpacity,
         }}
         className="
-absolute
-left-12
-flex
-
-"
+          pointer-events-none
+          absolute
+          left-14
+          flex
+          items-center
+        "
       >
-        {[1, 2, 3].map((i) => (
+        {[1, 2, 3].map((item) => (
           <IoMdArrowDropright
-            key={i}
+            key={item}
             className="
-text-sky-200
-animate-pulse
-"
+              text-lg
+              text-sky-300
+              animate-pulse
+            "
           />
         ))}
       </motion.div>
 
-      {/* text */}
+      {/* =========================
+          Text
+      ========================= */}
 
       <motion.span
         style={{
@@ -155,17 +205,22 @@ animate-pulse
           filter: textBlur,
         }}
         className="
-absolute
-right-5
-text-white
-font-semibold
-text-sm
-"
+          pointer-events-none
+          absolute
+          right-5
+          z-10
+          select-none
+          text-sm
+          font-bold
+          text-white
+        "
       >
         بکشید برای رزرو نوبت
       </motion.span>
 
-      {/* draggable */}
+      {/* =========================
+          Drag Handle
+      ========================= */}
 
       <motion.div
         drag="x"
@@ -173,31 +228,46 @@ text-sm
           left: 0,
           right: 150,
         }}
-        dragElastic={0.08}
+        dragElastic={0.05}
+        dragMomentum={false}
         style={{
           x,
         }}
-        onDragStart={() => setIsActive(true)}
         onDragEnd={handleDragEnd}
+        whileTap={{
+          scale: 0.95,
+        }}
         className="
-absolute
-left-1
-top-1
-bottom-1
-aspect-square
-rounded-full
-bg-white
-flex
-items-center
-justify-center
-cursor-grab
-z-20
-shadow-lg
-"
+          absolute
+          left-1
+          top-1
+          bottom-1
+          z-20
+          aspect-square
+          cursor-grab
+          rounded-full
+          bg-white
+          shadow-[0_5px_20px_rgba(255,255,255,0.25)]
+          active:cursor-grabbing
+        "
       >
+        {/* Inner Ring */}
+
+        <div
+          className="
+            absolute
+            inset-1
+            rounded-full
+            border
+            border-sky-100
+          "
+        />
+
+        {/* Tooth */}
+
         <motion.img
           src={toothBtn}
-          alt="tooth"
+          alt="رزرو نوبت"
           draggable={false}
           style={{
             rotate,
@@ -207,14 +277,23 @@ shadow-lg
             y: [0, -3, 0],
           }}
           transition={{
-            repeat: Infinity,
-            duration: 2,
+            y: {
+              repeat: Infinity,
+              duration: 2,
+              ease: "easeInOut",
+            },
           }}
           className="
-w-7
-h-7
-object-contain
-"
+            absolute
+            left-1/2
+            top-1/2
+            h-7
+            w-7
+            -translate-x-1/2
+            -translate-y-1/2
+            object-contain
+            pointer-events-none
+          "
         />
       </motion.div>
     </motion.div>

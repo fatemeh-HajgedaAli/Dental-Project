@@ -1,6 +1,23 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-// start
+
+const buttonVariants = {
+  primary: {
+    wrapper:
+      "border-sky-300/30 bg-gradient-to-br from-sky-500 via-cyan-500 to-blue-600",
+    text: "text-white",
+    glow: "bg-cyan-300/20",
+    shadow: "shadow-[0_12px_40px_rgba(14,165,233,0.28)]",
+  },
+
+  secondary: {
+    wrapper: "border-white/30 bg-white/60 backdrop-blur-xl",
+    text: "text-slate-700 group-hover:text-sky-600",
+    glow: "bg-sky-400/10",
+    shadow: "shadow-[0_12px_35px_rgba(15,23,42,0.08)]",
+  },
+};
+
 export default function DentalButton({
   to,
   children,
@@ -9,62 +26,142 @@ export default function DentalButton({
   className = "",
   ...props
 }) {
-  const isPrimary = variant === "primary";
+  const styles = buttonVariants[variant] ?? buttonVariants.primary;
 
-  // استایل‌های پایه
-  const baseStyles = `
-    group relative overflow-hidden flex items-center justify-center gap-3 h-14 px-8 
-    cursor-pointer select-none rounded-2xl transition-all duration-500
-  `;
-
-  // استایل‌های مربوط به نوع (Variant)
-  const variantStyles = isPrimary
-    ? "min-w-[190px] border border-sky-300/20 bg-gradient-to-br from-sky-500 via-cyan-500 to-blue-600 shadow-[0_15px_50px_rgba(14,165,233,.35)]"
-    : "min-w-[180px] border border-white/20 bg-white/10 backdrop-blur-2xl ring-1 ring-white/10 shadow-[0_15px_40px_rgba(15,23,42,.08)]";
-
-  // محتوای انیمیشن‌دار دکمه
-  const ButtonContent = (
+  const content = (
     <motion.div
-      whileHover={{ y: -4, scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className={`mr-8 ${baseStyles} ${variantStyles} ${className}`}
+      whileHover={{
+        y: -3,
+        scale: 1.02,
+      }}
+      whileTap={{
+        scale: 0.97,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 350,
+        damping: 22,
+      }}
       onClick={onClick}
+      className={`
+        group
+        relative
+        isolate
+        flex
+        h-14
+        min-w-[180px]
+        items-center
+        justify-center
+        overflow-hidden
+        rounded-2xl
+        border
+        px-8
+        cursor-pointer
+        select-none
+        transition-shadow
+        duration-500
+
+        ${styles.wrapper}
+        ${styles.shadow}
+        ${className}
+      `}
       {...props}
     >
-      {/* Background Glow */}
-      <div
-        className={`absolute inset-0 rounded-[inherit] blur-2xl ${
-          isPrimary ? "bg-cyan-300/10" : "bg-sky-400/5"
-        }`}
+      {/* Main glow */}
+      <span
+        className={`
+          pointer-events-none
+          absolute
+          -inset-6
+          -z-10
+          rounded-full
+          blur-2xl
+          transition-opacity
+          duration-500
+          group-hover:opacity-100
+          ${styles.glow}
+        `}
       />
 
-      {/* Aurora Effect */}
-      <div className="absolute -left-1/2 top-0 h-full w-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-1000 group-hover:translate-x-[300%]" />
-
-      {/* Floating Light */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-white/0 via-white/20 to-white/0" />
-
-      {/* Text Content */}
+      {/* Moving shine */}
       <span
-        className={`relative z-10 font-semibold tracking-wide text-[15px] transition-all duration-300 ${
-          isPrimary ? "text-white" : "text-slate-700 group-hover:text-sky-600"
-        }`}
+        className="
+          pointer-events-none
+          absolute
+          inset-y-0
+          -left-1/2
+          w-1/3
+          rotate-12
+          bg-gradient-to-r
+          from-transparent
+          via-white/30
+          to-transparent
+          transition-transform
+          duration-1000
+          ease-out
+          group-hover:translate-x-[500%]
+        "
+      />
+
+      {/* Inner glass highlight */}
+      <span
+        className="
+          pointer-events-none
+          absolute
+          inset-[1px]
+          rounded-[inherit]
+          border
+          border-white/20
+        "
+      />
+
+      {/* Text */}
+      <span
+        className={`
+          relative
+          z-10
+          text-sm
+          font-bold
+          tracking-wide
+          transition-colors
+          duration-300
+          ${styles.text}
+        `}
       >
         {children}
       </span>
 
-      {/* Animated Border */}
-      <div className="absolute inset-0 rounded-[inherit] ring-1 ring-white/0 group-hover:ring-white/20 transition-all duration-500" />
-
-      {/* Bottom Glow Line */}
-      <div className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-white/80 transition-all duration-500 group-hover:w-4/5" />
+      {/* Bottom indicator */}
+      <span
+        className="
+          absolute
+          bottom-0
+          left-1/2
+          h-[2px]
+          w-0
+          -translate-x-1/2
+          rounded-full
+          bg-white
+          opacity-80
+          transition-all
+          duration-500
+          group-hover:w-2/3
+        "
+      />
     </motion.div>
   );
 
   if (to) {
-    return <Link to={to}>{ButtonContent}</Link>;
+    return (
+      <Link
+        to={to}
+        className="inline-flex"
+        aria-label={typeof children === "string" ? children : undefined}
+      >
+        {content}
+      </Link>
+    );
   }
 
-  return ButtonContent;
+  return content;
 }

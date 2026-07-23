@@ -6,6 +6,7 @@ import Services from "./pages/Services";
 import BlogDetail from "./pages/BlogDetail";
 import DentalTips from "./pages/DentalTips";
 import AppointmentPage from "./pages/AppointmentPage";
+import AppointmentForm from "./components/appointment/AppointmentForm";
 
 export default function App() {
   return (
@@ -19,7 +20,7 @@ export default function App() {
 
         <Route path="/blog/:slug" element={<BlogDetail />} />
         
-        <Route path="/appointment" element={<AppointmentPage />} />
+        <Route path="/appointment" element={<AppointmentForm />} />
       </Routes>
     </>
   );

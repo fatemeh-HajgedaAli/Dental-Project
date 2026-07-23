@@ -1,38 +1,42 @@
-// main-Navbar
 import TeethLogo from "../assets/images/logos/LogoPng.png";
 import DesktopMenu from "../components/navBar/DesktopMenu";
 import MobileMenu from "../components/navBar/MobileMenu";
-// start
+
 export default function Navbar() {
-  // jsx
   return (
     <>
-      <div className="relative z-50  mx-6 mt-4 ">
-        {/* MAIN NAV */}
-        <nav
-          className="
-           hidden lg:flex justify-between items-center
-            px-6 py-4
-            rounded-t-2xl
-            bg-white/60
-            backdrop-blur-s
-            border border-white/40
-            h-20"
-        >
-          <DesktopMenu />
+      <div className="relative z-50 mx-6 mt-2 hidden lg:block">
+        {/* کانتینر اصلی با ارتفاع مشخص جهت در بر گرفتن کامل موج */}
+        <div className="relative w-full h-[200px] flex justify-between items-start pt-4 px-10">
+          {/* پس‌زمینه موج SVG */}
+          <div className="absolute inset-0 w-full h-full -z-10 pointer-events-none rounded-b-2xl overflow-hidden filter drop-shadow-sm">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1440 320"
+              preserveAspectRatio="none"
+              className="w-full h-full block"
+            >
+              <path
+                fill="#ffffff"
+                fillOpacity="1"
+                d="M0,288L48,250.7C96,213,192,139,288,128C384,117,480,171,576,181.3C672,192,768,160,864,138.7C960,117,1056,107,1152,133.3C1248,160,1344,224,1392,256L1440,288L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+              />
+            </svg>
+          </div>
 
-          <img src={TeethLogo} alt="Logo" className="w-24 hidden md:flex" />
-        </nav>
+          {/* منوی اصلی در سمت راست/چپ بالا */}
+          <div className="relative z-10 flex items-center pt-2">
+            <DesktopMenu />
+          </div>
 
-        {/* SOFT WAVE */}
-        <div className="hidden lg:flex absolute left-0 w-full  overflow-hidden pointer-events-none">
-          <svg
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-            className="block w-full h-[30px] text-white fill-current opacity-67 shadow-xl"
-          >
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" />
-          </svg>
+          {/* لوگو در سمت راست/چپ بالا */}
+          <div className="relative z-10 flex items-center -mt-6">
+            <img
+              src={TeethLogo}
+              alt="Logo"
+              className="w-30 object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 cursor-pointer"
+            />
+          </div>
         </div>
       </div>
 
@@ -40,4 +44,3 @@ export default function Navbar() {
     </>
   );
 }
-// finish

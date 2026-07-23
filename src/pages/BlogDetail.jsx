@@ -12,9 +12,6 @@ import RelatedPosts from "../components/blogdetails/RelatedPosts";
 
 export default function BlogDetail() {
   const { slug } = useParams();
-
-  // وقتی وارد صفحه جزئیات مقاله می‌شویم
-  // صفحه همیشه از بالای صفحه شروع می‌شود
   useEffect(() => {
     window.scrollTo({
       top: 0,

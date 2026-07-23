@@ -11,8 +11,6 @@ import DentalTips from "../DentalTips";
 import DigitalImplant from "../DigitalImplant";
 import FAQ from "../FAQ";
 import ContactUs from "../ContactUs";
-// floatingBTN
-import FloatingAppointmentButton from "../FloatingAppointmentButton";
 // START
 export default function Home() {
   const contactRef = useRef(null);
@@ -44,7 +42,6 @@ export default function Home() {
   }, []);
   return (
     <>
-      <FloatingAppointmentButton visible={showFloating} />
       {/* Hero */}
       <element id="hero">
         <Hero />

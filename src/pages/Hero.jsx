@@ -32,7 +32,7 @@ export default function Hero() {
           <div className="flex">
             <HeroContent />
           </div>
-          <div className="flexitems-start lg:mr-20">
+          <div className="flexitems-start lg:mr-4">
             <HeroButtons />
           </div>
         </div>

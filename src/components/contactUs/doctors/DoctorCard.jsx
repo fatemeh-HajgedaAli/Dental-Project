@@ -1,48 +1,48 @@
+// doctors-card
 import { motion } from "framer-motion";
-import { FiCpu, FiActivity } from "react-icons/fi";
-
+import { FiCpu, FiActivity, FiChevronUp } from "react-icons/fi";
+// start
 export default function DoctorCard({ doctor, position, onSwipe }) {
+  const isTopCard = position === 0;
+  // jsx
   return (
     <motion.article
-      drag={position === 0 ? "y" : false}
-      dragConstraints={{ top: -300, bottom: 0 }}
-      dragElastic={{ top: 0.3, bottom: 0.05 }}
+      drag={isTopCard ? "y" : false}
+      dragConstraints={{ top: -350, bottom: 0 }}
+      dragElastic={{ top: 0.25, bottom: 0.05 }}
       onDragEnd={(e, info) => {
-        if (position === 0 && info.offset.y < -120) {
+        if (isTopCard && info.offset.y < -120) {
           onSwipe();
         }
       }}
       animate={{
         scale: 1 - position * 0.05,
-        y: position * 20,
-        opacity: 1 - position * 0.2,
-        filter: `blur(${position * 2}px)`,
-        zIndex: 10 - position,
+        y: position * 22,
+        opacity: 1 - position * 0.22,
+        filter: `blur(${position * 3}px)`,
+        zIndex: 20 - position,
       }}
       transition={{
         type: "spring",
-        stiffness: 300,
-        damping: 28,
+        stiffness: 320,
+        damping: 30,
       }}
-      whileDrag={{
-        scale: 0.98,
-      }}
-      /* 
-        تغییر مهم: تنظیم inset-0 همراه با w-full و h-full 
-        تا کارت دقیقاً ابعاد max-w-sm پدر را به خود بگیرد و دفرمه نشود.
-      */
+      whileHover={isTopCard ? { scale: 1.015, y: -4 } : {}}
+      whileDrag={{ scale: 0.98, cursor: "grabbing" }}
       className="
+        group
         absolute
         inset-0
         w-full
         h-full
-        rounded-[32px]
+        rounded-[36px]
         overflow-hidden
-        bg-slate-950/90
-        backdrop-blur-xl
+        bg-slate-950/80
+        backdrop-blur-2xl
         border
         border-white/10
-        shadow-[0_40px_80px_rgba(0,0,0,.6)]
+        hover:border-sky-500/30
+        shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_30px_rgba(14,165,233,0.1)]
         p-6
         text-white
         cursor-grab
@@ -51,71 +51,86 @@ export default function DoctorCard({ doctor, position, onSwipe }) {
         flex
         flex-col
         justify-between
+        transition-colors
+        duration-500
       "
     >
-      {/* هاله نور پس‌زمینه */}
-      <div className="absolute -top-24 -right-24 w-64 h-64 bg-sky-500/10 blur-3xl rounded-full pointer-events-none" />
+      {/* هاله نور چندرنگ پس‌زمینه */}
+      <div className="absolute -top-32 -right-32 w-72 h-72 bg-gradient-to-br from-sky-500/20 via-cyan-500/10 to-transparent blur-3xl rounded-full pointer-events-none group-hover:bg-sky-500/30 transition-all duration-700" />
+      <div className="absolute -bottom-32 -left-32 w-72 h-72 bg-indigo-500/15 blur-3xl rounded-full pointer-events-none" />
+
+      {/* خط درخشان لبه بالایی */}
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-sky-400/40 to-transparent pointer-events-none" />
 
       {/* محتوای اصلی کارت */}
-      <div className="relative z-10 w-full">
-        {/* تصویر پزشک با قد ثابت و متناسب */}
-        <div className="relative w-full h-48 rounded-2xl overflow-hidden border border-white/5 bg-slate-900">
+      <div className="relative z-10  flex flex-col">
+        {/* باکس تصویر کامل پزشک */}
+        <div
+          className="relative w-full h-auto rounded-2xl overflow-hidden
+         border border-white/10 bg-sky-900/80 shadow-inner group/img flex items-center justify-center p-2"
+        >
+          {/* تصویر کامل (object-contain) بدون برش خوردن */}
           <img
             src={doctor.image}
             alt={doctor.name}
-            className="w-full h-full object-cover object-top pointer-events-none"
+            className="w-full h-full rounded-xl object-cover pointer-events-none transition-transform duration-700 group-hover/img:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-90" />
-        </div>
 
-        {/* نام و تخصص */}
-        <div className="mt-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-black text-slate-100 tracking-tight">
-              {doctor.name}
-            </h2>
-            {position === 0 && (
-              <span className="text-[10px] bg-sky-500/20 text-sky-400 px-2 py-0.5 rounded-md font-mono animate-pulse">
-                SWIPE UP
-              </span>
-            )}
+          {/* کارت شیشه‌ای (Glassmorphism) روی تصویر در پایین */}
+          <div
+            className="absolute bottom-4 inset-x-2 p-3 rounded-xl bg-slate-950/60
+           backdrop-blur-md border border-white/10 shadow-lg mx-2"
+          >
+            <div className="flex items-center justify-between gap-2">
+              <h2 className="text-lg font-extrabold text-white tracking-tight drop-shadow-sm">
+                {doctor.name}
+              </h2>
+
+              {/* نشان SWIPE UP */}
+              {isTopCard && (
+                <motion.div
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-1 bg-sky-500/20 backdrop-blur-md border border-sky-400/30 text-sky-300 px-2 py-0.5 rounded-full text-[9px] font-mono tracking-wider font-semibold"
+                >
+                  <span>SWIPE</span>
+                  <motion.div
+                    animate={{ y: [-1, -3, -1] }}
+                    transition={{ repeat: Infinity, duration: 1.2 }}
+                  >
+                    <FiChevronUp className="text-xs text-sky-400" />
+                  </motion.div>
+                </motion.div>
+              )}
+            </div>
+
+            <p className="text-[11px] font-semibold text-sky-300 mt-0.5 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+              {doctor.title}
+            </p>
           </div>
-          <p className="text-xs text-sky-400/90 font-medium mt-1">
-            {doctor.title}
-          </p>
         </div>
 
-        {/* مهارت‌ها */}
-        <div className="mt-4 space-y-2">
+        {/* مهارت‌ها با استایل Chipهای نیونی */}
+        <div className="mt-2 flex flex-wrap gap-1.5">
           {doctor.skills?.slice(0, 3).map((skill) => (
             <div
               key={skill}
-              className="flex gap-2.5 items-center bg-white/[0.02] border border-white/5 rounded-xl px-3 py-1.5 text-xs text-slate-300"
+              className="
+                flex items-center gap-2
+                bg-white/[0.03] hover:bg-sky-500/10
+                border border-white/10 hover:border-sky-500/30
+                rounded-xl px-3 py-1.5
+                text-xs text-slate-200 font-medium
+                backdrop-blur-md transition-all duration-300
+              "
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shadow-[0_0_8px_rgba(56,189,248,0.6)]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shadow-[0_0_8px_rgba(56,189,248,0.8)]" />
               {skill}
             </div>
           ))}
         </div>
       </div>
-
-      {/* فوتر کارت - به لطف flex-col و mt-auto همیشه پایین می‌ماند */}
-      <footer className="relative z-10 pt-4 border-t border-white/5 flex justify-between items-center w-full">
-        <span className="text-[10px] font-mono text-slate-500 tracking-wider">
-          CLINIC-{doctor.id}
-        </span>
-        <div className="flex items-center gap-2 text-slate-400">
-          <div className="flex items-center gap-1 text-sky-400/50">
-            <div className="p-1 rounded-md bg-sky-500/10 text-[10px]">
-              <FiActivity />
-            </div>
-            <span className="text-[9px] font-bold tracking-widest">
-              EST. 2024
-            </span>
-          </div>
-          <FiCpu className="text-sm text-sky-400 animate-spin-slow" />
-        </div>
-      </footer>
     </motion.article>
   );
 }

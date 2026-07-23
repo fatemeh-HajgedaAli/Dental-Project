@@ -1,6 +1,6 @@
-import React from "react";
+// Contact-bg
 import doctorImg from "../../assets/images/contactUs/DoctorOne.png";
-
+//Start
 export default function ContactBackground({ children }) {
   return (
     <section
@@ -44,7 +44,7 @@ export default function ContactBackground({ children }) {
 
       {/* Left Glow */}
       <div className="absolute -left-40 top-20 w-[450px]
-       h-[450px] rounded-full bg-blue-500/20 blur-160px]" />
+       h-[450px] rounded-full bg-blue-500/20 blur-[160px]" />
 
       {/* Right Glow */}
       <div className="absolute -right-32 bottom-10
@@ -67,8 +67,22 @@ export default function ContactBackground({ children }) {
         }}
       />
 
-      {/* Bottom Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-t from-white via-white/5 to-transparent" />
+
+      {/* ================= BOTTOM FADE ================= */}
+      <div
+        className="
+          absolute
+          bottom-0
+          left-0
+          right-0
+          h-20
+          bg-gradient-to-t
+          from-white
+          via-white/5
+          to-transparent
+          pointer-events-none
+        "
+      />
     </section>
   );
 }

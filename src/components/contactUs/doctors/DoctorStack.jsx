@@ -12,10 +12,6 @@ export default function DoctorStack({ doctors }) {
   }
 
   return (
-    /* 
-      تغییر مهم: اضافه کردن w-full و ایجاد یک لایه منعطف 
-      تا فضای ۵۶۰ پیکسلی کاملاً در جریان اصلی صفحه (Layout) رزرو شود.
-    */
     <div className="relative w-full max-w-sm h-[560px] mx-auto md:mx-0 flex items-center justify-center my-8">
       {items
         .slice(0, 3)

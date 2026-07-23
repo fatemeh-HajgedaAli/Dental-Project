@@ -13,9 +13,6 @@ export default function CenterSection({ onOpenModal }) {
         {/* ستون کارت دندان‌پزشکان (سمت چپ در دسکتاپ / پایین در موبایل) */}
         <div className="flex justify-center lg:justify-start order-2 lg:order-1 w-full">
           <div className="w-full max-w-sm">
-            {/* تزریق پشته کارت‌ها؛ حالا کل لیست پزشکان به عنوان پراپ پاس داده می‌شود 
-              و کاربر با درگ کردن به سمت بالا کارت‌ها را ورق می‌زند. دکمه‌های قبلی/بعدی حذف شدند.
-            */}
             <DoctorStack doctors={doctors} />
           </div>
         </div>

@@ -91,7 +91,7 @@ export default function WhyChooseUs() {
       </div>
 
       {/* کانتینر محتوا */}
-      <div className="relative container mx-auto max-w-6xl px-6 z-20">
+      <div className="relative container mx-auto max-w-6xl px-2  z-20">
         <motion.div
           initial={{
             opacity: 0,
@@ -137,7 +137,7 @@ export default function WhyChooseUs() {
             initial={{ width: 0, opacity: 0 }}
             whileInView={{ width: 180, opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="my-6 h-px bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent"
+            className="my-2 lg:my-10 h-px bg-gradient-to-r from-transparent via-cyan-400/90 to-transparent"
           />
 
           {/* Stats */}
