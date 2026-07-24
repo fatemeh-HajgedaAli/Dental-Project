@@ -1,5 +1,3 @@
-// Home.jsx
-
 import { useEffect, useRef, useState } from "react";
 
 // component-parts
@@ -11,6 +9,7 @@ import DentalTips from "../DentalTips";
 import DigitalImplant from "../DigitalImplant";
 import FAQ from "../FAQ";
 import ContactUs from "../ContactUs";
+
 // START
 export default function Home() {
   const contactRef = useRef(null);
@@ -18,11 +17,13 @@ export default function Home() {
   const [showFloating, setShowFloating] = useState(true);
 
   useEffect(() => {
+    const section = contactRef.current;
+
+    if (!section) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setShowFloating(!entry.isIntersecting);
-
-        console.log("CONTACT:", entry.isIntersecting);
       },
       {
         threshold: 0,
@@ -30,53 +31,54 @@ export default function Home() {
       },
     );
 
-    const section = contactRef.current;
-
-    if (section) {
-      observer.observe(section);
-    }
+    observer.observe(section);
 
     return () => {
       observer.disconnect();
     };
   }, []);
+
   return (
-    <>
+    <div className="w-full">
       {/* Hero */}
-      <element id="hero">
+      <section id="hero" className="w-full">
         <Hero />
-      </element>
+      </section>
 
       {/* Services */}
-      <element id="services">
+      <section id="services" className="w-full">
         <Services />
-      </element>
+      </section>
 
-      {/* Emergency */}
-      <EmergencyDental />
+      {/* Emergency Dental */}
+      <section className="w-full">
+        <EmergencyDental />
+      </section>
 
       {/* Dental Tips */}
-      <element id="tips">
+      <section id="tips" className="w-full">
         <DentalTips />
-      </element>
+      </section>
 
-      {/* Why choose */}
-      <element id="about">
+      {/* Why Choose Us */}
+      <section id="about" className="w-full">
         <WhyChooseUs />
-      </element>
+      </section>
 
       {/* Digital Implant */}
-      <DigitalImplant />
+      <section className="w-full">
+        <DigitalImplant />
+      </section>
 
       {/* FAQ */}
-      <element id="faq">
+      <section id="faq" className="w-full">
         <FAQ />
-      </element>
+      </section>
 
       {/* Contact */}
-      <element ref={contactRef} className="relative" id="contact">
+      <section ref={contactRef} id="contact" className="relative w-full">
         <ContactUs />
-      </element>
-    </>
+      </section>
+    </div>
   );
 }
