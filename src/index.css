@@ -1,19 +1,24 @@
-/* ۱. دستور امپورت تیلوند فقط و فقط یک‌بار باید در بالاترین خط فایل باشد */
+/* Tailwind */
 @import "tailwindcss";
 
-/* ۲. اصلاح فونت‌ها: فرمت فایل‌های شما ttf است ولی نوشتی format("woff2")! این خطای لود فونت می‌دهد */
+/* =========================
+   Vazirmatn
+========================= */
+
 @font-face {
   font-family: "Vazirmatn";
   src: url("./assets/fonts/ttf/Vazirmatn-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Vazirmatn";
   src: url("./assets/fonts/ttf/Vazirmatn-Medium.ttf") format("truetype");
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -21,14 +26,29 @@
   src: url("./assets/fonts/ttf/Vazirmatn-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
-/* ۳. تنظیمات قالب (Theme) */
-@theme {
-  /* تنظیم فونت پیش‌فرض پروژه روی وزیرمتن */
-  --font-sans: "Vazirmatn", sans-serif;
+/* =========================
+   Peyda
+========================= */
 
-  /* تعریف انیمیشن شیمر */
+@font-face {
+  font-family: "Peyda";
+  src: url("./assets/fonts/woff2/Peyda-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================
+   Tailwind Theme
+========================= */
+
+@theme {
+  --font-sans: "Vazirmatn", sans-serif;
+  --font-peyda: "Peyda", sans-serif;
+
   --animate-shimmer: shimmer 1.5s infinite;
 
   @keyframes shimmer {
@@ -38,72 +58,11 @@
   }
 }
 
-/* ۴. اسکرول‌بارها و استایل‌های عمومی */
+/* =========================
+   Global
+========================= */
+
 body {
   overflow-x: hidden;
-  font-family: var(--font-sans); /* اعمال فونت روی کل بدنه سایت */
+  font-family: var(--font-sans);
 }
-
-@utility hide-scrollbar {
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-/* اسکرول‌بار سفارشی */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #c4c4c4;
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
-}
-/* appointmentForm-design */
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.animate-scale-in {
-  animation: scale-in 0.25s ease-out;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.2s ease-out;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-/* check responsive */
-/* * {
-  border: solid 1px red;
-} */

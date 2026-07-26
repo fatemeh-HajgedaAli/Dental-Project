@@ -11,7 +11,7 @@ export default function MainLayout() {
       className="
         flex
         min-h-screen
-        w-full
+        w-[1250]
         flex-col
         overflow-x-hidden
         bg-slate-50

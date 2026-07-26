@@ -1,86 +1,91 @@
-// HeroContent.jsx
 import { motion } from "framer-motion";
 
 export default function HeroContent() {
   return (
     <div
-      className="w-full flex flex-col items-start  lg:items-end  lg:gap-8 
-    -mt-45 lg:mt-16"
+      dir="rtl"
+      className="
+        w-full
+        flex
+        flex-col
+        items-end
+        gap-8
+        mt-8
+        lg:mt-16
+      "
     >
       {/* Title */}
-      <div className="w-full text-center lg:text-left lg:mt-10 select-none">
+      <div className="w-full text-right lg:mt-10 select-none">
         <motion.h1
           initial={{
             opacity: 0,
-            y: 25,
-            filter: "blur(8px)",
+            x: 80,
+            filter: "blur(12px)",
           }}
           animate={{
             opacity: 1,
-            y: 0,
+            x: 0,
             filter: "blur(0px)",
           }}
           transition={{
-            duration: 0.9,
+            duration: 1.2,
+            delay: 0.2,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="text-5xl   md:text-6xl   lg:text-7xl   font-semibold  
-           leading-1/2   lg:leading-[1.15]   tracking-[-0.04em]   text-slate-950 "
+          className="
+            font-black
+            text-4xl
+            sm:text-5xl
+            md:text-6xl
+            lg:text-7xl
+            leading-[1.3]
+            lg:leading-[1.2]
+            tracking-tight
+            text-slate-900
+          "
         >
-          لبخندی زیبا،
+          {/* بخش اول متن همراه با استروک ملایم */}
+          <span className="inline-block [text-shadow:_0_2px_10px_rgba(0,0,0,0.05)] [WebkitTextStroke:1px_rgba(15,23,42,0.1)]">
+            لبخندی زیبا،
+          </span>
+
           <br />
+
+          {/* بخش هایلایت‌شده متحرک و درخشان */}
           <span
             className="
-  relative
-  inline-block
-  mt-3
-  font-black
-  tracking-[-0.02em]
-  bg-gradient-to-br
-  from-sky-800
-  via-sky-500
-  to-blue-500
-  bg-clip-text
-  text-transparent
-  [WebkitTextStroke:5px_rgba(14,165,233,0.35)]
-  drop-shadow-[10px_10px_30px_rgba(14,165,233,.35)]
-  before:absolute
-  before:inset-0
-  before:-z-10
-  before:bg-gradient-to-r
-  before:from-cyan-300/40
-  before:via-sky-900/30
-  before:to-blue-900/40
-  before:blur-2xl
-  after:absolute
-  after:inset-0
-  after:bg-white/10
-  after:blur-xl
-  after:-z-10
-"
+              relative
+              inline-block
+              mt-2
+              pb-2
+              font-black
+              bg-gradient-to-l
+              from-sky-600
+              via-blue-600
+              to-indigo-600
+              bg-clip-text
+              text-transparent
+              
+              /* تنظیمات استروک متن */
+              [WebkitTextStroke:1.5px_rgba(2,132,199,0.3)]
+              
+              /* سایه درخشان (Glow Effect) */
+              drop-shadow-[0_10px_20px_rgba(2,132,199,0.25)]
+              
+              /* هاله نور پس‌زمینه (Backdrop Glow) */
+              before:absolute
+              before:inset-0
+              before:-z-10
+              before:bg-gradient-to-r
+              before:from-sky-400/20
+              before:to-blue-600/20
+              before:blur-2xl
+              before:rounded-full
+            "
           >
             آغاز یک زندگی بهتر
           </span>
         </motion.h1>
-      </div>
-
-      {/* Description */}
-      <div className="hidden lg:flex  w-full lg:w-[85%] text-center lg:text-right ">
-        <motion.p
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-          className="text-slate-600 lg:text-xl md:text-base md:leading-8 font-medium
-          border-r-4 border-cyan-400/40 pr-4 mr-[80px]"
-          className="text-slate-600 lg:text-xl font-light md:text-base md:leading-6 font-medium
-          border-r-4 border-cyan-400/40 pr-4 mr-[80px] "
-        >
-          «تجربه‌ای نو از دندانپزشکی مدرن؛
-          <span className="text-blue-600 font-light">
-            ترکیب تکنولوژی روز دنیا، تخصص حرفه‌ای و محیطی آرام برای لبخندی سالم
-            و ماندگار»
-          </span>
-        </motion.p>
       </div>
     </div>
   );
