@@ -5,11 +5,13 @@ import MobileMenu from "../components/navBar/MobileMenu";
 export default function Navbar() {
   return (
     <>
-      <div className="relative z-50 hidden mt-2 lg:block">
+      <div className="relative z-50 
+      hidden mt-4 lg:block top-2">
         {/* کانتینر اصلی با ارتفاع مشخص جهت در بر گرفتن کامل موج */}
         <div
-          className="relative w-full h-[200px] flex justify-between 
-        items-start pt-4 px-10"
+          className="relative w-full h-[150px] 
+          flex justify-between 
+        items-start pt-2 px-10"
         >
           {/* پس‌زمینه موج SVG */}
           <div

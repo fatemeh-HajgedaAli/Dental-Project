@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 
 import HeroBackground from "../components/hero/HeroBackground";
-import HeroContent from "../components/hero/HeroContent";
-import HeroButtons from "../components/hero/HeroButtons";
 import Navbar from "./NavBar";
 
 export default function Hero() {
@@ -14,6 +12,7 @@ export default function Hero() {
         min-h-screen
         overflow-hidden
         bg-white
+        border-b-10 border-sky-100/50
       "
     >
       {/* =========================
@@ -23,17 +22,15 @@ export default function Hero() {
         <HeroBackground />
       </div>
 
-      {/* =========================
-          Mobile Overlay
-      ========================== */}
+      {/* Overlay*/}
       <div
         className="
           absolute
           inset-0
           z-10
           bg-gradient-to-b
-          from-white/20
-          via-white/30
+          from-white/10
+          via-white/20
           to-white
         "
       />
@@ -67,34 +64,7 @@ export default function Hero() {
             items-center
             lg:grid-cols-2
           "
-        >
-          {/* Content */}
-          <motion.div
-            className="
-              flex
-              w-full
-              flex-col
-              items-center
-              lg:items-start
-            "
-            initial={{
-              opacity: 0,
-              x: -100,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-            }}
-            transition={{
-              duration: 2,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-          >
-            <HeroContent />
-          </motion.div>
-          {/* Desktop Spacer */}
-          <div className="hidden lg:block" />
-        </div>
+        ></div>
       </div>
     </section>
   );
