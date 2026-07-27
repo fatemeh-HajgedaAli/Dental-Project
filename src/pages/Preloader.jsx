@@ -1,6 +1,8 @@
 // Pre-Loading
 import { useState } from "react";
 import preLoading from "../assets/images/videos/PreLoading.mp4";
+import { FaTeeth } from "react-icons/fa";
+import { FaTooth } from "react-icons/fa6";
 
 // start
 export default function Preloader({ onComplete }) {
