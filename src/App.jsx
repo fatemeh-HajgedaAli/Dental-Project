@@ -6,10 +6,9 @@ import { AnimatePresence } from "framer-motion";
 import Home from "./pages/main/Home";
 import Services from "./pages/Services";
 import BlogDetail from "./pages/BlogDetail";
-import DentalTips from "./pages/DentalTips";
 import AppointmentPage from "./pages/AppointmentPage";
 import AppointmentForm from "./components/appointment/AppointmentForm";
-import Preloader from "./pages/Preloader"; // 
+import Preloader from "./pages/Preloader";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);

@@ -142,7 +142,7 @@ export default function MobileMenu() {
                       {/* Tooltip (RTL & LTR friendly) */}
                       <motion.span
                         variants={tooltipVariants}
-                        className="absolute right-14 top-1/2 -translate-y-1/2 whitespace-nowrap bg-slate-900/90 backdrop-blur-md text-white text-xs font-medium px-3 py-1.5 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 shadow-md"
+                        className="absolute left-14 top-1/2 -translate-y-1/2 whitespace-nowrap bg-slate-900/90 backdrop-blur-md text-white text-xs font-medium px-3 py-1.5 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 shadow-md"
                       >
                         {title}
                       </motion.span>

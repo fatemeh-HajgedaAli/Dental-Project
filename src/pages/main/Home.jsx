@@ -40,6 +40,7 @@ export default function Home() {
 
   return (
     <div className="w-full">
+      
       {/* Hero */}
       <section id="hero" className="w-full">
         <Hero />

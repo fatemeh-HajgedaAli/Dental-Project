@@ -1,7 +1,7 @@
 // main-Blog
 export default function BlogHero({ post }) {
   if (!post) return null;
-// jsx
+  // jsx
   return (
     <header className="relative aspect-[16/10] sm:aspect-[16/8] w-full overflow-hidden rounded-2xl">
       {/* تصویر اصلی مقاله */}

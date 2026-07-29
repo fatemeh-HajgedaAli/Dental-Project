@@ -4,14 +4,16 @@ import { motion } from "framer-motion";
 
 import { POSTS } from "../components/blogdetails/blog.data";
 
-import BackButton from "../components/blogdetails/BackButton";
 import BlogHero from "../components/blogdetails/BlogHero";
 import BlogMeta from "../components/blogdetails/BlogMeta";
 import BlogContent from "../components/blogdetails/BlogContent";
 import RelatedPosts from "../components/blogdetails/RelatedPosts";
 
+import BackToTipsButton from "../components/blogdetails/BackToTipsButton";
+
 export default function BlogDetail() {
   const { slug } = useParams();
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -52,7 +54,6 @@ export default function BlogDetail() {
       "
     >
       {/* Background Glow */}
-
       <div
         className="
           absolute
@@ -74,8 +75,10 @@ export default function BlogDetail() {
           px-5
         "
       >
-        <BackButton />
+        {/* بازگشت به بخش مقالات در Home */}
+        <BackToTipsButton />
 
+        {/* Blog Article */}
         <motion.article
           initial={{
             opacity: 0,
@@ -112,6 +115,7 @@ export default function BlogDetail() {
           </div>
         </motion.article>
 
+        {/* Related Posts */}
         <RelatedPosts currentId={post.id} />
       </div>
     </section>
