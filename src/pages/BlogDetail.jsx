@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -8,13 +8,16 @@ import BlogHero from "../components/blogdetails/BlogHero";
 import BlogMeta from "../components/blogdetails/BlogMeta";
 import BlogContent from "../components/blogdetails/BlogContent";
 import RelatedPosts from "../components/blogdetails/RelatedPosts";
-
 import BackToTipsButton from "../components/blogdetails/BackToTipsButton";
+import Preloader from "../pages/Preloader"; // مسیر ایمپورت پری‌لودر خود را در صورت نیاز چک کنید
 
 export default function BlogDetail() {
   const { slug } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
 
+  // با هر بار تغییر slug (عوض شدن مقاله)، صفحه به بالا اسکرول شده و لودینگ فعال می‌شود
   useEffect(() => {
+    setIsLoading(true);
     window.scrollTo({
       top: 0,
       left: 0,
@@ -24,6 +27,7 @@ export default function BlogDetail() {
 
   const post = POSTS.find((item) => item.slug === slug);
 
+  // اگر مقاله پیدا نشد
   if (!post) {
     return (
       <section
@@ -43,81 +47,86 @@ export default function BlogDetail() {
   }
 
   return (
-    <section
-      dir="rtl"
-      className="
-        relative
-        min-h-screen
-        overflow-hidden
-        bg-[#020617]
-        py-24
-      "
-    >
-      {/* Background Glow */}
-      <div
-        className="
-          absolute
-          -top-40
-          right-0
-          h-[500px]
-          w-[500px]
-          rounded-full
-          bg-cyan-500/10
-          blur-[180px]
-        "
-      />
+    <>
+      {/* نمایش پری‌لودر تا زمان اتمام پخش ویدیو */}
+      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
 
-      <div
+      <section
+        dir="rtl"
         className="
           relative
-          max-w-5xl
-          mx-auto
-          px-5
+          min-h-screen
+          overflow-hidden
+          bg-[#020617]
+          py-24
         "
       >
-        {/* بازگشت به بخش مقالات در Home */}
-        <BackToTipsButton />
-
-        {/* Blog Article */}
-        <motion.article
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
+        {/* Background Glow */}
+        <div
           className="
-            rounded-[2.5rem]
-            overflow-hidden
-            border
-            border-white/10
-            bg-white/[0.04]
-            backdrop-blur-3xl
-            shadow-[0_30px_100px_rgba(0,0,0,.45)]
+            absolute
+            -top-40
+            right-0
+            h-[500px]
+            w-[500px]
+            rounded-full
+            bg-cyan-500/10
+            blur-[180px]
+          "
+        />
+
+        <div
+          className="
+            relative
+            max-w-5xl
+            mx-auto
+            px-5
           "
         >
-          <BlogHero post={post} />
+          {/* بازگشت به بخش مقالات در Home */}
+          <BackToTipsButton />
 
-          <div
+          {/* Blog Article */}
+          <motion.article
+            initial={{
+              opacity: 0,
+              y: 40,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.7,
+            }}
             className="
-              p-8
-              md:p-12
+              rounded-[2.5rem]
+              overflow-hidden
+              border
+              border-white/10
+              bg-white/[0.04]
+              backdrop-blur-3xl
+              shadow-[0_30px_100px_rgba(0,0,0,.45)]
             "
           >
-            <BlogMeta />
+            <BlogHero post={post} />
 
-            <BlogContent post={post} />
-          </div>
-        </motion.article>
+            <div
+              className="
+                p-8
+                md:p-12
+              "
+            >
+              <BlogMeta />
 
-        {/* Related Posts */}
-        <RelatedPosts currentId={post.id} />
-      </div>
-    </section>
+              <BlogContent post={post} />
+            </div>
+          </motion.article>
+
+          {/* Related Posts */}
+          <RelatedPosts currentId={post.id} />
+        </div>
+      </section>
+    </>
   );
 }

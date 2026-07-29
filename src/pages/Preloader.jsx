@@ -1,119 +1,63 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import preLoading from "../assets/images/videos/loading.mp4";
 
 export default function Preloader({ onComplete }) {
   const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
+
+  // 🔒 قفل کردن اسکرول صفحه موقع نمایش Preloader
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      // 🔓 باز کردن اسکرول صفحه بعد از بسته شدن Preloader
+      document.body.style.overflow = "unset";
+    };
+  }, []);
 
   const handleVideoEnd = () => {
+    // 1. شروع انیمیشن Fade-Out
+    setIsExiting(true);
+
+    // 2. صدا زدن callback پس از اتمام انیمیشن خروج (500ms)
     setTimeout(() => {
       onComplete?.();
-    }, 200); 
+    }, 500);
   };
 
   return (
     <div
       className={`
-        fixed
-        inset-0
-        z-[9999]
-        flex
-        items-center
-        justify-center
-        overflow-hidden
-        select-none
-        bg-black/30 /* لایه تیره پس‌زمینه برای کنتراست */
-        transition-opacity
-        duration-500
-        ${isVideoReady ? "opacity-100" : "opacity-0"}
+        fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden select-none bg-white px-2
+        transition-opacity duration-500 ease-in-out
+        ${isExiting ? "opacity-0 pointer-events-none" : "opacity-100"}
       `}
     >
-      {/* 
-        --- لایه اصلی گلاسی (Main Glass Layer) ---
-        کل صفحه را با تاری و افکت شیشه می‌پوشاند
-      */}
-      <div
-        className="
-          absolute
-          inset-0
-          backdrop-blur-xl /* تاری شدید برای پس‌زمینه */
-          bg-white/5 /* لایه نیمه‌شفاف روی تاری */
-          border border-white/10 /* حاشیه بسیار ظریف شیشه‌ای */
-          pointer-events-none
-        "
-      />
+      {/* Background Glass Overlay */}
+      <div className="absolute inset-0 bg-white/70 backdrop-blur-xl" />
 
-      {/* 
-        --- هاله‌های نوری عمق‌دهنده (Background Glows) ---
-        نورهای نئونی ملایم در پس‌زمینه شیشه
-      */}
-      <div
-        className="
-          absolute
-          top-1/4
-          left-1/4
-          w-96
-          h-96
-          rounded-full
-          bg-sky-500/20 /* نور آبی */
-          blur-[100px]
-          pointer-events-none
-        "
-      />
-      <div
-        className="
-          absolute
-          bottom-1/4
-          right-1/4
-          w-96
-          h-96
-          rounded-full
-          bg-indigo-500/15 /* نور بنفش ملایم */
-          blur-[100px]
-          pointer-events-none
-        "
-      />
+      {/* Background Glows (اندازه‌های نرمال و متناسب) */}
+      <div className="absolute top-[15%] left-[10%] w-40 h-40 sm:w-60 sm:h-60 rounded-full bg-sky-400/15 blur-[60px] sm:blur-[90px] pointer-events-none" />
+      <div className="absolute bottom-[15%] right-[10%] w-40 h-40 sm:w-60 sm:h-60 rounded-full bg-indigo-400/15 blur-[60px] sm:blur-[90px] pointer-events-none" />
 
-      {/* 
-        --- کانتینر مرکزی (Центральный контейнер) ---
-      */}
-      <div
-        className="
-          relative
-          z-10
-          flex
-          flex-col
-          items-center
-          gap-6
-        "
-      >
-        {/* 
-          --- قاب شیشه‌ای ویدیو (Video Glass Frame) ---
-        */}
+      {/* Main Container */}
+      <div className="relative z-10 flex flex-col items-center gap-2 w-full max-w-[240px] xs:max-w-[280px] sm:max-w-[340px] md:max-w-[380px]">
+        {/* Video Card Container - (ابعاد بهینه‌شده و شیک) */}
         <div
           className={`
-            relative
-            p-1.5 /* فاصله کم برای حاشیه نوری */
-            rounded-[40px] /* گوشه‌های کاملا گرد */
-            bg-white/5 /* پس‌زمینه شیشه‌ای قاب */
-            backdrop-blur-sm
-            shadow-2xl shadow-black/20 /* سایه عمیق برای عمق */
-            border border-white/10 /* حاشیه شیشه‌ای */
-            
-            /* انیمیشن لود شدن قاب */
-            transition-all
-            duration-500
-            ease-out
+            relative w-full p-1.5 rounded-2xl sm:rounded-3xl 
+            bg-white/30 backdrop-blur-md border border-white/60 
+            shadow-lg sm:shadow-xl overflow-hidden
+            transition-all duration-500 ease-out
             ${
               isVideoReady
                 ? "opacity-100 scale-100 translate-y-0"
-                : "opacity-0 scale-90 translate-y-4"
+                : "opacity-0 scale-95 translate-y-2"
             }
           `}
         >
-          {/* 
-            حاشیه نوری گرادینت داخلی
-          */}
-          <div className="absolute inset-0.5 rounded-[38px] bg-gradient-to-br from-sky-300/30 via-transparent to-indigo-300/20 opacity-50" />
+          {/* Inner Gradient Highlight */}
+          <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-br from-sky-300/20 via-transparent to-indigo-300/20 pointer-events-none" />
 
           {/* Video */}
           <video
@@ -123,39 +67,26 @@ export default function Preloader({ onComplete }) {
             playsInline
             preload="auto"
             onLoadedData={() => setIsVideoReady(true)}
+            onCanPlay={() => setIsVideoReady(true)}
             onEnded={handleVideoEnd}
-            className="
-              relative
-              z-10
-              w-[380px]
-              sm:w-[260px]
-              h-auto
-              object-contain
-              rounded-[36px] /* کمی کوچک‌تر از قاب */
-            "
+            className="block w-full h-auto object-cover rounded-[10px] sm:rounded-[18px]"
           />
         </div>
 
-        {/* 
-          --- متن لودینگ پایین (Optional Loading Text) ---
-        */}
+        {/* Loading Text */}
         <div
           className={`
-            text-sky-100/60
-            text-sm
-            tracking-widest
-            font-light
-            flex
-            items-center
-            gap-3
-            transition-opacity
-            duration-700
-            delay-300
-            ${isVideoReady ? "opacity-100" : "opacity-0"}
+            flex items-center gap-2 text-sky-950/70 text-xs sm:text-sm tracking-[0.15em] font-medium whitespace-nowrap
+            transition-all duration-500 delay-150
+            ${
+              isVideoReady
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-2"
+            }
           `}
         >
-          <span className="w-1.5 h-1.5 bg-sky-600 rounded-full animate-pulse" />
-          در حال بارگذاری  ....
+          <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
+          <span>در حال بارگذاری...</span>
         </div>
       </div>
     </div>
