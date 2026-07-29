@@ -17,12 +17,9 @@ export default function ServiceCard({
       onClick={() => setIsExpanded((prev) => !prev)}
       className={`
         absolute
-        /* ⚡ قرار دادن مرکز کارت دقیقاً بر روی نقطه صفر مختصات مدار */
-        lg:left-1/2 lg:right-45
+        lg:left-1/2 lg:right-45 lg:top-1/2
         left-1/2 
         -translate-x-1/2 -translate-y-1/2
-      
-        /* ⚡ عرض کاملاً ریسپانسیو: موبایل کوچک (150px) تا دسکتاپ (280px) */
         w-[150px] sm:w-[220px] md:w-[260px] lg:w-[280px]
         bg-white
         rounded-2xl

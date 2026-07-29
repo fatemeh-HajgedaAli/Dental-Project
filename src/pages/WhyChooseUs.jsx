@@ -61,35 +61,6 @@ export default function WhyChooseUs() {
         />
       </div>
 
-      {/* 🪐 افکت مدار چرخشی سه بعدی (Orbit Effect Overlay) */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 overflow-hidden">
-        {/* مدار اول - زاویه‌دار و چرخش ساعتگرد */}
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 25, ease: "linear", repeat: Infinity }}
-          className="absolute w-[600px] h-[220px] rounded-full border border-cyan-500/15 [transform:rotateX(70deg)_rotateY(-15deg)]"
-        >
-          {/* سیارک متحرک روی مدار */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
-        </motion.div>
-
-        {/* مدار دوم - معکوس و چرخش پادساعتگرد با ابعاد بزرگتر */}
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 35, ease: "linear", repeat: Infinity }}
-          className="absolute w-[800px] h-[300px] rounded-full border border-sky-400/10 [transform:rotateX(65deg)_rotateY(20deg)]"
-        >
-          {/* سیارک دوم */}
-          <div className="absolute bottom-0 left-1/4 w-1.5 h-1.5 rounded-full bg-sky-300 shadow-[0_0_8px_#7dd3fc]" />
-        </motion.div>
-      </div>
-
-      {/* Aurora Background (کمپلکس نوری پس‌زمینه برای عمق دادن به مدارها) */}
-      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
-        <div className="absolute -top-52 -left-44 h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-[170px]" />
-        <div className="absolute bottom-[-150px] left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-sky-500/5 blur-[170px]" />
-      </div>
-
       {/* کانتینر محتوا */}
       <div className="relative container mx-auto max-w-6xl px-2  z-20">
         <motion.div

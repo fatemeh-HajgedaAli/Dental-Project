@@ -21,20 +21,22 @@ export default function ImplantContent() {
           </span>
           <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
         </div>
-
         {/* Title */}
-        <h2 className="mt-6 text-6xl lg:text-6xl font-black
-         leading-tight text-slate-900">
-          آینده‌ی
-          <br />
-          <span className="relative inline-block mt-2">
-            <span className="absolute inset-0 blur-2xl
-             bg-sky-300/40 rounded-full"></span>
+        <h2
+          className="mt-6 text-3xl md:text-4xl lg:text-4xl font-black
+  leading-tight bg-gradient-to-r from-sky-700
+  via-cyan-500 to-sky-600 bg-clip-text 
+  text-transparent"
+        >
+          تجربه‌ای متفاوت از{" "}
+          <span className="relative inline-block mt-2 lg:mt-0">
+            <span
+              className="absolute inset-0 blur-2xl
+      bg-sky-300/40 rounded-full"
+            ></span>
 
-            <span className="relative bg-gradient-to-r from-sky-700
-             via-cyan-500 to-sky-500 bg-clip-text 
-             text-transparent">
-              کاشت دندان
+            <span className="relative text-gray-800 text-5xl md:text-6xl lg:text-6xl font-bold">
+              کاشت دیجیتال دندان
             </span>
           </span>
         </h2>

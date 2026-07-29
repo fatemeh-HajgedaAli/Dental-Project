@@ -4,17 +4,23 @@ import pngTeeth from "../../assets/images/services/pngTeeth.png"; // مطمئن 
 export default function BackgroundServices({ children }) {
   // jsx
   return (
-    <div className="relative w-full min-h-screen bg-slate-50 
-    overflow-hidden  flex flex-col items-center justify-center ">
+    <div
+      className="relative w-full min-h-screen bg-slate-50 
+    overflow-hidden  flex flex-col items-center justify-center "
+    >
       {/* mainBg) */}
-      <div className="absolute inset-2 z-0 flex items-center 
-      justify-start pointer-events-none select-none">
+      <div
+        className="absolute inset-2 z-0 flex items-center 
+      justify-start pointer-events-none 
+      select-none lg:-top-20"
+      >
         <img
           src={pngTeeth}
           alt="Dental Implant Background"
           className="
-            w-full max-w-[500px] sm:max-w-[650px] md:max-w-[800px]
-             lg:max-w-[660px]
+            w-full max-w-[500px] sm:max-w-[650px] 
+            md:max-w-[700px]
+             lg:max-w-[560px]
             h-auto object-contain
             opacity-10  /* برای اینکه کارت‌ها و متون خوانا باشند، شفافیت را روی ۱۰٪ گذاشتیم */
             filter grayscale-[30%] /* کمی فیلتر خاکستری برای هماهنگی بیشتر با تم دیزاین */

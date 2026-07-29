@@ -9,14 +9,20 @@ export default function DentalTips() {
   const recentPosts = POSTS.slice(0, 6);
   // jsx
   return (
-    <section id="tips" className="py-24 md:py-32 bg-white">
+    <section id="tips" className="py-24 md:py-6 bg-white">
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         {/* header */}
         <Reveal className="text-center max-w-2xl mx-auto">
-          <p className="text-[#1E88E5] font-semibold tracking-[0.2em] uppercase text-xs mb-4">
-            مقالات دندانپزشکی
-          </p>
-
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 mb-4 rounded-full border border-sky-200/60 bg-white/90 backdrop-blur-md px-4 py-1 shadow-sm">
+            <span
+              className="text-[11px] font-black tracking-[3px]
+             text-sky-800"
+            >
+              DENTAL'S CONTENT{" "}
+            </span>
+            <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
+          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0A0F14] tracking-tight">
             نکات مهم برای لبخندی سالم‌تر
           </h2>
@@ -58,9 +64,8 @@ export default function DentalTips() {
 
                     {/* دکمه ادامه‌ی مطلب */}
                     <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#1E88E5] group-hover:gap-2.5 transition-all">
+                      <span>مطالعه مقاله</span>{" "}
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-
-                      <span>مطالعه مقاله</span>
                     </div>
                   </div>
                 </Link>

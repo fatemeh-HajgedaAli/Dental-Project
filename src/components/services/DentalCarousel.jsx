@@ -5,7 +5,8 @@ export default function DentalCarousel() {
   return (
     <section
       dir="rtl"
-      className="relative w-full overflow-hidden py-12 lg:py-16 bg-transparent"
+      className="relative w-full overflow-hidden 
+      py-12 lg:py-6 bg-transparent"
     >
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
         {/* ==================== 1. TEXT SECTION (Shared for Mobile & Desktop) ==================== */}

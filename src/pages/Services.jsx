@@ -5,7 +5,7 @@ import DentalCarouselMobile from "../components/services/DentalCarouselMobile";
 
 export default function Services() {
   return (
-    <section id="services" className="" dir="rtl">
+    <section id="services" dir="rtl">
       <BackgroundServices>
         <DentalCarousel />
       </BackgroundServices>
