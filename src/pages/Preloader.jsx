@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom"; // یا react-dom
 import preLoading from "../assets/images/videos/loading.mp4";
 
 export default function Preloader({ onComplete }) {
@@ -25,10 +26,10 @@ export default function Preloader({ onComplete }) {
     }, 500);
   };
 
-  return (
+  const preloaderContent = (
     <div
       className={`
-        fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden select-none bg-white px-2
+        fixed inset-0 z-[99999] flex items-center justify-center overflow-hidden select-none bg-white px-2
         transition-opacity duration-500 ease-in-out
         ${isExiting ? "opacity-0 pointer-events-none" : "opacity-100"}
       `}
@@ -36,13 +37,13 @@ export default function Preloader({ onComplete }) {
       {/* Background Glass Overlay */}
       <div className="absolute inset-0 bg-white/70 backdrop-blur-xl" />
 
-      {/* Background Glows (اندازه‌های نرمال و متناسب) */}
+      {/* Background Glows */}
       <div className="absolute top-[15%] left-[10%] w-40 h-40 sm:w-60 sm:h-60 rounded-full bg-sky-400/15 blur-[60px] sm:blur-[90px] pointer-events-none" />
       <div className="absolute bottom-[15%] right-[10%] w-40 h-40 sm:w-60 sm:h-60 rounded-full bg-indigo-400/15 blur-[60px] sm:blur-[90px] pointer-events-none" />
 
       {/* Main Container */}
       <div className="relative z-10 flex flex-col items-center gap-2 w-full max-w-[240px] xs:max-w-[280px] sm:max-w-[340px] md:max-w-[380px]">
-        {/* Video Card Container - (ابعاد بهینه‌شده و شیک) */}
+        {/* Video Card Container */}
         <div
           className={`
             relative w-full p-1.5 rounded-2xl sm:rounded-3xl 
@@ -91,4 +92,7 @@ export default function Preloader({ onComplete }) {
       </div>
     </div>
   );
+
+  // رندر کردن کامپوننت مستقیماً در body
+  return createPortal(preloaderContent, document.body);
 }
