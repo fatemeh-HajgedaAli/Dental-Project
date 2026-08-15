@@ -1,10 +1,9 @@
-"use client";
-
+// ContactUs
 import { useState } from "react";
 import AppointmentForm from "../components/appointment/AppointmentForm";
 import ContactBackground from "../components/contactUs/ContactBackground";
 import CenterSection from "../components/contactUs/CenterSection";
-import ClinicInfoBar from "../components/contactUs/ClinicInfoBar";
+// import ClinicInfoBar from "../components/contactUs/ClinicInfoBar";
 
 export default function ContactUs({ form, sendEmail, status }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -115,8 +114,8 @@ export default function ContactUs({ form, sendEmail, status }) {
         {/* 2. Main Content */}
         <CenterSection onOpenModal={() => setIsModalOpen(true)} />
 
-        {/* 3. Clinic Information */}
-        <ClinicInfoBar />
+        {/* 3. Clinic Information
+        <ClinicInfoBar /> */}
 
         {/* 4. Appointment Modal */}
         {isModalOpen && (

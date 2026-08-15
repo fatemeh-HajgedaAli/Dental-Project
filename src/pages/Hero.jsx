@@ -39,7 +39,7 @@ export default function Hero() {
           Navbar
       ========================== */}
       <div className="absolute top-0 left-0 z-40 w-full">
-        <Navbar />
+        <Navbar/>
       </div>
 
       {/* =========================

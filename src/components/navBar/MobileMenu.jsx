@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-scroll";
 import { FiX } from "react-icons/fi";
-import { navLinks } from "./navLinks";
+import { navLinks } from "../../pages/main/homeLinks";
 import TeethLogo from "../../assets/images/logos/LogoPng.png";
 
 // Framer Motion Variants

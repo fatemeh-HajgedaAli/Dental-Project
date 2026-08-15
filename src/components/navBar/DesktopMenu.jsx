@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { navLinks } from "./navLinks";
+import { navLinks } from "../../pages/main/homeLinks";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-scroll";
 import { FiX } from "react-icons/fi";

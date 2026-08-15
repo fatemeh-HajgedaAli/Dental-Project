@@ -40,7 +40,6 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      
       {/* Hero */}
       <section id="hero" className="w-full">
         <Hero />
@@ -65,7 +64,10 @@ export default function Home() {
       <section id="about" className="w-full">
         <WhyChooseUs />
       </section>
-
+      {/* Contact */}
+      <section ref={contactRef} id="contact" className="relative w-full">
+        <ContactUs />
+      </section>
       {/* Digital Implant */}
       <section className="w-full">
         <DigitalImplant />
@@ -75,11 +77,8 @@ export default function Home() {
       <section id="faq" className="w-full">
         <FAQ />
       </section>
-
-      {/* Contact */}
-      <section ref={contactRef} id="contact" className="relative w-full">
-        <ContactUs />
-      </section>
+ 
+      
     </div>
   );
 }
