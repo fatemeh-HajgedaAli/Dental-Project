@@ -1,7 +1,6 @@
-// main-ContactUs
+"use client";
+
 import { useState } from "react";
-import { X } from "lucide-react";
-import { motion } from "framer-motion";
 import AppointmentForm from "../components/appointment/AppointmentForm";
 import ContactBackground from "../components/contactUs/ContactBackground";
 import CenterSection from "../components/contactUs/CenterSection";
@@ -10,94 +9,135 @@ import ClinicInfoBar from "../components/contactUs/ClinicInfoBar";
 export default function ContactUs({ form, sendEmail, status }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // مسیر منحنی پیچشی (Wave / S-Curve)
-  const twistedPath = "M 10 20 C 100 90, 200 -10, 290 80";
-
   return (
     <div
       className="w-full min-h-screen p-4 md:p-8 flex items-center justify-center font-sans"
       dir="rtl"
     >
       <div className="w-full max-w-10xl bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col justify-between min-h-[600px] relative">
-        {/* ۱. بخش هیرو پس‌زمینه */}
+        {/* 1. Hero / Background */}
         <ContactBackground>
-          {/* circlePart */}
-          <div className="absolute transform translate-y-50 z-20 bg-white rounded-full w-[280px] h-[280px] md:w-[340px] md:h-[340px] shadow-xl shadow-blue-900/10 border-8 border-white flex flex-col items-center justify-center text-center p-6 transition-all hover:scale-105">
-            <span className="text-xs font-bold text-sky-400 tracking-widest uppercase mb-1">
-              OUR MISSION
-            </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-blue-600 leading-tight">
-              لبخندی سالم و شاد
-            </h2>
-            <h3 className="text-xl md:text-2xl font-bold text-amber-500 mt-1 mb-2">
-              با خدمات کلینیک ما
-            </h3>
-            <p className="text-xs text-slate-400 font-medium mb-4">
-              #لبخند_زیبا
-            </p>
+          {/* Glassmorphism Circle Section */}
+          <div
+            className="
+    absolute
+    z-20
 
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="bg-gradient-to-b from-blue-900 via-slate-950 to-blue-950 translate-y-4 hover:from-blue-700 hover:to-blue-600 text-white font-bold text-sm px-6 py-3 rounded-full shadow-lg shadow-blue-500/30 flex items-center gap-2 transition-all group"
-            >
-              <span>رزرو نوبت هم‌اکنون</span>
-              <span className="group-hover:translate-x-[-4px] transition-transform">
-                ←
+    /* ================= MOBILE ================= */
+    top-auto
+    bottom-12
+    right-5
+    left-auto
+
+    translate-x-0
+    -translate-y-0
+
+    w-[185px]
+    h-[185px]
+    p-4
+
+    /* ================= SMALL MOBILE ================= */
+    sm:bottom-12
+    sm:right-6
+    sm:w-[220px]
+    sm:h-[220px]
+    sm:p-5
+
+    /* ================= TABLET ================= */
+    md:top-1/2
+    md:left-[10%]
+    md:right-auto
+
+    md:-translate-y-1/2
+    md:translate-x-0
+
+    md:w-[320px]
+    md:h-[320px]
+    md:p-7
+
+    /* ================= DESKTOP ================= */
+    lg:left-[10%]
+    lg:w-[360px]
+    lg:h-[360px]
+    lg:p-8
+
+    /* ================= STYLE ================= */
+    rounded-full
+    overflow-hidden
+
+    flex
+    flex-col
+    items-center
+    justify-center
+    text-center
+
+    transition-all
+    duration-500
+    ease-in-out
+
+    hover:scale-[1.04]
+
+    /* ================= GLASS ================= */
+    bg-white/25
+    backdrop-blur-xl
+    border
+    border-white/40
+
+    shadow-[0_8px_32px_rgba(31,38,135,0.22)]
+  "
+          >
+            {/* Decorative Glass Elements (pointer-events-none) */}
+            <div className="absolute inset-2 rounded-full border border-white/20 pointer-events-none" />
+            <div className="absolute top-7 right-7 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-white/50 blur-sm pointer-events-none" />
+            <div className="absolute bottom-10 left-8 sm:bottom-14 sm:left-10 w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-cyan-200/40 blur-sm pointer-events-none" />
+
+            {/* Content Layer */}
+            <div className="relative z-10 flex flex-col items-center gap-1 sm:gap-2">
+              <span className="text-[9px] sm:text-[10px] md:text-xs font-extrabold tracking-[0.15em] text-white drop-shadow-md mb-1 sm:mb-2">
+                OUR MISSION
               </span>
-            </button>
+
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-blue-950 leading-tight drop-shadow-sm">
+                لبخندی سالم و شاد
+              </h2>
+
+              <h3 className="text-sm sm:text-base md:text-xl lg:text-2xl font-bold text-amber-600 mt-1 mb-1 sm:mb-2">
+                با خدمات کلینیک ما
+              </h3>
+
+              <p className="text-[10px] sm:text-xs md:text-sm text-blue-900/80 font-medium">
+                #لبخند_زیبا
+              </p>
+            </div>
           </div>
         </ContactBackground>
 
-        {/* ======================================================== */}
-        {/* ۲. بخش مرکز و خط منحنی پیچشی نقطه‌ای (SVG Twisted Dot Line) */}
-        {/* ======================================================== */}
-        <div className="relative w-full">
-          {/* SVG منحنی پیچشی بین بخش‌ها */}
-          <div className="hidden lg:block absolute top-1/2 right-[18%] -translate-x-1/2 -translate-y-1/2 w-[280px] xl:w-[360px] h-[100px] z-20 pointer-events-none">
-            <svg
-              viewBox="0 0 300 100"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-full h-full overflow-visible"
-            >
-              {/* مسیر پیچشی نقطه‌ای (Dotted Twisted Path) */}
-              <motion.path
-                id="curved-path"
-                d={twistedPath}
-                stroke="#38bdf8"
-                strokeWidth="2.5"
-                strokeDasharray="8 6"
-                strokeLinecap="square"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 0.8 }}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
-              />
+        {/* 2. Main Content */}
+        <CenterSection onOpenModal={() => setIsModalOpen(true)} />
 
-              {/* آیکون دندان درخشان متحرک روی مسیر پیچشی */}
-              <g className="drop-shadow-[0_0_10px_rgba(34,211,238,0.9)]">
-                <path
-                  fill="#151c82"
-                  d="M-6,-8 C-8,-8 -10,-6 -10,-3 C-10,2 -7,8 -5,10 C-3.5,11.5 -2.5,9 -1,7 C-0.5,6.3 0.5,6.3 1,7 C2.5,9 3.5,11.5 5,10 C7,8 10,2 10,-3 C10,-6 8,-8 6,-8 C4,-8 2,-7 0,-5 C-2,-7 -4,-8 -6,-8 Z"
-                />
-                <animateMotion
-                  dur="5.5s"
-                  repeatCount="indefinite"
-                  path={twistedPath}
-                  rotate="auto"
-                  calcMode="spline"
-                  keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
-                  keyTimes="0; 0.5; 1"
-                />
-              </g>
-            </svg>
-          </div>
-
-          {/* کامپوننت محتوای اصلی */}
-          <CenterSection onOpenModal={() => setIsModalOpen(true)} />
-        </div>
-
-        {/* ۳. نوار اطلاعات کلینیک */}
+        {/* 3. Clinic Information */}
         <ClinicInfoBar />
+
+        {/* 4. Appointment Modal */}
+        {isModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 backdrop-blur-sm p-4">
+            <div className="relative w-full max-w-2xl rounded-3xl bg-white shadow-2xl">
+              {/* Close Button */}
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="absolute top-4 left-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-slate-200"
+              >
+                ✕
+              </button>
+
+              <AppointmentForm
+                form={form}
+                sendEmail={sendEmail}
+                status={status}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

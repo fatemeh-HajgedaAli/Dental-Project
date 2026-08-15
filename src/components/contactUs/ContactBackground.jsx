@@ -1,86 +1,53 @@
-// Contact-bg
-import doctorImg from "../../assets/images/contactUs/DoctorOne.png";
-//Start
+import dentalClinicBg from "../../assets/images/denties/drSafdariyan.jpg";
+
 export default function ContactBackground({ children }) {
   return (
     <section
       className="
-      relative
-      overflow-hidden
-      w-full
-      min-h-[420px]
-      md:min-h-[520px]
-      lg:min-h-[700px]
-      flex
-      items-center
-      justify-center
-      bg-[#f7f9fc]
-    "
+        relative isolate overflow-hidden w-full flex items-center justify-center
+        min-h-[620px] sm:min-h-[650px] md:min-h-[620px] lg:min-h-[700px]
+        bg-slate-100
+      "
     >
-      {/* Background */}
+      {/* Background Image */}
       <div
         className="
-          absolute
-          inset-0
-          bg-cover
-          bg-center
-          md:bg-top
-          lg:bg-center
-          scale-105
-          transition-all
-          duration-700
+          absolute inset-0 -z-30 scale-[1.01]
+          bg-cover bg-no-repeat bg-[right_50%] md:bg-center
         "
-        style={{
-          backgroundImage: `url(${doctorImg})`,
-        }}
+        style={{ backgroundImage: `url(${dentalClinicBg})` }}
       />
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-slate-900/35" />
+      {/* Overlay - Dark/Light Tint */}
+      <div className="absolute inset-0 -z-20 bg-slate-900/10" />
 
-      {/* White Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b 
-      from-white/10 via-transparent to-white" />
-
-      {/* Left Glow */}
-      <div className="absolute -left-40 top-20 w-[450px]
-       h-[450px] rounded-full bg-blue-500/20 blur-[160px]" />
-
-      {/* Right Glow */}
-      <div className="absolute -right-32 bottom-10
-       w-[380px] h-[380px] rounded-full bg-cyan-300/20 
-       blur-[150px]" />
-
-      {/* Top Light */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2
-       w-[700px] h-[180px] bg-white/20 blur-[90px]" />
-
-      {/* Grid */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `
-          linear-gradient(rgba(255,255,255,.5) 2px, transparent 1px),
-          linear-gradient(90deg, rgba(255,255,255,.5) 2px, transparent 1px)
-        `,
-          backgroundSize: "45px 45px",
-        }}
-      />
-
-
-      {/* ================= BOTTOM FADE ================= */}
+      {/* Overlay - Blue Tint Gradient */}
       <div
         className="
-          absolute
-          bottom-0
-          left-0
-          right-0
-          h-20
-          bg-gradient-to-t
-          from-white
-          via-white/5
-          to-transparent
-          pointer-events-none
+          absolute inset-0 -z-10
+          bg-gradient-to-b from-transparent via-transparent to-blue-50/10
+          md:bg-gradient-to-r md:from-white/10 md:via-transparent md:to-blue-500/10
+        "
+      />
+
+      {/* Decorative Soft Light Effect */}
+      <div
+        className="
+          absolute -top-24 left-1/2 -translate-x-1/2 pointer-events-none
+          w-[320px] h-[160px] rounded-full bg-white/10 blur-[70px]
+          md:-top-32 md:w-[650px] md:h-[250px] md:blur-[100px]
+        "
+      />
+
+      {/* Content Container */}
+      <div className="relative z-10 w-full">{children}</div>
+
+      {/* Section Transition Fade to White */}
+      <div
+        className="
+          absolute bottom-0 left-0 right-0 pointer-events-none
+          h-20 bg-gradient-to-t from-white via-white/20 to-transparent
+          md:h-28 md:via-white/30
         "
       />
     </section>

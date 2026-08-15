@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import HeroVideo from "../../assets/images/videos/HeroVideo.mp4";
+import HeroVideo from "../../assets/images/videos/HeroVideo02.mp4";
 
 export default function HeroBackground() {
   // useState for bg-animation
@@ -36,13 +36,13 @@ export default function HeroBackground() {
       />
 
       {/* Desktop Fade Left */}
-      {/* <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.92_0.10_248.48)] via-transparent to-transparent hidden md:block" /> */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.92_0.10_248.48)] via-transparent to-transparent hidden md:block" />
 
       {/* Desktop Fade Bottom */}
-      {/* <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.85_0.02_248.06)] via-transparent to-transparent hidden md:block" /> */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.85_0.02_248.06)] via-transparent to-transparent hidden md:block" />
 
       {/* General Gradient */}
-      {/* <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.85_0.20_270.23)] via-[oklch(0.92_0.03_230.23/.35)] to-transparent" /> */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.85_0.20_270.23)] via-[oklch(0.92_0.03_230.23/.35)] to-transparent" />
     </div>
   );
 }
