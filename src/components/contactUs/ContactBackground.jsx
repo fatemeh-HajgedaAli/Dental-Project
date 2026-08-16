@@ -14,7 +14,7 @@ export default function ContactBackground({ children }) {
       <div
         className="
           absolute inset-0 -z-30 scale-[1.01]
-          bg-cover bg-no-repeat bg-[right_40%] md:bg-center
+          bg-cover bg-no-repeat bg-[right_10%] md:bg-center
         "
         style={{ backgroundImage: `url(${dentalClinicBg})` }}
       />
@@ -35,7 +35,7 @@ export default function ContactBackground({ children }) {
       <div
         className="
           absolute -top-24 left-1/2 -translate-x-1/2 pointer-events-none
-          w-[320px] h-[160px] rounded-full bg-white/10 blur-[70px]
+          w-[320px] h-[160px] rounded-full bg-white/10 blur-[60px]
           md:-top-32 md:w-[650px] md:h-[250px] md:blur-[100px]
         "
       />
