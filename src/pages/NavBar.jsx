@@ -5,20 +5,31 @@ import MobileMenu from "../components/navBar/MobileMenu";
 export default function Navbar() {
   return (
     <>
-      <div className="relative z-50 
-      hidden mt-4 lg:block top-2">
-        {/* کانتینر اصلی با ارتفاع مشخص جهت در بر گرفتن کامل موج */}
+      <div className="relative z-50 hidden mt-4 top-2 lg:block">
         <div
-          className="relative w-full h-[150px] 
-          flex justify-between 
-        items-start pt-2 px-10"
+          className="
+            relative
+            w-full
+            h-[150px]
+            flex
+            items-start
+            justify-between
+            pt-2
+            px-10
+          "
         >
           {/* پس‌زمینه موج SVG */}
           <div
-            className="absolute inset-0 w-full h-full -z-10 
-          pointer-events-none rounded-b-2xl overflow-hidden filter
-           
-           "
+            className="
+              absolute
+              inset-0
+              w-full
+              h-full
+              -z-10
+              pointer-events-none
+              rounded-b-2xl
+              overflow-hidden
+            "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -34,17 +45,25 @@ export default function Navbar() {
             </svg>
           </div>
 
-          {/* منوی اصلی در سمت راست/چپ بالا */}
+          {/* منو → سمت چپ */}
           <div className="relative z-10 flex items-center pt-2">
             <DesktopMenu />
           </div>
 
-          {/* لوگو در سمت راست/چپ بالا */}
+          {/* لوگو → سمت راست */}
           <div className="relative z-10 flex items-center -mt-6">
             <img
               src={TeethLogo}
               alt="Logo"
-              className="w-30 object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105 cursor-pointer"
+              className="
+                w-30
+                object-contain
+                drop-shadow-sm
+                transition-transform
+                duration-300
+                hover:scale-105
+                cursor-pointer
+              "
             />
           </div>
         </div>

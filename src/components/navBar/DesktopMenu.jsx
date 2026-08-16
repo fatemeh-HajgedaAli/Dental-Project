@@ -111,7 +111,7 @@ export default function DesktopMenu() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             /* تغییر از right-8 به left-8 */
-            className="fixed top-8 left-8 z-[99999]"
+            className="fixed top-8 right-8 z-[99999]"
           >
             <div className="relative flex flex-col items-center">
               {/* Floating Badge (بج بالای دکمه) */}

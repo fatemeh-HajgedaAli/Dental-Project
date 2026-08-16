@@ -19,71 +19,71 @@ export default function ContactUs({ form, sendEmail, status }) {
           {/* Glassmorphism Circle Section */}
           <div
             className="
-    absolute
-    z-20
+  absolute
+  z-20
 
-    /* ================= MOBILE ================= */
-    top-auto
-    bottom-12
-    right-5
-    left-auto
+  /* ================= MOBILE ================= */
+  top-auto
+  bottom-38
+  left-2
+  right-auto
 
-    translate-x-0
-    -translate-y-0
+  translate-x-0
+  translate-y-0
 
-    w-[185px]
-    h-[185px]
-    p-4
+  w-[150px]
+  h-[150px]
+  p-4
 
-    /* ================= SMALL MOBILE ================= */
-    sm:bottom-12
-    sm:right-6
-    sm:w-[220px]
-    sm:h-[220px]
-    sm:p-5
+  /* ================= SMALL MOBILE ================= */
+  sm:bottom-12
+  sm:left-6
+  sm:right-auto
+  sm:w-[120px]
+  sm:h-[120px]
+  sm:p-2
+  /* ================= TABLET ================= */
+  md:top-1/2
+  md:left-[10%]
+  md:right-auto
 
-    /* ================= TABLET ================= */
-    md:top-1/2
-    md:left-[10%]
-    md:right-auto
+  md:-translate-y-1/2
+  md:translate-x-0
 
-    md:-translate-y-1/2
-    md:translate-x-0
+  md:w-[320px]
+  md:h-[320px]
+  md:p-7
 
-    md:w-[320px]
-    md:h-[320px]
-    md:p-7
+  /* ================= DESKTOP ================= */
+  lg:left-[10%]
+  lg:w-[360px]
+  lg:h-[360px]
+  lg:p-8
 
-    /* ================= DESKTOP ================= */
-    lg:left-[10%]
-    lg:w-[360px]
-    lg:h-[360px]
-    lg:p-8
+  /* ================= STYLE ================= */
+  rounded-full
+  overflow-hidden
 
-    /* ================= STYLE ================= */
-    rounded-full
-    overflow-hidden
+  flex
+  flex-col
+  items-center
+  justify-center
+  text-center
 
-    flex
-    flex-col
-    items-center
-    justify-center
-    text-center
+  transition-all
+  duration-500
+  ease-in-out
 
-    transition-all
-    duration-500
-    ease-in-out
+  hover:scale-[1.04]
 
-    hover:scale-[1.04]
+  /* ================= GLASS ================= */
+  bg-white/25
+  backdrop-blur-xl
+  border
+  border-white/40
 
-    /* ================= GLASS ================= */
-    bg-white/25
-    backdrop-blur-xl
-    border
-    border-white/40
-
-    shadow-[0_8px_32px_rgba(31,38,135,0.22)]
-  "
+  shadow-[0_8px_32px_rgba(31,38,135,0.22)]
+"
           >
             {/* Decorative Glass Elements (pointer-events-none) */}
             <div className="absolute inset-2 rounded-full border border-white/20 pointer-events-none" />
@@ -92,19 +92,19 @@ export default function ContactUs({ form, sendEmail, status }) {
 
             {/* Content Layer */}
             <div className="relative z-10 flex flex-col items-center gap-1 sm:gap-2">
-              <span className="text-[9px] sm:text-[10px] md:text-xs font-extrabold tracking-[0.15em] text-white drop-shadow-md mb-1 sm:mb-2">
+              <span className="text-[10px] sm:text-[10px] md:text-xs font-extrabold tracking-[0.15em] text-white drop-shadow-md mb-1 sm:mb-2">
                 OUR MISSION
               </span>
 
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-blue-950 leading-tight drop-shadow-sm">
+              <h2 className="text-[15px] sm:text-xs md:text-2xl lg:text-3xl font-extrabold text-blue-950 leading-tight drop-shadow-sm">
                 لبخندی سالم و شاد
               </h2>
 
-              <h3 className="text-sm sm:text-base md:text-xl lg:text-2xl font-bold text-amber-600 mt-1 mb-1 sm:mb-2">
+              <h3 className="text-[10px] sm:text-base md:text-xl lg:text-2xl font-bold text-amber-600 mt-1 mb-1 sm:mb-2">
                 با خدمات کلینیک ما
               </h3>
 
-              <p className="text-[10px] sm:text-xs md:text-sm text-blue-900/80 font-medium">
+              <p className="text-[10px] sm:text-xs md:text-sm text-blue-900/80 font-medium hidden lg:flex">
                 #لبخند_زیبا
               </p>
             </div>

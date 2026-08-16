@@ -61,7 +61,9 @@ export default function WebsiteAdCard({ onClose }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="ارتباط در تلگرام"
-          className="group flex items-center justify-between rounded-2xl border border-sky-300/40 bg-gradient-to-r from-sky-500/90 to-cyan-500/90 p-3 text-white shadow-lg shadow-sky-500/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl active:scale-[0.98]"
+          className="group flex items-center justify-between rounded-2xl border border-sky-300/40
+           bg-gradient-to-r from-sky-500/90 to-sky-900/80 p-3 text-white shadow-lg
+            shadow-sky-500/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl active:scale-[0.98]"
         >
           <div className="flex items-center gap-3">
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/25 backdrop-blur-sm">
