@@ -4,7 +4,8 @@ export default function ContactBackground({ children }) {
   return (
     <section
       className="
-        relative isolate overflow-hidden w-full flex items-center justify-center
+        relative isolate overflow-hidden w-full flex items-center 
+        justify-center
         min-h-[620px] sm:min-h-[650px] md:min-h-[620px] lg:min-h-[700px]
         bg-slate-100
       "
@@ -13,7 +14,7 @@ export default function ContactBackground({ children }) {
       <div
         className="
           absolute inset-0 -z-30 scale-[1.01]
-          bg-cover bg-no-repeat bg-[right_50%] md:bg-center
+          bg-cover bg-no-repeat bg-[right_40%] md:bg-center
         "
         style={{ backgroundImage: `url(${dentalClinicBg})` }}
       />
