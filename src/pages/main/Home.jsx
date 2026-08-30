@@ -9,11 +9,10 @@ import DentalTips from "../DentalTips";
 import DigitalImplant from "../DigitalImplant";
 import FAQ from "../FAQ";
 import ContactUs from "../ContactUs";
+import Gallery from "../../components/gallery/Gallery";
 
-// START
 export default function Home() {
   const contactRef = useRef(null);
-
   const [showFloating, setShowFloating] = useState(true);
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export default function Home() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section id="hero" className="w-full">
+      <section id="hero" className="w-full ">
         <Hero />
       </section>
 
@@ -56,29 +55,34 @@ export default function Home() {
       </section>
 
       {/* Dental Tips */}
-      <section id="tips" className="w-full">
+      <section id="tips" className="w-full ">
         <DentalTips />
       </section>
 
-      {/* Why Choose Us */}
-      <section id="about" className="w-full">
+      {/* About */}
+      <section id="about" className="w-full ">
         <WhyChooseUs />
       </section>
+
       {/* Contact */}
-      <section ref={contactRef} id="contact" className="relative w-full">
+      <section ref={contactRef} id="contact" className="relative w-full ">
         <ContactUs />
       </section>
+
       {/* Digital Implant */}
       <section className="w-full">
         <DigitalImplant />
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="w-full">
+      <section id="faq" className="w-full ">
         <FAQ />
       </section>
- 
-      
+
+      {/* Gallery */}
+      <section id="gallery" className="w-full ">
+        <Gallery />
+      </section>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { IoHomeOutline, IoBookOutline } from "react-icons/io5";
 import { RiServiceLine } from "react-icons/ri";
 import { BsTelephone } from "react-icons/bs";
 import { HiOutlineQuestionMarkCircle } from "react-icons/hi2";
+import { PiOfficeChairLight } from "react-icons/pi";
 
 export const navLinks = [
   {
@@ -19,6 +20,11 @@ export const navLinks = [
     to: "services",
   },
   {
+    title: " نگاهی به مطب",
+    icon: PiOfficeChairLight,
+    to: "gallery",
+  },
+  {
     title: "با هم بخوانیم",
     icon: IoBookOutline,
     to: "tips",
@@ -28,6 +34,7 @@ export const navLinks = [
     icon: HiOutlineQuestionMarkCircle,
     to: "faq",
   },
+
   {
     title: "تماس با ما",
     icon: BsTelephone,

@@ -191,7 +191,7 @@ export default function DesktopMenu() {
                           smooth
                           spy
                           duration={600}
-                          offset={-90}
+                          offset={0}
                           onClick={closeMenu}
                           className="group relative w-12 h-12 rounded-2xl bg-white/95 backdrop-blur-xl shadow-md border border-sky-100 flex items-center justify-center text-sky-700 transition-colors duration-200 hover:bg-sky-600 hover:text-white cursor-pointer"
                         >
@@ -200,7 +200,7 @@ export default function DesktopMenu() {
                           {/* Tooltip عنوان لینک (تغییر موقعیت به سمت راست d/t چپ‌چین بودن منو) */}
                           <motion.span
                             variants={tooltipVariants}
-                            className="absolute left-14 top-1/2 -translate-y-1/2 whitespace-nowrap bg-slate-900/90 backdrop-blur-md text-white text-xs font-medium px-3 py-1.5 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 shadow-md"
+                            className="absolute right-14 top-1/2 -translate-y-1/2 whitespace-nowrap bg-slate-900/90 backdrop-blur-md text-white text-xs font-medium px-3 py-1.5 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 shadow-md"
                           >
                             {title}
                           </motion.span>

@@ -133,7 +133,7 @@ export default function MobileMenu() {
                       smooth
                       spy
                       duration={600}
-                      offset={-90}
+                      offset={0}
                       onClick={closeMenu}
                       className="group relative w-12 h-12 rounded-2xl bg-white/95 backdrop-blur-xl shadow-md border border-sky-100 flex items-center justify-center text-sky-700 transition-colors duration-200 hover:bg-sky-600 hover:text-white"
                     >
