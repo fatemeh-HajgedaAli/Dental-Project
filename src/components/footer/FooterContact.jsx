@@ -7,12 +7,12 @@ import { toPersianDigits } from "../../utlis/number";
 export default function FooterContact() {
   return (
     <div>
-      <h3 className="mb-6 text-base font-black">ارتباط با کلینیک</h3>
+      <h3 className="mb-6 text-base font-black text-dark">ارتباط با کلینیک</h3>
 
       <div className="space-y-5">
         {/* Address */}
         <ContactItem icon={<MapPin />}>
-          <p className="text-sm leading-7 text-slate-400">
+          <p className="text-sm leading-7 text-text-muted">
             {clinicInfo.address}
           </p>
         </ContactItem>
@@ -25,9 +25,9 @@ export default function FooterContact() {
             className="
               text-sm
               font-semibold
-              text-slate-300
+              text-text
               transition-colors
-              hover:text-cyan-400
+              hover:text-primary-dark
             "
           >
             {toPersianDigits(clinicInfo.phone)}
@@ -40,9 +40,9 @@ export default function FooterContact() {
             href={`mailto:${clinicInfo.email}`}
             className="
               text-xs
-              text-slate-400
+              text-text-muted
               transition-colors
-              hover:text-cyan-400
+              hover:text-primary-dark
               sm:text-sm
             "
           >
@@ -51,9 +51,8 @@ export default function FooterContact() {
         </ContactItem>
       </div>
 
-      {/* Social Media */}
+      {/* Social */}
       <div className="mt-6 flex gap-3">
-        {/* Instagram */}
         <SocialButton
           href="https://instagram.com/Dr_Zohreh_Safdarian"
           ariaLabel="اینستاگرام کلینیک"
@@ -61,7 +60,6 @@ export default function FooterContact() {
           <FaInstagram className="h-4 w-4" />
         </SocialButton>
 
-        {/* WhatsApp */}
         <SocialButton
           href="https://wa.me/989336155769"
           ariaLabel="واتساپ کلینیک"
@@ -85,8 +83,8 @@ function ContactItem({ icon, children }) {
           items-center
           justify-center
           rounded-xl
-          bg-cyan-400/10
-          text-cyan-400
+          bg-primary-light
+          text-primary-dark
           [&>svg]:h-4
           [&>svg]:w-4
         "
@@ -114,16 +112,17 @@ function SocialButton({ href, ariaLabel, children }) {
         justify-center
         rounded-xl
         border
-        border-white/10
-        bg-white/5
-        text-slate-400
+        border-border
+        bg-white
+        text-text-muted
         transition-all
         duration-300
         hover:-translate-y-1
-        hover:bg-cyan-400
+        hover:border-accent/40
+        hover:bg-accent
         hover:text-white
         hover:shadow-lg
-        hover:shadow-cyan-500/20
+        hover:shadow-accent/20
       "
     >
       {children}

@@ -9,8 +9,11 @@ import AppointmentActions from "./appoinmentForm/AppointmentActions";
 import { services } from "./appoinmentForm/appointment.constants";
 import { validateAppointment } from "./appoinmentForm/appointment.validation";
 
-export default function AppointmentForm({ form, sendEmail }) {
+import { sendAppointmentEmail } from "../../services/emailService";
+
+export default function AppointmentForm() {
   const [errors, setErrors] = useState({});
+
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
@@ -20,11 +23,8 @@ export default function AppointmentForm({ form, sendEmail }) {
 
     const validation = validateAppointment({
       name: data.get("name")?.trim(),
-
       phone: data.get("phone")?.trim(),
-
       email: data.get("email")?.trim(),
-
       date: data.get("date"),
     });
 
@@ -32,7 +32,7 @@ export default function AppointmentForm({ form, sendEmail }) {
 
     if (!Object.keys(validation).length) {
       try {
-        await sendEmail();
+        await sendAppointmentEmail(e.target);
 
         toast.success("نوبت شما ثبت شد 🦷 به زودی با شما تماس می‌گیریم", {
           duration: 4000,
@@ -44,32 +44,20 @@ export default function AppointmentForm({ form, sendEmail }) {
         });
 
         e.target.reset();
-      } catch {
+      } catch (error) {
+        console.error("EmailJS Error:", error);
+
         toast.error("ارسال درخواست ناموفق بود");
       }
     }
   };
 
   return (
-    <section
-      dir="rtl"
-      className="
-      w-full
-      flex
-      justify-center
-      px-4
-      "
-    >
-      <div
-        className="
-      w-full
-      max-w-md
-      p-6
-      "
-      >
+    <section dir="rtl" className="w-full flex justify-center px-4">
+      <div className="w-full max-w-md p-6">
         <AppointmentHeader />
 
-        <form ref={form} onSubmit={submitHandler} className="space-y-3">
+        <form onSubmit={submitHandler} className="space-y-3">
           <AppointmentFields errors={errors} services={services} />
 
           <AppointmentActions onBack={() => navigate("/")} />

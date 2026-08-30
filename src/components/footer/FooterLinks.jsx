@@ -14,9 +14,9 @@ export default function FooterLinks() {
 
   return (
     <div dir="rtl">
-      <h3 className="mb-6 text-base font-black text-white">دسترسی سریع</h3>
+      <h3 className="mb-6 text-base font-black text-dark">دسترسی سریع</h3>
 
-      <ul className="space-y-3 text-sm text-slate-400">
+      <ul className="space-y-3 text-sm text-text-muted">
         {footerLinks.map((link) => (
           <li key={link.to}>
             <button
@@ -31,7 +31,7 @@ export default function FooterLinks() {
                 transition-all
                 duration-300
                 hover:translate-x-[-4px]
-                hover:text-cyan-400
+                hover:text-primary-dark
               "
             >
               <span
@@ -39,10 +39,10 @@ export default function FooterLinks() {
                   h-1.5
                   w-1.5
                   rounded-full
-                  bg-slate-600
+                  bg-primary-light
                   transition-all
                   duration-300
-                  group-hover:bg-cyan-400
+                  group-hover:bg-accent
                   group-hover:scale-125
                 "
               />

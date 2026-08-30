@@ -9,24 +9,120 @@ export default function Footer({ onOpenModal }) {
   return (
     <footer
       dir="rtl"
-      className="relative overflow-hidden bg-slate-950 text-white"
+      className="
+        relative
+        overflow-hidden
+        bg-background
+        text-text
+      "
     >
-      {/* Background Glows */}
+      {/* =========================================================
+          BACKGROUND
+      ========================================================= */}
 
-      <div className="pointer-events-none absolute -top-40 right-[-120px] h-[420px] w-[420px] rounded-full bg-cyan-500/10 blur-[130px]" />
+      {/* Primary ambient glow */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-32
+          -top-40
+          h-[420px]
+          w-[420px]
+          rounded-full
+          bg-primary/10
+          blur-[130px]
+        "
+      />
 
-      <div className="pointer-events-none absolute bottom-[-180px] left-[-120px] h-[450px] w-[450px] rounded-full bg-blue-600/10 blur-[140px]" />
+      {/* Gold ambient glow */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -bottom-48
+          -left-32
+          h-[480px]
+          w-[480px]
+          rounded-full
+          bg-accent/10
+          blur-[140px]
+        "
+      />
 
-      {/* CTA */}
+      {/* Center soft glow */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-1/2
+          top-[45%]
+          h-[300px]
+          w-[300px]
+          -translate-x-1/2
+          rounded-full
+          bg-primary/5
+          blur-[100px]
+        "
+      />
 
-      <div className="relative mx-auto max-w-7xl px-4 pt-12 sm:px-6 md:pt-16 lg:px-8">
+      {/* =========================================================
+          CTA
+      ========================================================= */}
+
+      <div
+        className="
+          relative
+          mx-auto
+          max-w-7xl
+          px-4
+          pt-10
+          sm:px-6
+          md:pt-16
+          lg:px-8
+        "
+      >
         <FooterCTA onOpenModal={onOpenModal} />
       </div>
 
-      {/* Main Footer */}
+      {/* =========================================================
+          MAIN FOOTER
+      ========================================================= */}
 
-      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div
+        className="
+          relative
+          mx-auto
+          max-w-7xl
+          px-4
+          py-14
+          sm:px-6
+          md:py-20
+          lg:px-8
+        "
+      >
+        {/* Divider */}
+        <div
+          className="
+            mb-12
+            h-px
+            w-full
+            bg-gradient-to-l
+            from-transparent
+            via-border
+            to-transparent
+          "
+        />
+
+        <div
+          className="
+            grid
+            gap-10
+            md:grid-cols-2
+            lg:grid-cols-4
+            lg:gap-8
+          "
+        >
           <FooterBrand />
 
           <FooterLinks />
@@ -37,9 +133,20 @@ export default function Footer({ onOpenModal }) {
         </div>
       </div>
 
-      {/* Bottom */}
+      {/* =========================================================
+          BOTTOM
+      ========================================================= */}
 
-      <FooterBottom />
+      <div
+        className="
+          relative
+          border-t
+          border-border-soft
+          bg-surface-soft/70
+        "
+      >
+        <FooterBottom />
+      </div>
     </footer>
   );
 }
