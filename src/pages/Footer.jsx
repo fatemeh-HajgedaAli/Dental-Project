@@ -12,7 +12,7 @@ export default function Footer({ onOpenModal }) {
       className="
         relative
         overflow-hidden
-        bg-background
+        bg-secondary
         text-text
       "
     >

@@ -1,4 +1,3 @@
-import React from "react";
 import officeVideo from "../../assets/images/videos/office.mp4";
 import { FaTooth } from "react-icons/fa";
 
@@ -7,7 +6,7 @@ export default function Gallery() {
     <section
       className="
         relative isolate overflow-hidden
-        bg-[#F6F3EC]
+        bg-background
         px-4 py-16
         sm:px-5 sm:py-20
         md:px-8 md:py-24
@@ -17,14 +16,14 @@ export default function Gallery() {
     >
       {/* ================= BACKGROUND ================= */}
 
-      {/* Main soft green glow */}
+      {/* Sky Blue Glow */}
       <div
         className="
           pointer-events-none absolute
           -right-32 -top-20
           h-[300px] w-[300px]
           rounded-full
-          bg-[#DCE7E0]/40
+          bg-primary-light/50
           blur-[90px]
 
           sm:-right-40 sm:-top-24
@@ -32,24 +31,24 @@ export default function Gallery() {
 
           md:-right-48 md:-top-32
           md:h-[520px] md:w-[520px]
-          md:bg-[#DCE7E0]/45
+          md:bg-primary-light/60
           md:blur-[110px]
 
           lg:-right-52 lg:-top-40
           lg:h-[650px] lg:w-[650px]
-          lg:bg-[#DCE7E0]/50
+          lg:bg-primary-light/70
           lg:blur-[130px]
         "
       />
 
-      {/* Warm secondary glow */}
+      {/* Gold Glow */}
       <div
         className="
           pointer-events-none absolute
           -left-32 bottom-10
           h-[260px] w-[260px]
           rounded-full
-          bg-[#E7DCC8]/25
+          bg-accent-light/30
           blur-[90px]
 
           sm:-left-40
@@ -57,17 +56,17 @@ export default function Gallery() {
 
           md:-left-48 md:bottom-0
           md:h-[480px] md:w-[480px]
-          md:bg-[#E7DCC8]/35
+          md:bg-accent-light/40
           md:blur-[110px]
 
           lg:-left-56 lg:-bottom-32
           lg:h-[620px] lg:w-[620px]
-          lg:bg-[#E7DCC8]/40
+          lg:bg-accent-light/50
           lg:blur-[140px]
         "
       />
 
-      {/* Very subtle center light */}
+      {/* Center Light */}
       <div
         className="
           pointer-events-none absolute
@@ -76,14 +75,14 @@ export default function Gallery() {
           -translate-x-1/2
           -translate-y-1/2
           rounded-full
-          bg-white/30
+          bg-white/50
           blur-[100px]
 
           md:h-[420px] md:w-[420px]
-          md:bg-white/40
+          md:bg-white/60
 
           lg:h-[600px] lg:w-[600px]
-          lg:bg-white/50
+          lg:bg-white/70
           lg:blur-[150px]
         "
       />
@@ -96,15 +95,19 @@ export default function Gallery() {
           pointer-events-none absolute
           right-5 -top-4
           h-[300px] w-[250px]
-          text-[#7E9C8F]/[0.16]
+          text-primary/[0.15]
+
           sm:-right-16 sm:-top-10
           sm:h-[380px] sm:w-[320px]
+
           md:-right-20 md:-top-14
           md:h-[480px] md:w-[400px]
-          md:text-[#7E9C8F]/[0.17]
+          md:text-primary/[0.17]
+
           lg:-right-10 lg:-top-3
           lg:h-[420px] lg:w-[420px]
-          lg:text-[#7E9C8F]/[0.15]
+          lg:text-primary/[0.15]
+
           xl:-right-6
           xl:h-[300px] xl:w-[480px]
         "
@@ -121,7 +124,7 @@ export default function Gallery() {
       {/* ================= CONTENT ================= */}
 
       <div className="relative z-10 mx-auto w-full max-w-[1400px]">
-        {/* HEADER */}
+        {/* ================= HEADER ================= */}
 
         <div
           className="
@@ -140,6 +143,7 @@ export default function Gallery() {
           "
         >
           <div>
+            {/* Eyebrow */}
             <span
               className="
                 mb-3
@@ -148,24 +152,25 @@ export default function Gallery() {
                 text-[10px]
                 font-medium
                 tracking-[0.3em]
-                text-[#A9885A]
+                text-accent
 
                 sm:text-xs
                 md:mb-4
               "
             >
-              <span className="h-px w-5 bg-[#A9885A] sm:w-6" />
+              <span className="h-px w-5 bg-accent sm:w-6" />
               OUR CLINIC
             </span>
 
+            {/* Heading */}
             <h2
               className="
-                font-['Vazirmatn']
+                font-sans
                 text-2xl
                 font-extrabold
                 leading-[1.2]
                 tracking-tight
-                text-[#1A1D1B]
+                text-dark
 
                 sm:text-3xl
                 md:text-4xl
@@ -174,17 +179,17 @@ export default function Gallery() {
               "
             >
               فضایی برای
-              <span className="mr-2 font-medium text-[#7E9C8F] sm:mr-3">
+              <span className="mr-2 font-medium text-primary sm:mr-3">
                 آرامش شما
               </span>
             </h2>
 
-            {/* Smile curve */}
+            {/* Smile Curve */}
             <svg
               width="100"
               height="14"
               viewBox="0 0 120 16"
-              className="mt-3 text-[#A9885A] sm:mt-4 sm:w-[120px]"
+              className="mt-3 text-accent sm:mt-4 sm:w-[120px]"
               fill="none"
               aria-hidden="true"
             >
@@ -201,10 +206,10 @@ export default function Gallery() {
             className="
               max-w-sm
               text-right
-              font-['Vazirmatn']
+              font-sans
               text-xs
               leading-7
-              text-neutral-500
+              text-text-muted
 
               sm:text-sm
 
@@ -226,8 +231,8 @@ export default function Gallery() {
             w-full
             overflow-hidden
             rounded-[12px]
-            bg-[#101410]
-            shadow-[0_25px_70px_-30px_rgba(26,29,27,0.55)]
+            bg-dark
+            shadow-dental
 
             sm:h-[500px]
             sm:rounded-[14px]
@@ -236,7 +241,7 @@ export default function Gallery() {
 
             lg:h-[720px]
             lg:rounded-[16px]
-            lg:shadow-[0_35px_100px_-35px_rgba(26,29,27,0.55)]
+            lg:shadow-dental-lg
 
             xl:h-[760px]
           "
@@ -251,9 +256,9 @@ export default function Gallery() {
               absolute inset-0
               h-full w-full
               object-cover
-              saturate-[0.92]
-              contrast-[1.03]
-              brightness-[0.92]
+              saturate-[0.94]
+              contrast-[1.02]
+              brightness-[0.94]
               transition-transform
               duration-[7000ms]
               ease-out
@@ -270,15 +275,15 @@ export default function Gallery() {
               inset-x-0 bottom-0
               h-[50%]
               bg-gradient-to-t
-              from-[#0B0F0D]/90
-              via-[#0B0F0D]/25
+              from-dark/95
+              via-dark/30
               to-transparent
 
               md:h-[45%]
             "
           />
 
-          {/* TOP LABEL */}
+          {/* ================= TOP LABEL ================= */}
 
           <div
             className="
@@ -300,7 +305,7 @@ export default function Gallery() {
                 items-center justify-center
                 rounded-full
                 border border-white/25
-                bg-white/10
+                bg-primary/20
                 backdrop-blur-xl
 
                 sm:h-10 sm:w-10
@@ -324,7 +329,7 @@ export default function Gallery() {
             </span>
           </div>
 
-          {/* LIVE */}
+          {/* ================= LIVE ================= */}
 
           <div
             className="
@@ -333,7 +338,7 @@ export default function Gallery() {
               flex items-center gap-2
               rounded-full
               border border-white/20
-              bg-black/25
+              bg-dark/30
               px-2.5 py-1
               backdrop-blur-xl
 
@@ -344,8 +349,28 @@ export default function Gallery() {
             "
           >
             <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#B7CDC1] opacity-60 motion-reduce:animate-none" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#B7CDC1]" />
+              <span
+                className="
+                  absolute
+                  inline-flex
+                  h-full w-full
+                  animate-ping
+                  rounded-full
+                  bg-primary-light
+                  opacity-70
+                  motion-reduce:animate-none
+                "
+              />
+
+              <span
+                className="
+                  relative
+                  inline-flex
+                  h-1.5 w-1.5
+                  rounded-full
+                  bg-primary
+                "
+              />
             </span>
 
             <span
@@ -363,7 +388,7 @@ export default function Gallery() {
             </span>
           </div>
 
-          {/* MAIN CONTENT */}
+          {/* ================= MAIN CONTENT ================= */}
 
           <div
             className="
@@ -371,16 +396,19 @@ export default function Gallery() {
               bottom-6 right-5
               max-w-[90%]
               text-right text-white
+
               sm:bottom-8 sm:right-6
+
               md:bottom-12
               md:right-10
               md:max-w-2xl
+
               lg:right-14
             "
           >
             <h3
               className="
-                font-['Vazirmatn']
+                font-sans
                 text-2xl
                 font-bold
                 leading-tight
@@ -394,14 +422,16 @@ export default function Gallery() {
             >
               جایی برای
               <br />
-              <span className="font-medium text-[#B7CDC1]">آرامش و اعتماد</span>
+              <span className="font-medium text-primary-light">
+                آرامش و اعتماد
+              </span>
             </h3>
 
             <p
               className="
                 mt-3
                 max-w-md
-                font-['Vazirmatn']
+                font-sans
                 text-xs
                 leading-6
                 text-white/60
@@ -419,7 +449,7 @@ export default function Gallery() {
             </p>
           </div>
 
-          {/* PLAY */}
+          {/* ================= PLAY ================= */}
 
           <button
             type="button"
@@ -449,7 +479,7 @@ export default function Gallery() {
                 items-center justify-center
                 rounded-full
                 border border-white/30
-                bg-white/10
+                bg-primary/20
                 backdrop-blur-xl
                 shadow-2xl
 
@@ -472,25 +502,28 @@ export default function Gallery() {
             w-[calc(100%-1.5rem)]
             max-w-sm
             rounded-[10px]
-            border border-[#DDD8CC]
-            bg-[#FBF9F5]
+            border border-border
+            bg-surface
             p-5
-            shadow-[0_25px_60px_-25px_rgba(26,29,27,0.35)]
+            shadow-dental
             transition-all
             duration-500
             hover:-translate-y-2
+
             sm:-mt-10
             sm:mr-5
             sm:p-6
+
             md:-mt-12
             md:mr-8
+
             lg:-mt-10
             lg:mr-44
             lg:max-w-[400px]
             lg:p-7
           "
         >
-          {/* Card label */}
+          {/* Card Label */}
 
           <div className="mb-4 flex items-center justify-between">
             <span
@@ -499,7 +532,7 @@ export default function Gallery() {
                 text-[9px]
                 font-medium
                 tracking-[0.18em]
-                text-[#A9885A]
+                text-accent
 
                 sm:text-[10px]
               "
@@ -507,15 +540,17 @@ export default function Gallery() {
               THE CLINIC
             </span>
 
-            <span className="h-px w-10 bg-[#D8D1C4] sm:w-14" />
+            <span className="h-px w-10 bg-border sm:w-14" />
           </div>
+
+          {/* Description */}
 
           <p
             className="
-              font-['Vazirmatn']
+              font-sans
               text-xs
               leading-7
-              text-[#1A1D1B]
+              text-text
 
               sm:text-sm
             "
@@ -524,43 +559,43 @@ export default function Gallery() {
             متفاوت برای شما طراحی شده است.
           </p>
 
-          {/* Trust signals */}
+          {/* Trust Signals */}
 
           <div
             className="
               mt-5
               grid grid-cols-2
-              border-t border-[#E4DFD5]
+              border-t border-border
               pt-4
 
-              font-['Vazirmatn']
+              font-sans
               text-[10px]
-              text-[#5B6660]
+              text-text-muted
 
               sm:text-xs
             "
           >
-            <div className="border-l border-[#E4DFD5] text-right">
-              <span className="block text-[9px] text-[#A9885A]">
-                EXPERIENCE
-              </span>
+            <div className="border-l border-border text-right">
+              <span className="block text-[9px] text-accent">EXPERIENCE</span>
+
               <span className="mt-1 block">+۱۲ سال تجربه</span>
             </div>
 
             <div className="pr-4 text-right sm:pr-5">
-              <span className="block text-[9px] text-[#A9885A]">PATIENTS</span>
+              <span className="block text-[9px] text-accent">PATIENTS</span>
+
               <span className="mt-1 block">+۲۰۰۰ بیمار</span>
             </div>
           </div>
 
-          {/* Card footer */}
+          {/* Card Footer */}
 
           <div
             className="
               mt-4
               flex items-center
               justify-between
-              border-t border-[#E4DFD5]
+              border-t border-border
               pt-4
             "
           >
@@ -569,7 +604,7 @@ export default function Gallery() {
                 font-['Space_Grotesk']
                 text-[9px]
                 tracking-[0.15em]
-                text-[#A9885A]
+                text-accent
 
                 sm:text-[10px]
               "
@@ -577,7 +612,15 @@ export default function Gallery() {
               EXPLORE THE SPACE
             </span>
 
-            <span className="text-sm text-[#7E9C8F] transition-transform duration-300 hover:-translate-x-1">
+            <span
+              className="
+                text-sm
+                text-primary
+                transition-transform
+                duration-300
+                hover:-translate-x-1
+              "
+            >
               ←
             </span>
           </div>

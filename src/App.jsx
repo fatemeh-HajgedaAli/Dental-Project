@@ -7,6 +7,7 @@ import { AnimatePresence } from "framer-motion";
 import Home from "./pages/main/Home";
 import Services from "./pages/Services";
 import ContactUs from "./pages/ContactUs";
+import BlogDetail from "./pages/BlogDetail";
 
 // Components
 import Preloader from "./pages/Preloader";
@@ -32,9 +33,17 @@ export default function App() {
       {!isLoading && (
         <Routes>
           <Route element={<MainLayout />}>
+            {/* Home */}
             <Route path="/" element={<Home />} />
+
+            {/* Services */}
             <Route path="/services" element={<Services />} />
+
+            {/* Contact */}
             <Route path="/contact-us" element={<ContactUs />} />
+
+            {/* Blog Details */}
+            <Route path="/blog/:slug" element={<BlogDetail />} />
           </Route>
         </Routes>
       )}
