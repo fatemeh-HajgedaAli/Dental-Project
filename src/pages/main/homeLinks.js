@@ -79,7 +79,7 @@ export const clinicInfo = {
 
   mobile: "09336155769",
 
-  email: "hello@aureliadental.com",
+  email: "zohreh.safdarian.dental@gmail.com",
 
   instagram: "Dr_Zohreh_Safdarian",
 };
